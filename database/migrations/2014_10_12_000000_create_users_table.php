@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('phone_number')->unique();
             $table->string('password');
+            $table->integer('stars')->default(config('custom.default_stars'));
+            $table->integer('level')->default(1); //0 =>super admin| 1 =>user| 2 =>teacher
             $table->rememberToken();
             $table->timestamps();
         });
