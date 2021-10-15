@@ -15,11 +15,14 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
+            $table->integer('teacher_id')->nullable();
             $table->integer('class');
             $table->string('file');
+            $table->string('response_file')->nullable();
             $table->longText('description');
-            $table->boolean('need_support');
-            $table->boolean('is_completed')->default(false);
+            $table->boolean('need_support')->nullable();
+            $table->integer('status')->default(0); //0 in progress | 1 completed | 2 ignored
             $table->timestamps();
         });
     }

@@ -34,7 +34,7 @@
         </div>
         <div class="right">
             <a href="#" id="btnmodal" class="neon-button">افزایش ستاره</a>
-            <div class="tedad-setare"><i class="fas fa-star" style="color:f8d64e"></i>10</div>
+            <div class="tedad-setare"><i class="fas fa-star" style="color:f8d64e"></i>{{ auth()->user()->stars ?? 'ERR' }}</div>
         </div>
     </header>
     <div class="tabs">
@@ -50,32 +50,21 @@
                 <table id="recive-table">
                     <thead>
                     <tr ALIGN="CENTER">
+                        <th>#</th>
                         <th>تاریخ</th>
                         <th>وضعیت</th>
                         <th>دانلود</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ALIGN="CENTER">
-                        <td>1399/12/2</td>
-                        <td><div class="finished"><p>حل شده</p><div class="green-circle"></div></div></td>
-                        <td><i class="fa fa-download" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr ALIGN="CENTER">
-                        <td>1400/5/7</td>
-                        <td><div class="progress"><p>در حال حل شدن</p><div class="yellow-circle"></div></div></td>
-                        <td><i class="fa fa-download" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr ALIGN="CENTER">
-                        <td>1400/12/9</td>
-                        <td><div class="reject"><p>رد شده</p><div class="black-circle"></div></div></td>
-                        <td><i class="fa fa-download" aria-hidden="true"></i></td>
-                    </tr>
-                    <tr ALIGN="CENTER">
-                        <td>1400/7/7</td>
-                        <td><div class="finished"><p>حل شده</p><div class="green-circle"></div></div></td>
-                        <td><i class="fa fa-download" aria-hidden="true"></i></td>
-                    </tr>
+                    @foreach($questions as $key=>$question)
+                        <tr ALIGN="CENTER">
+                            <td>{{ ++$key }}</td>
+                            <td>{{ \Morilog\Jalali\Jalalian::fromDateTime($question->created_at)->format('Y/m/d') ?? 'ERR' }}</td>
+                            <td>{!! \App\Http\Controllers\HelperController::getCurrentStatus($question->status) ?? 'ERR' !!}</td>
+                            <td><a href=""><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
@@ -87,39 +76,36 @@
             </div>
             <div class="send-main-right">
                 <div class="col">
-                    <div class="row1">
-                        <div><input type="file" id="selectfile" name="selectfile"></div>
-                        <div class="custom-select">
-                            <select>
-                                <option value="0">پایه :</option>
-                                <option value="1">اول</option>
-                                <option value="2">دوم</option>
-                                <option value="3">سوم</option>
-                                <option value="4">چهارم</option>
-                                <option value="5">پنجم</option>
-                                <option value="6">ششم</option>
-                                <option value="7">هفتم</option>
-                                <option value="8">هشتم</option>
-                                <option value="9">نهم</option>
-                                <option value="10">دهم</option>
-                                <option value="11">یازدهم</option>
-                                <option value="12">دوازدهم</option>
-                            </select>
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                            <div>{{$error}}</div>
+                        @endforeach
+                    @endif
+                    <form action="{{ route('question.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row1">
+                            <div><input type="file" id="selectfile" name="file"></div>
+                            <div class="custom-select">
+                                <select name="class">
+                                    @foreach(config('custom.class') as $key=>$class)
+                                        <option value="{{ $key }}">{{ $class }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row2">
-                            <textarea id="textarea" name="textarea" rows="5" cols="45" >
-سلام دوست من هر چی دل تنگت میخواهد بنویس ...</textarea>
-                    </div>
-                    <div class="row3">
-                        <label class="container-checkmark">پشتیبانی هم نیاز دارید ؟ (-⭐)
-                            <input type="checkbox" checked="checked">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-                    <div class="row4">
-                        <input type="submit" id="submit" value="ارسال سوال" >
-                    </div>
+                        <div class="row2">
+                            <textarea placeholder="سلام دوست من هر چی دل تنگت میخواهد بنویس ..." id="textarea" name="description" rows="5" cols="45" ></textarea>
+                        </div>
+                        <div class="row3">
+                            <label class="container-checkmark">پشتیبانی هم نیاز دارید ؟ (-⭐)
+                                <input name="need_support" type="checkbox" checked="checked">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="row4">
+                            <input type="submit" id="submit" value="ارسال سوال" >
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

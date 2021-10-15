@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Question;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 
@@ -24,6 +25,7 @@ class HomeController extends Controller
      */
     public function index(): Renderable
     {
-        return view('index');
+        $questions = Question::where('user_id', auth()->user()->id)->get();
+        return view('index')->with(compact('questions'));
     }
 }

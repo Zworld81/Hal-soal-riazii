@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Question\QuestionStoreRequest;
 use App\Models\Question;
 use Illuminate\Http\Request;
 
@@ -30,12 +31,23 @@ class QuestionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param QuestionStoreRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(QuestionStoreRequest $request)
     {
-        //
+        $data = $request->validated();
+        $file = HelperController::uploadFile($data['file'],'uploads/files');
+        $data['file'] = $file;
+
+        if(isset($data['need_support']))
+            $data['need_support'] = true;
+
+        $data['user_id'] = auth()->user()->id;
+
+        Question::create($data);
+
+        return redirect()->back();
     }
 
     /**
