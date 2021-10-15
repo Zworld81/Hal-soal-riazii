@@ -5,11 +5,13 @@ const container = document.getElementById('container');
 signUpButton.addEventListener('click', () => {
     container.classList.add("left-panel-active");
     goTo("", "", 'register');
+    clearErrorMessage()
 });
 
 signInButton.addEventListener('click', () => {
     container.classList.remove("left-panel-active");
     goTo("", "", 'login');
+    clearErrorMessage()
 });
 
 switch(window.location.href.split('/').pop()) {
@@ -28,4 +30,11 @@ function goTo(page, title, url) {
     } else {
         window.location.assign(url);
     }
+}
+
+function clearErrorMessage() {
+    let errorMessages = document.querySelectorAll(".error-message");
+    errorMessages.forEach((i) =>{
+        i.innerHTML =""
+    });
 }

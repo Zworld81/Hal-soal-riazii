@@ -26,21 +26,21 @@
             <input name="name" type="text" placeholder="نام" />
             @error('name')
             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
+                    <strong class="error-message">{{ $message }}</strong>
                 </span>
             @enderror
 
             <input name="phone_number" id="dir-tel" type="tel" placeholder="شماره تلفن" />
             @error('phone_number')
             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
+                    <strong class="error-message">{{ $message }}</strong>
                 </span>
             @enderror
 
             <input name="password" type="password" placeholder="رمز عبور" />
             @error('password')
             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
+                    <strong class="error-message">{{ $message }}</strong>
                 </span>
             @enderror
 
@@ -62,14 +62,14 @@
             <input name="phone_number" type="text" placeholder="نام یا شماره تلفن" />
             @error('phone_number')
                 <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
+                    <strong class="error-message">{{ $message }}</strong>
                 </span>
             @enderror
 
             <input name="password" type="password" placeholder="رمز عبور" />
             @error('password')
             <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
+                    <strong class="error-message">{{ $message }}</strong>
                 </span>
             @enderror
 
