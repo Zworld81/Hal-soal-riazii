@@ -23,21 +23,21 @@
                 <a href="#" class="social"><i class="fa fa-linkedin"></i></a>
             </div>
             <span>یا با شماره تلفن خود حساب ایجاد کنید</span>
-            <input name="name" type="text" placeholder="نام" />
+            <input value="{{ old('name') }}" name="name" type="text" placeholder="نام" />
             @error('name')
             <span class="invalid-feedback" role="alert">
                     <strong class="error-message">{{ $message }}</strong>
                 </span>
             @enderror
 
-            <input name="phone_number" id="dir-tel" type="tel" placeholder="شماره تلفن" />
+            <input value="{{ old('phone_number') }}" name="phone_number" id="dir-tel" type="tel" placeholder="شماره تلفن" />
             @error('phone_number')
             <span class="invalid-feedback" role="alert">
                     <strong class="error-message">{{ $message }}</strong>
                 </span>
             @enderror
 
-            <input name="password" type="password" placeholder="رمز عبور" />
+            <input value="{{ old('password') }}" name="password" type="password" placeholder="رمز عبور" />
             @error('password')
             <span class="invalid-feedback" role="alert">
                     <strong class="error-message">{{ $message }}</strong>
@@ -59,14 +59,14 @@
                 <a href="#" class="social"><i class="fa fa-linkedin" style="color:white"></i></a>
             </div>
             <span>یا با حساب خود وارد شوید</span>
-            <input name="phone_number" type="text" placeholder="نام یا شماره تلفن" />
+            <input value="{{ old('phone_number') }}" name="phone_number" type="text" placeholder="نام یا شماره تلفن" />
             @error('phone_number')
                 <span class="invalid-feedback" role="alert">
                     <strong class="error-message">{{ $message }}</strong>
                 </span>
             @enderror
 
-            <input name="password" type="password" placeholder="رمز عبور" />
+            <input value="{{ old('password') }}" name="password" type="password" placeholder="رمز عبور" />
             @error('password')
             <span class="invalid-feedback" role="alert">
                     <strong class="error-message">{{ $message }}</strong>

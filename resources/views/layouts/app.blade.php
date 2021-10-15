@@ -20,7 +20,11 @@
                 <div class="dropdown-content">
                     <a href="#">ویرایش حساب کاربری</a>
                     <a href="#">تغییر رمز عبور</a>
-                    <a href="#">خروج</a>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"> خروج</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                          style="display: none;">
+                        @csrf
+                    </form>
                 </div>
             </div>
             <img src="{{ asset('assets/img/notification-message-4673.svg') }}" alt="Notifications">
