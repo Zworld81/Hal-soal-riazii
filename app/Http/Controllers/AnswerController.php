@@ -55,6 +55,9 @@ class AnswerController extends Controller
             'user_id' => $user->id,
             'question_id' => $question->id
         ]);
+
+        Auth::user()->increment('stars', (int)config('custom.per_answer_star'));
+
         return redirect()->back();
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Question\QuestionStoreRequest;
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
@@ -37,6 +38,13 @@ class QuestionController extends Controller
     public function store(QuestionStoreRequest $request)
     {
         $data = $request->validated();
+
+        if (auth()->user()->stars < config('custom.per_question_star')){
+            HelperController::flash('error', 'ستاره کافی برای ارسال سوال وجود ندارد.');
+            return redirect()->back();
+        }
+
+
         $file = HelperController::uploadFile($data['file'],'uploads/files');
         $data['file'] = $file;
 
@@ -45,8 +53,11 @@ class QuestionController extends Controller
 
         $data['user_id'] = auth()->user()->id;
 
+        Auth::user()->decrement('stars', (int)config('custom.per_question_star'));
+
         Question::create($data);
 
+        HelperController::flash('success', 'سوال شما با موفقیت ارسال شد.');
         return redirect()->back();
     }
 

@@ -14,9 +14,6 @@ class HelperController extends Controller
      */
     public static function flash($type, $title)
     {
-        if ($title == 'success') {
-            $title = config('alefba.messages.success');
-        }
         session()->flash('type', $type);
         session()->flash('title', $title);
     }

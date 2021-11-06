@@ -15,5 +15,7 @@ return [
         '11' => 'یازدهم',
         '12' => 'دوازدهم',
     ],
-    'default_stars' => 5
+    'default_stars' => 5,
+    'per_question_star' => 2,
+    'per_answer_star' => 2
 ];

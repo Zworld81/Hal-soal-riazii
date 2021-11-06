@@ -130,6 +130,20 @@
 <script type="text/javascript" charset="utf8" src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.js"></script>
 <script src="{{ asset('assets/js/tabs.js') }}"></script>
+<script>
+    @if(Session::has('type'))
+        Swal.fire({
+            position: 'top-center',
+            type: '{{ Session::get('type') }}',
+            title: '{{ Session::get('title') }}',
+            text: '{{ Session::get('text') }}',
+            showConfirmButton: true,
+            confirmButtonClass: 'btn btn-primary',
+            confirmButtonText: 'متوجه شدم',
+            buttonsStyling: false,
+        });
+    @endif
+</script>
 </body>
 </html>
 
