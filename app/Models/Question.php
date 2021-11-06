@@ -19,4 +19,8 @@ class Question extends Model
         'need_support',
         'status',
     ];
+
+    public function answer() {
+        return $this->belongsTo(Answer::class);
+    }
 }

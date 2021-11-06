@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('stars')->default(config('custom.default_stars'));
             $table->integer('level')->default(1); //0 =>super admin| 1 =>user| 2 =>teacher
+            $table->boolean('have_active_question')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\HandlerController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +19,8 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('/question', \App\Http\Controllers\QuestionController::class);
+Route::resource('/question', QuestionController::class);
+Route::resource('/teacher', TeacherController::class);
+
+Route::post('/accept', [HandlerController::class, 'accept'])->name('accept');
+Route::resource('/answer', AnswerController::class);

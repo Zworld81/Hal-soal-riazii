@@ -57,4 +57,8 @@ class HelperController extends Controller
                 return '<div class="progress"><p>در حال حل شدن</p><div class="yellow-circle"></div></div>';
         }
     }
+    public static function getClass(int $class): string
+    {
+        return config('custom.class')[$class];
+    }
 }

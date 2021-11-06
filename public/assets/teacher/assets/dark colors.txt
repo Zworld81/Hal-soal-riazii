@@ -1,0 +1,4 @@
+    --main-color-dark: #28293d;
+    --back-color-dark: #1c1c27;
+    --Primary-color-dark:#3d7bfa;
+    --unuse-color-dark:#2e2f44;
