@@ -1,43 +1,5 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="{{ asset('assets/teacher/img/favicon.png') }}" type="image/x-icon">
-    <link rel="stylesheet" href="{{ asset('assets/teacher/style/main.css') }}">
-    <link href="{{ asset('assets/teacher/fonts/fontawsome 5/css/all.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.css">
-    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
-
-
-    <title>حل سوالات ریاضی - فراهوش</title>
-</head>
-<body>
-<div class="container">
-    <header>
-        <div class="left">
-            <div class="dropdown-header">
-                <button class="dropbtn ">حساب کاربری<i class="fas fa-user"></i></button>
-                <div class="dropdown-content">
-                    <a href="#">ویرایش حساب کاربری</a>
-                    <a href="#">تغییر رمز عبور</a>
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"> خروج</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                          style="display: none;">
-                        @csrf
-                    </form>
-                </div>
-            </div>
-            <img src="{{ asset('assets/teacher/img/notification-message-4673.svg') }}" alt="Notifications">
-        </div>
-        <div class="center">
-            <img src="{{ asset('assets/teacher/img/frahosh-logo.png') }}" alt="Frahosh/فراهوش">
-        </div>
-        <div class="right">
-            <a href="#" id="btnmodal" class="neon-button">گزارش کار</a>
-            <div class="tedad-setare"><i class="fas fa-star" style="color:f8d64e"></i>{{ auth()->user()->stars ?? 'ERR' }}</div>
-        </div>
-    </header>
+@extends('layouts.app')
+@section('content')
     <div class="tabs">
         <button class="tablink" onclick="openPage('recive', this, '#3d7bfa')">سوالات حل کرده</button>
         <button class="tablink" onclick="openPage('send', this, '#3d7bfa')" id="defaultOpen">برداشتن سوال</button>
@@ -97,13 +59,13 @@
                 </table>
 
 
-                <div class="row2" style="display: {{ (!empty($currentQuestion)) ? 'block' : '' }}">
+                <div id="data-answer" class="row2" style="display: {{ (!empty($currentQuestion)) ? 'block' : '' }}">
                     <form id="answer-form" method="POST" action="{{ route('answer.store') }}" enctype="multipart/form-data">
                         <div class="row5">
                             <p>جواب <a style="color: #3d7bfa" href="{{ (!empty($currentQuestion->file)) ? url('uploads/files/'.$currentQuestion->file ?? '') : '' }}">سوال</a> را ارسال کنید :</p>
-                                @csrf
-                                <input type="hidden" name="id" value="{{ $currentQuestion->id ?? '' }}">
-                                <div><input type="file" id="selectfile" name="answer_file"></div>
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $currentQuestion->id ?? '' }}">
+                            <div><input type="file" id="selectfile" name="answer_file"></div>
                         </div>
                     </form>
                     <input type="submit" id="submit" value="ارسال جواب" >
@@ -111,123 +73,99 @@
             </div>
         </div>
     </div>
-</div>
+@endsection
+@section('js')
+    <script>
+        $(document).ready( function () {
+            $('#recive-table1').DataTable({
+                "info":     false,
+                "lengthChange": false,
+                //   "dom": 'rt<"bottom"pf>',
+                "language": {
+                    "zeroRecords":    "&#129300;متاسفانه پیدا نشد دوست عزیز, حالا چیکار کنیم ؟ ",
+                    "search":         "جست و جو :  ",
+                    "paginate": {
+                        "first":      "اولی",
+                        "last":       "آخری",
+                        "next":       "بعدی",
+                        "previous":   "قبلی",
 
-<div id="modal-kharidd" class="modal-kharid">
-
-    <!-- Modal content -->
-    <div class="modal-kharid-content">
-        <div class="modal-header">
-            <span class="close">&times;</span>
-            <p class="modal-text-header">دریافت ستاره</p>
-        </div>
-        <div class="modal-row">
-            <div class="modal-left"></div>
-            <div class="modal-right"></div>
-        </div>
-
-    </div>
-
-</div>
-
-<script type="text/javascript" charset="utf8" src="{{ asset('assets/teacher/js/jquery-3.6.0.min.js') }}"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
-<script src="{{ asset('assets/teacher/js/tabs.js') }}"></script>
-<script>
-    $(document).ready( function () {
-        $('#recive-table1').DataTable({
-            "info":     false,
-            "lengthChange": false,
-            //   "dom": 'rt<"bottom"pf>',
-            "language": {
-                "zeroRecords":    "&#129300;متاسفانه پیدا نشد دوست عزیز, حالا چیکار کنیم ؟ ",
-                "search":         "جست و جو :  ",
-                "paginate": {
-                    "first":      "اولی",
-                    "last":       "آخری",
-                    "next":       "بعدی",
-                    "previous":   "قبلی",
-
+                    }
                 }
-            }
-        });
-    } );
-    let applySoal = document.querySelectorAll('.apply-soal');
-    for (var i = 0; i < applySoal.length; i++) {
-        applySoal[i].addEventListener('click', function(event) {
+            });
+        } );
+        let applySoal = document.querySelectorAll('.apply-soal');
+        for (var i = 0; i < applySoal.length; i++) {
+            applySoal[i].addEventListener('click', function(event) {
 
-            Swal.fire({
-                title: 'آیا اطمینان دارید ؟',
-                text: "قابل بازگشت نیست",
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'بله, حل میکنم',
-                cancelButtonText: 'بیخیال  شدم',
+                Swal.fire({
+                    title: 'آیا اطمینان دارید ؟',
+                    text: "قابل بازگشت نیست",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'بله, حل میکنم',
+                    cancelButtonText: 'بیخیال  شدم',
 
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        type: 'POST',
-                        url: '{{ route('accept') }}',
-                        data: {
-                            "_token": "{{ csrf_token() }}",
-                            "id" :$(this).attr('data-question-id')
-                        },
-                        success: function (data) {
-                            $(this).parent().parent().hide();
-                            const name = document.querySelector(".row2");
-                            name.style.display = "block";
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: 'POST',
+                            url: '{{ route('accept') }}',
+                            data: {
+                                "_token": "{{ csrf_token() }}",
+                                "id" :$(this).attr('data-question-id')
+                            },
+                            success: function (data) {
+                                $(this).parent().parent().hide();
+                                const name = document.querySelector(".row2");
+                                name.style.display = "block";
 
-                            Swal.fire(data['title'],data['content'],data['status']);
+                                Swal.fire(data['title'],data['content'],data['status']);
 
-                        },
-                        error: function (reject) {
-                            Swal.fire(data['title'],reject['content'],rejectdata['status'])
-                        }
-                    });
-                    //$('#recive-table1').parents('div.dataTables_wrapper').first().hide();
-
-
-                }
-            })
-
-        });
-    }
-
-    let submit = document.querySelectorAll('#submit');
-    for (var i = 0; i < submit.length; i++) {
-        submit[i].addEventListener('click', function(event) {
-            Swal.fire({
-                title: 'آیا اطمینان دارید ؟',
-                text: "سوال اپلود شده ارسال شود ؟",
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'بله, ارسال شود',
-                cancelButtonText: 'بیخیال  شدم',
+                            },
+                            error: function (reject) {
+                                Swal.fire(data['title'],reject['content'],rejectdata['status'])
+                            }
+                        });
+                        //$('#recive-table1').parents('div.dataTables_wrapper').first().hide();
 
 
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $('#answer-form').submit();
-                  /*  Swal.fire(
-                        'حله',
-                        '🙂.جواب شما ارسال شد',
-                        'success',
+                    }
+                })
 
-                    )*/
-                }
-            })
+            });
+        }
 
-        });
-    }
+        let submit = document.querySelectorAll('#submit');
+        for (var i = 0; i < submit.length; i++) {
+            submit[i].addEventListener('click', function(event) {
+                Swal.fire({
+                    title: 'آیا اطمینان دارید ؟',
+                    text: "سوال اپلود شده ارسال شود ؟",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'بله, ارسال شود',
+                    cancelButtonText: 'بیخیال  شدم',
 
-</script>
-</body>
-</html>
 
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('#answer-form').submit();
+                        /*  Swal.fire(
+                              'حله',
+                              '🙂.جواب شما ارسال شد',
+                              'success',
 
+                          )*/
+                    }
+                })
+
+            });
+        }
+
+    </script>
+@endsection
