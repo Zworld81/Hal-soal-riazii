@@ -1,8 +1,7 @@
-@import url(fontiran.css);
 @font-face {
   font-family: 'Vazir';
   src: url('../fonts/Vazir.eot');
-  src: local('../fonts/Vazir'), url('../fonts/Vazir.woff') format('woff'), url('../fonts/Vazir.ttf') format('truetype'), url('../fonts/Vazir.svg') format('svg');
+  src: local('../fonts/Vazir'), url('../fonts/Vazir.woff') format('woff'), url('../fonts/Vazir.ttf') format('truetype');
 }
 :root {
     --main-color-dark: #28293d;
@@ -11,8 +10,8 @@
     --unuse-color-dark:#2e2f44;
     --odd-color-dark:#2d2d46;
     --even-color-dark:#1b1b2e;
-    --clr-neon: hsl(317 100% 54%);
-    --clr-bg: hsl(323 21% 16%);
+    --clr-neon: hsl(317, 100%, 54%);
+    --clr-bg: hsl(323, 21%, 16%);
   }
 
 *{
@@ -24,21 +23,21 @@
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     font-family: "Vazir";
-    
+
 }
 a{
   color: white ;
 }
 
 body{
-    display: grid; 
+    display: grid;
     font-size: 16px ;
     margin: 0px ;
     background-color: var(--back-color-dark);
     color: white;
     padding-top: 40px;
     padding-bottom: 40px;
-    
+
 }
 .container{
     align-self: center;
@@ -47,7 +46,7 @@ body{
      height: 100%;
     background-color: var(--main-color-dark);
      border-radius: 10px;
-     box-shadow: 0 14px 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%); 
+     box-shadow: 0 14px 28px rgb(0, 0, 0 / 25%), 0 10px 10px rgb(0, 0, 0 / 22%);
 }
 header{
     width: 100%;
@@ -116,10 +115,10 @@ header .center{
     align-items: center;
 }
 header .center img{
-    
+
     width: 105px;
     height: 95px;
-    
+
 }
 header .left{
   display: flex;
@@ -140,15 +139,15 @@ header .dropbtn {
   border: none;
   border-radius: 10px;
   background-color: var(--unuse-color-dark);
-  
+
 }
 
 /* The container <div> - needed to position the dropdown content */
 header .dropdown-header {
   position: relative;
   display: inline-block;
-  
-  
+
+
 }
 /* Dropdown Content (Hidden by Default) */
 header .dropdown-content {
@@ -158,7 +157,7 @@ header .dropdown-content {
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-  
+
 }
 /* Links inside the dropdown */
 header .dropdown-content a {
@@ -198,13 +197,13 @@ header .dropdown-header:hover .dropbtn {background-color:var(--Primary-color-dar
     padding: 14px 16px;
     font-size: 17px;
     width: 50%;
-   
+
   }
   .tablink:first-child{
     border-radius: 0px 5px 5px 0px;
   }
   .tablink:nth-child(2){
-    border-radius: 5px 0px 0px 5px;  
+    border-radius: 5px 0px 0px 5px;
 }
 
   .tabcontent {
@@ -239,11 +238,11 @@ header .dropdown-header:hover .dropbtn {background-color:var(--Primary-color-dar
     float: left;
       margin-left: auto;
     margin-right: auto;
-    
+
   }
   .recive-main-left{
     width: 50%;
-   
+
     display: grid;
     justify-content: center;
     align-content: center;
@@ -253,7 +252,7 @@ header .dropdown-header:hover .dropbtn {background-color:var(--Primary-color-dar
     width: 500px;
 
   }
-  
+
 /*.text{
     text-shadow: 3px 3px 20px var(--Primary-color-dark),
     -2px 1px 30px var(--Primary-color-dark);
@@ -264,7 +263,7 @@ header .dropdown-header:hover .dropbtn {background-color:var(--Primary-color-dar
   font-size: 15px;
     background-color:#4eb868 ;
     border-radius: 30px;
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -332,7 +331,7 @@ table{
 .dataTables_filter label{
   border: 0px;
   color: white;
-  
+
 }
 .dataTables_filter input{
   outline:none;
@@ -371,20 +370,20 @@ background-color: var(--even-color-dark) !important;
 .send-main-right .row1{
     display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
 }
 .send-main-right .row2{
    margin-top: 40px;
-  direction: rtl; 
+  direction: rtl;
 }
 .send-main-right .row3{
   margin-top: 40px;
- direction: rtl; 
+ direction: rtl;
  float: right;
 }
 .send-main-right .row4{
-  
- direction: rtl; 
+
+ direction: rtl;
 }
 textarea{
   background-color:var(--unuse-color-dark);
@@ -414,10 +413,10 @@ textarea:focus{
   border:solid 1.5px #4caf50;
   border-radius: 5px;
   outline: none;
-  font-size: 18px; 
+  font-size: 18px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  
-} 
+
+}
 #submit:hover{
   transition:ease-in-out all 0.1s;
   background-color: #429c3f;
@@ -434,7 +433,7 @@ textarea:focus{
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  
+
 }
 /* The container must be positioned relative: */
 .custom-select {
@@ -557,16 +556,16 @@ textarea:focus{
 
 /* ************************ The Modal (background) ***************************/
 .modal-kharid {
-  display: none; 
-  position: fixed; 
-  z-index: 1; 
+  display: none;
+  position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
-  width: 100%; 
-  height: 100%; 
-  overflow: auto; 
-  background-color: rgb(0,0,0); 
-  background-color: rgba(0,0,0,0.4); 
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
 }
 
 /* Modal Content/Box */
@@ -603,17 +602,17 @@ textarea:focus{
   padding-top: 10px;
   text-align: center;
   font-size: 19px;
-  text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em currentColor;
+  text-shadow: 0 0 0.125em hsl(0, 0%, 100% / 0.3), 0 0 0.45em currentColor;
   color: var(--Primary-color-dark);
- 
+
 }
 .modal-row{
   width: 100%;
   height: 100%;
   background-color: red;
   display: flex;
-  
-  
+
+
 }
 .modal-left{
   width:50%;
@@ -621,19 +620,19 @@ textarea:focus{
   border-right: 2px solid  var(--Primary-color-dark);
   float: left;
   transition: 0.3s ease-out;
-  
+
 }
 .modal-right{
   background-color: green;
   width:50%;
   float: left;
-  
+
 }
 .modal-left:hover{
   width:80%;
   z-index: 2;
- 
-  
+
+
 }
 @media only screen and (max-width: 1200px){
     .container{
@@ -647,7 +646,7 @@ textarea:focus{
       width: 100%;
     }
     .send-main-right{
-      width: 100%; 
+      width: 100%;
     }
     .recive-main-right{
       width: 100%;
@@ -669,7 +668,7 @@ textarea:focus{
     header .center img{
         width: 70px;
         height: 70px;
-        
+
     }
     header .center{
         margin-top: 15px;
@@ -690,7 +689,7 @@ textarea:focus{
     header .right{
         display: grid;
         direction: rtl;
-       
+
     }
     header .right .tedad-setare{
         font-size: 20px;
@@ -699,14 +698,14 @@ textarea:focus{
         text-align: center;
         position: relative;
         right: 5px;
-        
+
     }
     header .neon-button{
         font-size: 0.8em;
         display: block;
         order: 2;
         margin-bottom:10px ;
-      
+
     }
     .tabcontent {
       color: white;
@@ -714,10 +713,10 @@ textarea:focus{
     }
     .send-main-left{
       width: 100%;
-      
+
     }
     .send-main-right{
-      width: 100%; 
+      width: 100%;
       margin-top: -70px;
     }
     .recive-main-right{
@@ -727,7 +726,7 @@ textarea:focus{
     .recive-main-left{
       width: 100%;
       margin-top: -20px;
-     
+
     }
     .send-main-right .custom-select {
       width: 100px;

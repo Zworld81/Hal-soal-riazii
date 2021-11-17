@@ -4,8 +4,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ asset('assets/teacher/img/favicon.png') }}" type="image/x-icon">
-    <link rel="stylesheet" href="{{ asset('assets/teacher/style/main.css') }}">
-    <link href="{{ asset('assets/teacher/fonts/fontawsome 5/css/all.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/style/main.css') }}">
+    <link href="{{ asset('assets/fonts/fontawsome 5/css/all.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.css">
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 
@@ -28,10 +28,10 @@
                     </form>
                 </div>
             </div>
-            <img src="{{ asset('assets/teacher/img/notification-message-4673.svg') }}" alt="Notifications">
+            <img src="{{ asset('assets/img/notification-message-4673.svg') }}" alt="Notifications">
         </div>
         <div class="center">
-            <img src="{{ asset('assets/teacher/img/frahosh-logo.png') }}" alt="Frahosh/فراهوش">
+            <img src="{{ asset('assets/img/frahosh-logo.png') }}" alt="Frahosh/فراهوش">
         </div>
         <div class="right">
             <a href="#" id="btnmodal" class="neon-button">گزارش کار</a>
@@ -130,10 +130,10 @@
 
 </div>
 
-<script type="text/javascript" charset="utf8" src="{{ asset('assets/teacher/js/jquery-3.6.0.min.js') }}"></script>
+<script type="text/javascript" charset="utf8" src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
-<script src="{{ asset('assets/teacher/js/tabs.js') }}"></script>
+<script src="{{ asset('assets/js/tabs.js') }}"></script>
 <script>
     $(document).ready( function () {
         $('#recive-table1').DataTable({
