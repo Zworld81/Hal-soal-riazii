@@ -1,7 +1,31 @@
 @extends('layouts.app')
 
 @section('title', 'حل سوالات ریاضی - فراهوش')
+@section('css')
+<style>
+  .send-main-right{
+    margin-top:50px;
+   
+    padding: 20px;
+    float:left;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
 
+ .send-main-right .row2{
+   margin-top: 40px;
+  direction: rtl; 
+  display: none;
+}
+.recive-table_wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+</style>
+@endsection
 @section('subHeader')
     <div class="right">
         <a href="#" id="btnmodal" class="neon-button">گزارش کار</a>
