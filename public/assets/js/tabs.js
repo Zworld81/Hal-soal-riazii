@@ -52,7 +52,7 @@ window.onclick = function (event) {
 
 // *************************** TABLE CONFIG ******************************
 $(document).ready(function () {
-    $('#recive-table').DataTable({
+    $('.recive-table').DataTable({
         "info": false,
         "lengthChange": false,
         //   "dom": 'rt<"bottom"pf>',
