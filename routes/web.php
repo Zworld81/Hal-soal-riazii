@@ -24,3 +24,8 @@ Route::resource('/teacher', TeacherController::class);
 
 Route::post('/accept', [HandlerController::class, 'accept'])->name('accept');
 Route::resource('/answer', AnswerController::class);
+
+Route::get('/admin',function() {
+    return view('admin');
+});
+
