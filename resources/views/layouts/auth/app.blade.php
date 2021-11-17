@@ -99,7 +99,7 @@
     </div>
 </div>
 
-<script  src="{{ asset('assets/js/sliderreg.js') }}"></script>
+<script  src="{{ asset('assets/js/auth.js') }}"></script>
 
 <script>
 
