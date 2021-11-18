@@ -17,12 +17,8 @@
         <form action="{{ route('register') }}" method="POST">
             @csrf
             <h1>ایجاد حساب</h1>
-            <div class="social-container">
-                <a href="#" class="social"><i class="fa fa-facebook-f"></i></a>
-                <a href="#" class="social"><i class="fa fa-google-plus"></i></a>
-                <a href="#" class="social"><i class="fa fa-linkedin"></i></a>
-            </div>
-            <span>یا با شماره تلفن خود حساب ایجاد کنید</span>
+
+            <span> با شماره تلفن خود حساب ایجاد کنید</span>
             <input value="{{ old('name') }}" name="name" type="text" placeholder="نام" />
             @error('name')
             <span class="invalid-feedback" role="alert">
@@ -44,7 +40,14 @@
                 </span>
             @enderror
 
-            <button id="ozviat-button" type="submit">عضویت</button>
+            <input value="{{ old('name') }}" name="name" type="text" placeholder="کد معرف " />
+            @error('name')
+            <span class="invalid-feedback" role="alert">
+                    <strong class="error-message">{{ $message }}</strong>
+                </span>
+            @enderror
+
+            <button class="ozviat-button" id="" type="submit">عضویت</button>
         </form>
     </div>
     <!-- end sing up form -->
@@ -53,12 +56,7 @@
         <form action="{{ route('login') }}" method="POST">
             @csrf
             <h1>ورود</h1>
-            <div class="social-container">
-                <a href="#" class="social"><i class="fa fa-facebook-f" style="color:white"></i></a>
-                <a href="#" class="social"><i class="fa fa-google-plus" style="color:white"></i></a>
-                <a href="#" class="social"><i class="fa fa-linkedin" style="color:white"></i></a>
-            </div>
-            <span>یا با حساب خود وارد شوید</span>
+            <span>با حساب خود وارد شوید</span>
             <input value="{{ old('phone_number') }}" name="phone_number" type="text" placeholder="نام یا شماره تلفن" />
             @error('phone_number')
                 <span class="invalid-feedback" role="alert">
@@ -73,7 +71,7 @@
                 </span>
             @enderror
 
-            <a href="#">رمز عبور خود را فراموش کرده ام !</a>
+            <a href="#" id="btnmodal">رمز عبور خود را فراموش کرده ام !</a>
             <button type="submit">ورود</button>
         </form>
     </div>
@@ -99,10 +97,95 @@
     </div>
 </div>
 
+    <div id="modal-kharidd" class="modal-kharid">
+
+        <!-- Modal content -->
+        <div class="modal-kharid-content">
+        <div class="modal-header">
+                <span class="close">&times;</span>
+        </div>         
+                <form id="forgot-password" action="">
+
+<!-- One "tab" for each step in the form: -->
+<div class="tab">شماره تلفن که قبلا ثبت نام کردید رو وارد کنید :
+  <p><input placeholder="شماره تلفن ..." oninput="this.className = ''"></p>
+</div>
+
+<div class="tab">کد ارسال شده به شماره تلفن رو وارد کنید :
+  <p><input placeholder="کد ارسالی ..." oninput="this.className = ''"></p>
+</div>
+
+<div class="tab">رمز عبور جدید بسازید :
+  <p><input placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
+  <p><input placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
+</div>
+<div class="tab">
+<i class="fa fa-check fa-check-class" aria-hidden="true"></i>
+<p class="successfull4">رمز عبور شما با موفقیت تغییر کرد.</p>
+</div>
+<div>
+  <div style="float:right;">
+    <button type="button" id="prevBtn" class="backtotel" onclick="nextPrev(-1)">تغییر شماره تلفن</button>
+    <button type="button" id="nextBtn" onclick="nextPrev(1)">تایید</button>
+  </div>
+</div>
+
+<!-- Circles which indicates the steps of the form: -->
+<div style="text-align:center;margin-top:40px;">
+  <span class="step"></span>
+  <span class="step"></span>
+  <span class="step"></span>
+  <span class="step"></span>
+</div>
+
+</form>
+    </div>
+
+    <div id="modal-kharidd" class="modal-kharid">
+
+<!-- Modal content -->
+<div class="modal-kharid-content">
+<div class="modal-header">
+        <span class="close">&times;</span>
+</div>         
+        <form id="forgot-password" action="">
+
+<!-- One "tab" for each step in the form: -->
+<div class="tab">شماره تلفن که قبلا ثبت نام کردید رو وارد کنید :
+<p><input placeholder="شماره تلفن ..." oninput="this.className = ''"></p>
+</div>
+
+<div class="tab">کد ارسال شده به شماره تلفن رو وارد کنید :
+<p><input placeholder="کد ارسالی ..." oninput="this.className = ''"></p>
+</div>
+
+<div class="tab">رمز عبور جدید بسازید :
+<p><input placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
+<p><input placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
+</div>
+<div class="tab">
+<i class="fa fa-check fa-check-class" aria-hidden="true"></i>
+<p class="successfull4">رمز عبور شما با موفقیت تغییر کرد.</p>
+</div>
+<div>
+<div style="float:right;">
+<button type="button" id="prevBtn" class="backtotel" onclick="nextPrev(-1)">تغییر شماره تلفن</button>
+<button type="button" id="nextBtn" onclick="nextPrev(1)">تایید</button>
+</div>
+</div>
+
+<!-- Circles which indicates the steps of the form: -->
+<div style="text-align:center;margin-top:40px;">
+<span class="step"></span>
+<span class="step"></span>
+<span class="step"></span>
+<span class="step"></span>
+</div>
+
+</form>
+</div>
+
 <script  src="{{ asset('assets/js/auth.js') }}"></script>
 
-<script>
-
-</script>
 </body>
 </html>

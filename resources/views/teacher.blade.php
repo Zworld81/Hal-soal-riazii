@@ -18,12 +18,21 @@
   direction: rtl; 
   display: none;
 }
-.recive-table_wrapper{
+.send-main-right .row5{
+  margin-top: -10px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 30px;
+ }
+.fa-check-class{
+color: rgb(93, 211, 46);
 }
-
+.fa-check-class:hover{
+  text-shadow: 3px 3px 20px rgb(0, 255, 0),
+  -2px 1px 30px rgb(1, 255, 1);
+  transition: all .2s ease-in-out;
+  transform: scale(1.3);
+  }
 </style>
 @endsection
 @section('subHeader')
