@@ -19,8 +19,8 @@
             <div class="dropdown-header">
                 <button class="dropbtn ">حساب کاربری<i class="fas fa-user"></i></button>
                 <div class="dropdown-content">
-                    <a href="#">ویرایش حساب کاربری</a>
-                    <a href="#">تغییر رمز عبور</a>
+                    <a href="#">کد معرف : DX32D</a>
+                    <a href="#" id="btn-pass">تغییر رمز عبور</a>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"> خروج</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                           style="display: none;">
