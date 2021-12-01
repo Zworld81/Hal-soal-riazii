@@ -47,6 +47,16 @@
                 </span>
             @enderror
 
+            <div id="resend-code">
+            <input value="{{ old('name') }}" name="name" type="text" placeholder="کد تایید شماره تلفن " style="border-radius:0px 5px 5px 0px;"/>
+                <div class="reload-icon-div"><i class="fa fa-refresh fa-lg reload-icon" aria-hidden="true"></i></div>
+              </div>
+            @error('name')
+            <span class="invalid-feedback" role="alert">
+                    <strong class="error-message">{{ $message }}</strong>
+                </span>
+            @enderror
+            
             <button class="ozviat-button" id="" type="submit">عضویت</button>
         </form>
     </div>
@@ -99,20 +109,24 @@
 
     <div id="modal-kharidd" class="modal-kharid">
 
+
         <!-- Modal content -->
         <div class="modal-kharid-content">
         <div class="modal-header">
                 <span class="close">&times;</span>
+                <p class="modal-text-header">فراهوش رمز عبور</p>
         </div>         
                 <form id="forgot-password" action="">
 
 <!-- One "tab" for each step in the form: -->
 <div class="tab">شماره تلفن که قبلا ثبت نام کردید رو وارد کنید :
-  <p><input placeholder="شماره تلفن ..." oninput="this.className = ''"></p>
+  <p><input type="tel" placeholder="... شماره تلفن " oninput="this.className = ''"></p>
 </div>
 
 <div class="tab">کد ارسال شده به شماره تلفن رو وارد کنید :
-  <p><input placeholder="کد ارسالی ..." oninput="this.className = ''"></p>
+  <p><input placeholder="... کد ارسالی " oninput="this.className = ''"></p>
+  
+
 </div>
 
 <div class="tab">رمز عبور جدید بسازید :
