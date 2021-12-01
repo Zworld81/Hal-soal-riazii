@@ -99,9 +99,27 @@
                 <p class="modal-text-header">دریافت ستاره</p>
             </div>
             <div class="modal-row">
-                <div class="modal-left"></div>
-                <div class="modal-right"></div>
+            <img src="{{ asset('assets/img/online-peyment.svg') }}" alt="online-peyment">
+            
+            <p style="direction:rtl; font-size:16px; padding-right:40px; padding-top:10px;">تعداد ستاره ای که میخواهید بخرید : </p>
+            <div class="row-ghaymat">
+            <p class="matn-gheymat">قیمت تعداد ⭐ : قیمت تومان</p>
+               <input type="number" placeholder="⭐ تعداد ستاره" >
             </div>
+            <div class="kharid-amn">
+            <div id="zarinpal">
+            <script src="https://www.zarinpal.com/webservice/TrustCode" type="text/javascript"></script>
+            </div>
+            <div style="margin-top:40px; margin-right:20px;">
+            <label class="container-checkbox">
+                   <input type="checkbox" checked="checked">
+                     <span class="checkmark"></span>         
+            </label>
+            <p style="direction:rtl; font-size:18px; padding-right:50px;">خرید امن با زرین پال</p>
+            </div>
+            </div>
+            </div>
+            <div style="display:flex; align-items:center;  justify-content: center;"><input type="submit" id="btn-buy" value="پرداخت با زرین پال" ></div>
 
         </div>
 
@@ -122,11 +140,11 @@
 
 <!-- One "tab" for each step in the form: -->
 <div class="tab">: شماره تلفن که قبلا ثبت نام کردید رو وارد کنید
-<p><input type="tel" placeholder="... شماره تلفن" oninput="this.className = ''"></p>
+<p><input placeholder="شماره تلفن ..." oninput="this.className = ''"></p>
 </div>
 
 <div class="tab">: کد ارسال شده به شماره تلفن رو وارد کنید
-<p><input placeholder="...کد ارسالی" oninput="this.className = ''"></p>
+<p><input placeholder="کد ارسالی ... " oninput="this.className = ''"></p>
 </div>
 
 <div class="tab">: رمز عبور جدید بسازید

@@ -394,6 +394,22 @@ input.invalid {
       font-size:20px;
       text-align: center;
     }
+    #resend-code{
+      display: flex;
+      justify-content: space-between;
+    }
+    .reload-icon-div{
+     
+    }
+    .reload-icon{
+      color:white;
+      background-color:var(--Primary-color-dark);
+      cursor: pointer;
+      margin: 8px 0;
+      padding: 13px 15px;
+      border-radius: 5px 0px 0px 5px;
+      
+    }
 @media only screen and (max-width: 643px) {
   h1{
     font-size: 20px;

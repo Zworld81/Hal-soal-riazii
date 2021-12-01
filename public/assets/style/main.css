@@ -605,15 +605,19 @@ textarea:focus{
 /* Modal Content/Box */
 .modal-kharid-content {
   background-color: var(--main-color-dark);
-  margin: 10% auto; /* 15% from the top and centered */
-  border: 1px solid #888;
-  width: 50%; /* Could be more or less, depending on screen size */
-  height: 400px;
+  margin: 10% auto;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+  0 10px 10px rgba(0,0,0,0.22);
+  border-radius: 5px;
+  width: 40%;
+  height: 480px;
+  
 }
 .modal-header{
   background-color: var(--back-color-dark);
   width: 100%;
-  height:50px
+  height:50px;
+  border-radius: 5px;
 }
 /* The Close Button */
 .close {
@@ -623,6 +627,7 @@ textarea:focus{
   font-weight: bold;
   background-color:var(--back-color-dark);
  padding: 3px 20px;
+ border-radius: 5px;
 }
  .close2 {
   color: white;
@@ -653,36 +658,135 @@ textarea:focus{
   font-size: 19px;
   text-shadow: 0 0 0.125em hsl(0, 0%, 100% / 0.3), 0 0 0.45em currentColor;
   color: var(--Primary-color-dark);
-padding-left:60px;
+  padding-left:60px;
 }
 .modal-row{
   width: 100%;
   height: 100%;
-  background-color: red;
+  background-color: var(--main-color-dark);
+  border-radius: 5px;
+}
+.modal-row img{
+  display: block;
+  padding-top: 10px;
+  width: 130px;
+  margin: 0 auto;
+}
+.row-ghaymat{
   display: flex;
-
-
+  justify-content: space-evenly;
 }
-.modal-left{
-  width:50%;
-  background-color: yellow;
-  border-right: 2px solid  var(--Primary-color-dark);
-  float: left;
-  transition: 0.3s ease-out;
-
+.matn-gheymat{
+    font-size:16px;
+    margin: 25px 0px 0px 0px;
 }
-.modal-right{
-  background-color: green;
-  width:50%;
-  float: left;
 
+.modal-kharid-content input {
+  padding: 10px;
+  color: #FFFFFF;
+  background-color: #353c5a;
+  border: none;
+  padding: 12px 15px;
+  margin: 15px 0px 20px 0px;
+  width: 50%;
+  border-radius:5px;
+  transition: ease-in-out 0.1s;
+  
 }
-.modal-left:hover{
-  width:80%;
-  z-index: 2;
-
-
+.modal-kharid-content input::placeholder{
+  color: #FFFFFF;
+  direction: rtl;
 }
+
+.modal-kharid-content input:focus{
+  outline:none;
+  border:1px solid white;
+  box-shadow: 0 0 .2rem #fff,
+              0 0 .2rem #fff,
+              0 0 1.5rem var(--Primary-color-dark),
+              0 0 0.5rem var(--Primary-color-dark),
+              0 0 2rem var(--Primary-color-dark),
+              inset 0 0 1rem var(--Primary-color-dark);
+}
+.kharid-amn{
+  display: flex;
+  justify-content: space-between;
+}
+#zarinpal{margin-left: 40px;} #zarinpal img {width: 70px;}
+#btn-buy{
+  width: 90%;
+  padding: 8px;
+  background-color: #4caf50;
+  color:white;
+  border:solid 1.5px #4caf50;
+  border-radius: 5px;
+  outline: none;
+  font-size: 18px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  margin-top: -80px;
+}
+#btn-buy:hover{
+  transition:ease-in-out all 0.1s;
+  background-color: #429c3f;
+}
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  border: 1px solid #d12822;
+}
+/*  radio button  */
+.modal-row .container-checkbox {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  direction: rtl;
+  float: right; 
+  margin-right: 8px;
+}
+.modal-row .container-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.modal-row .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+.modal-row .container-checkbox:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+.modal-row .container-checkbox input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+.modal-row .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.modal-row .container-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+.modal-row .container-checkbox .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+/*  Modal Forgot Password  */
 .modal-forgotpass {
   display: none;
   position: fixed;
@@ -704,7 +808,6 @@ padding-left:60px;
   0 10px 10px rgba(0,0,0,0.22);
   border-radius: 5px;
   width: 600px;
-
 }
 #forgot-password{
   border-radius: 5px;
@@ -735,7 +838,6 @@ padding-left:60px;
   justify-content: center;
   flex-direction: column;
   padding: 0 20px;
-  
   text-align: center;
 }
 .modal-forgotpass button {
@@ -881,7 +983,9 @@ input.invalid {
     .recive-main-left{
       width: 100%;
     }
-
+    .modal-kharid-content{
+      width: 70%;
+    }
 }
 @media only screen and (max-width: 600px){
     .container{
@@ -984,4 +1088,11 @@ input.invalid {
     }
     #work-help{
       width: 80%;
+}
+.matn-gheymat{
+  font-size:14px;
+  align-items: center;
+  direction:rtl;
+  margin: 25px 0px 0px 0px;
+}
 }

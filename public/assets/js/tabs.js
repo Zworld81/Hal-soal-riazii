@@ -22,7 +22,7 @@ function openPage(pageName, elmnt, color) {
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
 
-// ******************************** MODAL *************************************
+// ******************************** MODAL Kharid*************************************
 // Get the modal
 var modal = document.getElementById("modal-kharidd");
 
@@ -49,7 +49,7 @@ window.onclick = function (event) {
     }
 }
 
-// ******************************** MODAL *************************************
+// ******************************** MODAL Forgotpass*************************************
 // Get the modal
 var modal2 = document.getElementById("modal-forgotpass");
 

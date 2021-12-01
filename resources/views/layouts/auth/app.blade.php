@@ -47,6 +47,17 @@
                 </span>
             @enderror
 
+            <div id="resend-code">
+            <input value="{{ old('name') }}" name="name" type="text" placeholder="کد تایید شماره تلفن " style="border-radius:0px 5px 5px 0px;"/>
+                <div class="reload-icon-div"><i class="fa fa-refresh fa-lg reload-icon" aria-hidden="true"></i></div>
+              </div>
+            @error('name')
+            <span class="invalid-feedback" role="alert">
+                    <strong class="error-message">{{ $message }}</strong>
+                </span>
+            @enderror
+              
+
             <button class="ozviat-button" id="" type="submit">عضویت</button>
         </form>
     </div>
