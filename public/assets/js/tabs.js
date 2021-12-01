@@ -63,12 +63,12 @@ var span2 = document.getElementsByClassName("close2")[0];
 btn2.onclick = function () {
     modal2.style.display = "block";
 }
-
-// When the user clicks on <span> (x), close the modal
-span2.onclick = function () {
-    modal2.style.display = "none";
+if(typeof(span2) != 'undefined' && span2 != null) {
+    // When the user clicks on <span> (x), close the modal
+    span2.onclick = function () {
+        modal2.style.display = "none";
+    }
 }
-
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event2) {
     if (event2.target == modal2) {
@@ -151,7 +151,7 @@ $(document).ready(function () {
      this.classList.toggle("select-arrow-active");
    });
  }
- 
+
  function closeAllSelect(elmnt) {
    /* A function that will close all select boxes in the document,
    except the current select box: */
@@ -173,7 +173,7 @@ $(document).ready(function () {
      }
    }
  }
- 
+
  /* If the user clicks anywhere outside the select box,
  then close all select boxes: */
  document.addEventListener("click", closeAllSelect);
@@ -187,21 +187,24 @@ showTab(currentTab); // Display the current tab
 function showTab(n) {
   // This function will display the specified tab of the form ...
   var x = document.getElementsByClassName("tab");
-  x[n].style.display = "block";
-  // ... and fix the Previous/Next buttons:
-  if (n == 0 || n==2 || n==3) {
-    document.getElementById("prevBtn").style.display = "none";
-  } else {
-    document.getElementById("prevBtn").style.display = "inline";
-  }
-  console.log(n)
-  if (n == (x.length - 1)) {
-    document.getElementById("nextBtn").innerHTML = "بزن بریم";
-  } else {
-    document.getElementById("nextBtn").innerHTML = "تایید";
-  }
-  // ... and run a function that displays the correct step indicator:
-  fixStepIndicator(n)
+
+    if(typeof(span2) != 'undefined' && span2 != null) {
+        x[n].style.display = "block";
+        // ... and fix the Previous/Next buttons:
+        if (n == 0 || n == 2 || n == 3) {
+            document.getElementById("prevBtn").style.display = "none";
+        } else {
+            document.getElementById("prevBtn").style.display = "inline";
+        }
+        console.log(n)
+        if (n == (x.length - 1)) {
+            document.getElementById("nextBtn").innerHTML = "بزن بریم";
+        } else {
+            document.getElementById("nextBtn").innerHTML = "تایید";
+        }
+        // ... and run a function that displays the correct step indicator:
+        fixStepIndicator(n)
+    }
 }
 
 function nextPrev(n) {
