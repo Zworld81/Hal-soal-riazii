@@ -394,7 +394,7 @@ input.invalid {
       font-size:20px;
       text-align: center;
     }
-    #resend-code{
+#resend-code{
       display: flex;
       justify-content: space-between;
     }

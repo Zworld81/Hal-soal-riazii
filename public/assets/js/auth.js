@@ -66,7 +66,6 @@ window.onclick = function (event) {
     }
 }
 
-
 //////////////////////////    Multi Tab ForgotPassword    ///////////////////////////////////
 
 var currentTab = 0; // Current tab is set to be the first tab (0)

@@ -56,8 +56,7 @@
                     <strong class="error-message">{{ $message }}</strong>
                 </span>
             @enderror
-              
-
+            
             <button class="ozviat-button" id="" type="submit">عضویت</button>
         </form>
     </div>
@@ -110,6 +109,7 @@
 
     <div id="modal-kharidd" class="modal-kharid">
 
+
         <!-- Modal content -->
         <div class="modal-kharid-content">
         <div class="modal-header">
@@ -125,6 +125,8 @@
 
 <div class="tab">کد ارسال شده به شماره تلفن رو وارد کنید :
   <p><input placeholder="... کد ارسالی " oninput="this.className = ''"></p>
+  
+
 </div>
 
 <div class="tab">رمز عبور جدید بسازید :
