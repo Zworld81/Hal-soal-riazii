@@ -10,7 +10,7 @@
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
     @yield('css')
     <title>@yield('title')</title>
-    
+
 </head>
 <body>
 <div class="container">
@@ -19,7 +19,7 @@
             <div class="dropdown-header">
                 <button class="dropbtn ">حساب کاربری<i class="fas fa-user"></i></button>
                 <div class="dropdown-content">
-                    <a href="#">کد معرف : DX32D</a>
+                    <a href="#">کد معرف : {{ auth()->user()->referral_code ?? 'ERR' }}</a>
                     <a href="#" id="btn-pass">تغییر رمز عبور</a>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"> خروج</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
