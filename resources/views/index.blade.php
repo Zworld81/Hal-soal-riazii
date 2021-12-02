@@ -143,25 +143,26 @@
 <!-- One "tab" for each step in the form: -->
 <div class="tab">: شماره تلفن که قبلا ثبت نام کردید رو وارد کنید
 <p><input placeholder="شماره تلفن ..." oninput="this.className = ''"></p>
+<button type="button" id="nextBtn" onclick="nextPrev(1)">تایید</button>
 </div>
 
 <div class="tab">: کد ارسال شده به شماره تلفن رو وارد کنید
 <p><input placeholder="کد ارسالی ... " oninput="this.className = ''"></p>
+<button type="button" id="nextBtn" onclick="nextPrev(1)">تایید</button>
+<button type="button" id="prevBtn" class="backtotel" onclick="nextPrev(-1)">تغییر شماره تلفن</button>
 </div>
 
 <div class="tab">: رمز عبور جدید بسازید
 <p><input placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
 <p><input placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
-</div>
-<div class="tab">
-<i class="fa fa-check fa-check-class" aria-hidden="true"></i>
-<p class="successfull4">.رمز عبور شما با موفقیت تغییر کرد</p>
-</div>
-<div>
-<div style="float:right;">
-<button type="button" id="prevBtn" class="backtotel" onclick="nextPrev(-1)">تغییر شماره تلفن</button>
 <button type="button" id="nextBtn" onclick="nextPrev(1)">تایید</button>
 </div>
+<div class="tab">
+<i class="fa fa-check fa-check-class" style="font-size:110px;" aria-hidden="true"></i>
+<p class="successfull4">.رمز عبور شما با موفقیت تغییر کرد</p>
+<button type="button" id="nextBtn" onclick="nextPrev(1)">تایید</button>
+</div>
+<div>
 </div>
 
 <!-- Circles which indicates the steps of the form: -->
