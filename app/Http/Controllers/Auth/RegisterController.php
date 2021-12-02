@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -100,9 +101,17 @@ class RegisterController extends Controller
 
     public function sendVerificationCode(Request $request)
     {
+        if (Session::has('verification')){
+            if (Carbon::now()->timestamp - Session::get('verification')['timestamp'] < 120){
+                return response()->json([
+                    'result' => 'حداقل 2 دقیقه بین هر ارسال باید صبرکنید.'
+                ]);
+            }
+        }
+
         $code = rand(1000,5000);
         RayganSms::sendAuthCode($request->phoneNumber, 'سلام، کدتایید شما:'.$code, false);
-        Session::put('code', $code);
+        Session::put('verification', ['code' => $code, 'timestamp' => Carbon::now()->timestamp]);
         return response()->json([
             'result' => 'کد تأیید با موفقیت ارسال شد.'
         ]);
