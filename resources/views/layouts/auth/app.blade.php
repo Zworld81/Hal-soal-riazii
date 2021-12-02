@@ -7,7 +7,7 @@
     <title>ورود/ثبت نام فراهوش</title>
     <link rel="icon" href="{{ asset('assets/img/favicon.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}">
-    <link type="text/css" href="{{ asset('assets/css/style.css') }}" rel="stylesheet" />
+    <link type="text/css" href="{{ asset('assets/css/style.css') }}" rel="stylesheet"/>
 
 </head>
 <body>
@@ -19,28 +19,29 @@
             <h1>ایجاد حساب</h1>
 
             <span> با شماره تلفن خود حساب ایجاد کنید</span>
-            <input value="{{ old('name') }}" name="name" type="text" placeholder="نام" />
+            <input value="{{ old('name') }}" name="name" type="text" placeholder="نام"/>
             @error('name')
             <span class="invalid-feedback" role="alert">
                     <strong class="error-message">{{ $message }}</strong>
                 </span>
             @enderror
 
-            <input value="{{ old('phone_number') }}" name="phone_number" id="dir-tel" type="tel" placeholder="شماره تلفن" />
+            <input value="{{ old('phone_number') }}" name="phone_number" id="dir-tel" type="tel"
+                   placeholder="شماره تلفن"/>
             @error('phone_number')
             <span class="invalid-feedback" role="alert">
                     <strong class="error-message">{{ $message }}</strong>
                 </span>
             @enderror
 
-            <input value="{{ old('password') }}" name="password" type="password" placeholder="رمز عبور" />
+            <input value="{{ old('password') }}" name="password" type="password" placeholder="رمز عبور"/>
             @error('password')
             <span class="invalid-feedback" role="alert">
                     <strong class="error-message">{{ $message }}</strong>
                 </span>
             @enderror
 
-            <input value="{{ old('name') }}" name="name" type="text" placeholder="کد معرف " />
+            <input value="{{ old('name') }}" name="name" type="text" placeholder="کد معرف "/>
             @error('name')
             <span class="invalid-feedback" role="alert">
                     <strong class="error-message">{{ $message }}</strong>
@@ -48,15 +49,16 @@
             @enderror
 
             <div id="resend-code">
-            <input value="{{ old('name') }}" name="name" type="text" placeholder="کد تایید شماره تلفن " style="border-radius:0px 5px 5px 0px;"/>
+                <input value="{{ old('name') }}" name="name" type="text" placeholder="کد تایید شماره تلفن "
+                       style="border-radius:0px 5px 5px 0px;"/>
                 <div class="reload-icon-div"><i class="fa fa-refresh fa-lg reload-icon" aria-hidden="true"></i></div>
-              </div>
+            </div>
             @error('name')
             <span class="invalid-feedback" role="alert">
                     <strong class="error-message">{{ $message }}</strong>
                 </span>
             @enderror
-            
+
             <button class="ozviat-button" id="" type="submit">عضویت</button>
         </form>
     </div>
@@ -67,14 +69,14 @@
             @csrf
             <h1>ورود</h1>
             <span>با حساب خود وارد شوید</span>
-            <input value="{{ old('phone_number') }}" name="phone_number" type="text" placeholder="نام یا شماره تلفن" />
+            <input value="{{ old('phone_number') }}" name="phone_number" type="text" placeholder="نام یا شماره تلفن"/>
             @error('phone_number')
-                <span class="invalid-feedback" role="alert">
+            <span class="invalid-feedback" role="alert">
                     <strong class="error-message">{{ $message }}</strong>
                 </span>
             @enderror
 
-            <input value="{{ old('password') }}" name="password" type="password" placeholder="رمز عبور" />
+            <input value="{{ old('password') }}" name="password" type="password" placeholder="رمز عبور"/>
             @error('password')
             <span class="invalid-feedback" role="alert">
                     <strong class="error-message">{{ $message }}</strong>
@@ -107,99 +109,100 @@
     </div>
 </div>
 
-    <div id="modal-kharidd" class="modal-kharid">
-
-
-        <!-- Modal content -->
-        <div class="modal-kharid-content">
+<div id="modal-kharidd" class="modal-kharid">
+    <!-- Modal content -->
+    <div class="modal-kharid-content">
         <div class="modal-header">
-                <span class="close">&times;</span>
-                <p class="modal-text-header">فراهوش رمز عبور</p>
-        </div>         
-                <form id="forgot-password" action="">
+            <span class="close">&times;</span>
+            <p class="modal-text-header">فراهوش رمز عبور</p>
+        </div>
+        <form id="forgot-password" action="">
 
-<!-- One "tab" for each step in the form: -->
-<div class="tab">شماره تلفن که قبلا ثبت نام کردید رو وارد کنید :
-  <p><input type="tel" placeholder="... شماره تلفن " oninput="this.className = ''"></p>
-</div>
+            <!-- One "tab" for each step in the form: -->
+            <div class="tab">شماره تلفن که قبلا ثبت نام کردید رو وارد کنید :
+                <p><input type="tel" placeholder="... شماره تلفن " oninput="this.className = ''"></p>
+            </div>
 
-<div class="tab">کد ارسال شده به شماره تلفن رو وارد کنید :
-  <p><input placeholder="... کد ارسالی " oninput="this.className = ''"></p>
-  
+            <div class="tab">کد ارسال شده به شماره تلفن رو وارد کنید :
+                <p><input placeholder="... کد ارسالی " oninput="this.className = ''"></p>
 
-</div>
 
-<div class="tab">رمز عبور جدید بسازید :
-  <p><input placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
-  <p><input placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
-</div>
-<div class="tab">
-<i class="fa fa-check fa-check-class" aria-hidden="true"></i>
-<p class="successfull4">رمز عبور شما با موفقیت تغییر کرد.</p>
-</div>
-<div>
-  <div style="float:right;">
-    <button type="button" id="prevBtn" class="backtotel" onclick="nextPrev(-1)">تغییر شماره تلفن</button>
-    <button type="button" id="nextBtn" onclick="nextPrev(1)">تایید</button>
-  </div>
-</div>
+            </div>
 
-<!-- Circles which indicates the steps of the form: -->
-<div style="text-align:center;margin-top:40px;">
-  <span class="step"></span>
-  <span class="step"></span>
-  <span class="step"></span>
-  <span class="step"></span>
-</div>
+            <div class="tab">رمز عبور جدید بسازید :
+                <p><input placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
+                <p><input placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
+            </div>
+            <div class="tab">
+                <i class="fa fa-check fa-check-class" aria-hidden="true"></i>
+                <p class="successfull4">رمز عبور شما با موفقیت تغییر کرد.</p>
+            </div>
+            <div>
+                <div style="float:right;">
+                    <button type="button" id="prevBtn" class="backtotel" onclick="nextPrev(-1)">تغییر شماره تلفن
+                    </button>
+                    <button type="button" id="nextBtn" onclick="nextPrev(1)">تایید</button>
+                </div>
+            </div>
 
-</form>
+            <!-- Circles which indicates the steps of the form: -->
+            <div style="text-align:center;margin-top:40px;">
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+            </div>
+
+        </form>
     </div>
 
     <div id="modal-kharidd" class="modal-kharid">
 
-<!-- Modal content -->
-<div class="modal-kharid-content">
-<div class="modal-header">
-        <span class="close">&times;</span>
-</div>         
-        <form id="forgot-password" action="">
+        <!-- Modal content -->
+        <div class="modal-kharid-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+            </div>
+            <form id="forgot-password" action="">
 
-<!-- One "tab" for each step in the form: -->
-<div class="tab">شماره تلفن که قبلا ثبت نام کردید رو وارد کنید :
-<p><input placeholder="شماره تلفن ..." oninput="this.className = ''"></p>
-</div>
+                <!-- One "tab" for each step in the form: -->
+                <div class="tab">شماره تلفن که قبلا ثبت نام کردید رو وارد کنید :
+                    <p><input placeholder="شماره تلفن ..." oninput="this.className = ''"></p>
+                </div>
 
-<div class="tab">کد ارسال شده به شماره تلفن رو وارد کنید :
-<p><input placeholder="کد ارسالی ..." oninput="this.className = ''"></p>
-</div>
+                <div class="tab">کد ارسال شده به شماره تلفن رو وارد کنید :
+                    <p><input placeholder="کد ارسالی ..." oninput="this.className = ''"></p>
+                </div>
 
-<div class="tab">رمز عبور جدید بسازید :
-<p><input placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
-<p><input placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
-</div>
-<div class="tab">
-<i class="fa fa-check fa-check-class" aria-hidden="true"></i>
-<p class="successfull4">رمز عبور شما با موفقیت تغییر کرد.</p>
-</div>
-<div>
-<div style="float:right;">
-<button type="button" id="prevBtn" class="backtotel" onclick="nextPrev(-1)">تغییر شماره تلفن</button>
-<button type="button" id="nextBtn" onclick="nextPrev(1)">تایید</button>
-</div>
-</div>
+                <div class="tab">رمز عبور جدید بسازید :
+                    <p><input placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
+                    <p><input placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
+                </div>
+                <div class="tab">
+                    <i class="fa fa-check fa-check-class" aria-hidden="true"></i>
+                    <p class="successfull4">رمز عبور شما با موفقیت تغییر کرد.</p>
+                </div>
+                <div>
+                    <div style="float:right;">
+                        <button type="button" id="prevBtn" class="backtotel" onclick="nextPrev(-1)">تغییر شماره تلفن
+                        </button>
+                        <button type="button" id="nextBtn" onclick="nextPrev(1)">تایید</button>
+                    </div>
+                </div>
 
-<!-- Circles which indicates the steps of the form: -->
-<div style="text-align:center;margin-top:40px;">
-<span class="step"></span>
-<span class="step"></span>
-<span class="step"></span>
-<span class="step"></span>
+                <!-- Circles which indicates the steps of the form: -->
+                <div style="text-align:center;margin-top:40px;">
+                    <span class="step"></span>
+                    <span class="step"></span>
+                    <span class="step"></span>
+                    <span class="step"></span>
+                </div>
+
+            </form>
+        </div>
+
+        <script src="{{ asset('assets/js/auth.js') }}"></script>
+    </div>
 </div>
-
-</form>
-</div>
-
-<script  src="{{ asset('assets/js/auth.js') }}"></script>
-
 </body>
 </html>
