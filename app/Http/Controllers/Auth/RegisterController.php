@@ -70,14 +70,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data): User
     {
-        return User::create([
+        $us = User::create([
             'name' => $data['full_name'],
             'phone_number' => $data['phone_number'],
             'referral_code' => Str::random(5),
             'referral_code_used' => $data['referral_code_used'] ?? '',
             'password' => Hash::make($data['password']),
         ]);
+        if (!empty($data['referral_code_used'])){
+            $user = User::where('referral_code', $data['referral_code_used'])->first();
+            if (!empty($user)){
+                $user->increment('stars', config('custom.give_gift_star_on_register'));
+            }
+        }
         Session::forget('code');
+
+        return $us;
     }
 
     /**

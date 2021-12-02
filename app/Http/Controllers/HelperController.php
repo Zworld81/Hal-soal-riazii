@@ -60,6 +60,18 @@ class HelperController extends Controller
                 return '<div class="progress"><p>در حال حل شدن</p><div class="yellow-circle"></div></div>';
         }
     }
+
+    public static function getCurrentLevel(int $level): string
+    {
+        switch ($level) {
+            case 0:
+                return 'ادمین';
+            case 1:
+                return 'کاربر';
+            case 2:
+                return 'مدرس';
+        }
+    }
     public static function getClass(int $class): string
     {
         return config('custom.class')[$class];

@@ -2,23 +2,24 @@
 
 @section('title', 'حل سوالات ریاضی - فراهوش')
 @section('css')
-<style>
+    <style>
     .fa-check-class{
-color: rgb(93, 211, 46);
-}
-.fa-check-class:hover{
-  text-shadow: 3px 3px 20px rgb(0, 255, 0),
-  -2px 1px 30px rgb(1, 255, 1);
-  transition: all .2s ease-in-out;
-  transform: scale(1.3);
-  }
-  .recive-main{
-          padding-top: 60px;
-  }
-  .send-main{
-          padding-top: 60px;
-  }
-</style>
+        color: rgb(93, 211, 46);
+        }
+    .fa-check-class:hover{
+          text-shadow: 3px 3px 20px rgb(0, 255, 0),
+          -2px 1px 30px rgb(1, 255, 1);
+          transition: all .2s ease-in-out;
+          transform: scale(1.3);
+      }
+      .recive-main{
+        padding-top: 60px;
+      }
+      .send-main{
+        padding-top: 60px;
+      }
+    </style>
+@endsection
 @section('subHeader')
     <div class="right">
         <a href="#" id="btnmodal" class="neon-button">Security Room</a>
@@ -43,21 +44,23 @@ color: rgb(93, 211, 46);
                         <th>ارسال سوال</th>
                         <th>ارسال جواب</th>
                         <th>استاد شود ؟</th>
-                        <th>دانلود</th>
+{{--                        <th>دانلود</th>--}}
                     </tr>
                     </thead>
                     <tbody>
 
+                    @foreach($users as $key=>$user)
                         <tr ALIGN="CENTER">
+                            <td>{{ ++$key }}</td>
+                            <td>{{ $user->name ?? 'ERR' }}</td>
+                            <td>{{ $user->phone_number ?? 'ERR' }}</td>
+                            <td>{{  \App\Http\Controllers\HelperController::getCurrentLevel($user->level) ?? 'ERR' }}</td>
+                            <td>0</td>
                             <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td><i class="fa fa-check fa-check-class changetoteacher" data-question-id="{{ $question->id ?? 'ERR' }}" aria-hidden="true"></i></td>
-                            <td><a href=""><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                            <td><i class="fa fa-check fa-check-class changetoteacher" data-user-id="{{ $user->id ?? 'ERR' }}" aria-hidden="true"></i></td>
+{{--                            <td><a href=""><i class="fa fa-download" aria-hidden="true"></i></a></td>--}}
                         </tr>
+                    @endforeach
 
                     </tbody>
                 </table>
@@ -162,7 +165,7 @@ color: rgb(93, 211, 46);
     }
 
 let submit1 = document.querySelectorAll('.changetoteacher');
-for (var i = 0; i < submit.length; i++) {
+for (var i = 0; i < submit1.length; i++) {
   submit1[i].addEventListener('click', function(event) {
    Swal.fire({
      title: 'آیا اطمینان دارید ؟',
@@ -177,12 +180,27 @@ for (var i = 0; i < submit.length; i++) {
 
    }).then((result) => {
      if (result.isConfirmed) {
-       Swal.fire(
-         'حله',
-         '🙂نام" به استاد تبدیل شد"',
-         'success',
+         $.ajax({
+             type: 'POST',
+             url: '{{ route('prompt.to.teacher') }}',
+             data: {
+                 "_token": "{{ csrf_token() }}",
+                 "id" :$(this).attr('data-user-id')
+             },
+             success: function (data) {
+                 Swal.fire(
+                     'حله',
+                     '🙂نام" به استاد تبدیل شد"',
+                     'success',
 
-       )
+                 )
+                 //Swal.fire(data['title'],data['content'],data['status']);
+
+             },
+             error: function (reject) {
+                 //Swal.fire(data['title'],reject['content'],rejectdata['status'])
+             }
+         });
      }
    })
 

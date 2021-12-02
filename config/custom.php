@@ -18,5 +18,6 @@ return [
     'default_stars' => 5,
     'per_question_star' => 2,
     'per_answer_star' => 2,
-    'star_price' => 1000
+    'star_price' => 1000,
+    'give_gift_star_on_register' => 5
 ];

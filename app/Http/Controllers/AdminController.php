@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Question;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -10,7 +11,8 @@ class AdminController extends Controller
     public function index()
     {
         $questions = Question::where('status',0)->get();
-        return view('admin')->with(compact('questions'));
+        $users = User::get();
+        return view('admin')->with(compact('questions', 'users'));
     }
 
     public function approved(Request $request)
