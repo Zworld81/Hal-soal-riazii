@@ -59,7 +59,7 @@ class RegisterController extends Controller
             'full_name' => ['required', 'string', 'max:255'],
             'phone_number' => ['required', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
-            'verification_code' => ['required', 'in:'.Session::get('code')]
+            'verification_code' => ['required', 'in:'.Session::get('verification')['code']]
         ]);
     }
 
@@ -84,7 +84,7 @@ class RegisterController extends Controller
                 $user->increment('stars', config('custom.give_gift_star_on_register'));
             }
         }
-        Session::forget('code');
+        Session::forget('verification');
 
         return $us;
     }
@@ -97,23 +97,5 @@ class RegisterController extends Controller
     public function showRegistrationForm(): View
     {
         return view('auth.auth');
-    }
-
-    public function sendVerificationCode(Request $request)
-    {
-        if (Session::has('verification')){
-            if (Carbon::now()->timestamp - Session::get('verification')['timestamp'] < 120){
-                return response()->json([
-                    'result' => 'حداقل 2 دقیقه بین هر ارسال باید صبرکنید.'
-                ]);
-            }
-        }
-
-        $code = rand(1000,5000);
-        RayganSms::sendAuthCode($request->phoneNumber, 'سلام، کدتایید شما:'.$code, false);
-        Session::put('verification', ['code' => $code, 'timestamp' => Carbon::now()->timestamp]);
-        return response()->json([
-            'result' => 'کد تأیید با موفقیت ارسال شد.'
-        ]);
     }
 }

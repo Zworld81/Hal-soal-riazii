@@ -17,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
-Route::post('/sendVerificationCode', [\App\Http\Controllers\Auth\RegisterController::class, 'sendVerificationCode'])->name('send.verification.code');
+Route::post('/sendVerificationCode', [\App\Http\Controllers\Auth\AuthSmsController::class, 'sendVerificationCode'])->name('send.verification.code');
+Route::post('/checkVerificationCode', [\App\Http\Controllers\Auth\AuthSmsController::class, 'checkVerificationCode'])->name('check.verification.code');
+Route::post('/changePassword', [\App\Http\Controllers\Auth\AuthSmsController::class, 'changePassword'])->name('change.password');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function () {

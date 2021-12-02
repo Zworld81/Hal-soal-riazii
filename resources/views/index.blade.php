@@ -142,13 +142,13 @@
 
 <!-- One "tab" for each step in the form: -->
 <div class="tab">: شماره تلفن که قبلا ثبت نام کردید رو وارد کنید
-<p><input placeholder="شماره تلفن ..." oninput="this.className = ''"></p>
-<button type="button" id="nextBtn" onclick="nextPrev(1)">تایید</button>
+<p><input id="register-phone-number-input" placeholder="شماره تلفن ..." oninput="this.className = ''"></p>
+<button type="button" id="nextBtn" class="register-phone-number" onclick="nextPrev(1)">تایید</button>
 </div>
 
 <div class="tab">: کد ارسال شده به شماره تلفن رو وارد کنید
-<p><input placeholder="کد ارسالی ... " oninput="this.className = ''"></p>
-<button type="button" id="nextBtn" onclick="nextPrev(1)">تایید</button>
+<p><input id="check-code-input" placeholder="کد ارسالی ... " oninput="this.className = ''"></p>
+<button type="button" id="nextBtn" class="check-code" onclick="nextPrev(1)">تایید</button>
 <button type="button" id="prevBtn" class="backtotel" onclick="nextPrev(-1)">تغییر شماره تلفن</button>
 </div>
 
@@ -213,5 +213,43 @@
         $('.star-count').text($(this).val());
         $('.amount-star').text($(this).val() * starPrice);
     });
+
+    $('.register-phone-number').click(function () {
+        sendVerificationCode($('#register-phone-number-input').val())
+    });
+    function sendVerificationCode(phoneNumber) {
+        $.ajax({
+            type: 'POST',
+            url: '{{ route('send.verification.code') }}',
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "phoneNumber" :phoneNumber
+            },
+            success: function (data) {
+                console.log(data)
+            },
+            error: function (reject) {
+                console.log(reject)
+            }
+        });
+    }
+
+    $('.check-code').click(function () {
+        $.ajax({
+            type: 'POST',
+            url: '{{ route('check.verification.code') }}',
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "code" :$('#check-code-input').val()
+            },
+            success: function (data) {
+                console.log(data)
+            },
+            error: function (reject) {
+                console.log(reject)
+            }
+        });
+    })
+
 </script>
       @endsection
