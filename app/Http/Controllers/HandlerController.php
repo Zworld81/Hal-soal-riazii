@@ -28,7 +28,7 @@ class HandlerController extends Controller
 
         $question->update([
             'teacher_id' => $user->id,
-            'status' => 3
+            'status' => 4
         ]);
 
         $user->update([

@@ -21,7 +21,7 @@ class Question extends Model
     ];
 
     public function answer() {
-        return $this->belongsTo(Answer::class);
+        return $this->belongsTo(Answer::class, 'id', 'question_id');
     }
 
     public function answerFile() {

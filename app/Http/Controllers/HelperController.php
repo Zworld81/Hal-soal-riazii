@@ -46,10 +46,16 @@ class HelperController extends Controller
     public static function getCurrentStatus(int $status): string
     {
         switch ($status) {
+            case 0:
+                return '<div class="progress"><p>در انتظار تایید</p><div class="yellow-circle"></div></div>';
             case 1:
                 return '<div class="finished"><p>حل شده</p><div class="green-circle"></div></div>';
             case 2:
                 return '<div class="reject"><p>رد شده</p><div class="black-circle"></div></div>';
+            case 3:
+                return '<div class="progress"><p>در انتظار مدرس</p><div class="yellow-circle"></div></div>';
+            case 4:
+                return '<div class="progress"><p>در حال حل شدن</p><div class="yellow-circle"></div></div>';
             default:
                 return '<div class="progress"><p>در حال حل شدن</p><div class="yellow-circle"></div></div>';
         }

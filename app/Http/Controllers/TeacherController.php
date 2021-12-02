@@ -16,7 +16,7 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $questions = Question::where('status',0)->get();
+        $questions = Question::where('status',3)->get();
         $currentQuestion = Teacher::where('teacher_id', Auth::user()->id)->first()->question ?? '';
         $myQuestions = Question::where('teacher_id',Auth::user()->id)->get();
         return view('teacher')->with(compact('questions', 'currentQuestion', 'myQuestions'));

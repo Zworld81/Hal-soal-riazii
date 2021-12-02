@@ -37,7 +37,7 @@
                             <td>{{ ++$key }}</td>
                             <td>{{ \Morilog\Jalali\Jalalian::fromDateTime($question->created_at)->format('Y/m/d') ?? 'ERR' }}</td>
                             <td>{!! \App\Http\Controllers\HelperController::getCurrentStatus($question->status) ?? 'ERR' !!}</td>
-                            <td><a href=""><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                            <td><a href="@if(!empty($question->answer)){{ url('uploads/answer/'.$question->answer->file) }}@endif"><i class="fa fa-download" aria-hidden="true"></i></a></td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -100,7 +100,7 @@
             </div>
             <div class="modal-row">
             <img src="{{ asset('assets/img/online-peyment.svg') }}" alt="online-peyment">
-            
+
             <p style="direction:rtl; font-size:16px; padding-right:40px; padding-top:10px;">تعداد ستاره ای که میخواهید بخرید : </p>
             <div class="row-ghaymat">
             <p class="matn-gheymat">قیمت تعداد ⭐ : قیمت تومان</p>
@@ -113,7 +113,7 @@
             <div style="margin-top:40px; margin-right:20px;">
             <label class="container-checkbox">
                    <input type="checkbox" checked="checked">
-                     <span class="checkmark"></span>         
+                     <span class="checkmark"></span>
             </label>
             <p style="direction:rtl; font-size:18px; padding-right:50px;">خرید امن با زرین پال</p>
             </div>
@@ -135,7 +135,7 @@
 <div class="modal-header">
         <span class="close2">&times;</span>
         <p class="modal-text-header">تغییر رمز عبور</p>
-</div>         
+</div>
         <form id="forgot-password" action="">
 
 <!-- One "tab" for each step in the form: -->

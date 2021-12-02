@@ -26,7 +26,8 @@ Route::resource('/teacher', TeacherController::class);
 Route::post('/accept', [HandlerController::class, 'accept'])->name('accept');
 Route::resource('/answer', AnswerController::class);
 
-Route::get('/admin',function() {
-    return view('admin');
-});
 
+Route::group(['middleware' => 'is.admin'], function () {
+    Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index']);
+    Route::post('/approveQuestionByAdmin', [\App\Http\Controllers\AdminController::class, 'approved'])->name('approved.by.admin');
+});
