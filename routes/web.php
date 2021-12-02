@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
+Route::post('/sendVerificationCode', [\App\Http\Controllers\Auth\RegisterController::class, 'sendVerificationCode'])->name('send.verification.code');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/question', QuestionController::class);

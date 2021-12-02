@@ -6,9 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
+use Trez\RayganSms\Facades\RayganSms;
 
 class RegisterController extends Controller
 {
@@ -51,9 +55,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'full_name' => ['required', 'string', 'max:255'],
             'phone_number' => ['required', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
+            'verification_code' => ['required', 'in:'.Session::get('code')]
         ]);
     }
 
@@ -66,10 +71,13 @@ class RegisterController extends Controller
     protected function create(array $data): User
     {
         return User::create([
-            'name' => $data['name'],
+            'name' => $data['full_name'],
             'phone_number' => $data['phone_number'],
+            'referral_code' => Str::random(5),
+            'referral_code_used' => $data['referral_code_used'] ?? '',
             'password' => Hash::make($data['password']),
         ]);
+        Session::forget('code');
     }
 
     /**
@@ -80,5 +88,15 @@ class RegisterController extends Controller
     public function showRegistrationForm(): View
     {
         return view('auth.auth');
+    }
+
+    public function sendVerificationCode(Request $request)
+    {
+        $code = rand(1000,5000);
+        RayganSms::sendAuthCode($request->phoneNumber, 'سلام، کدتایید شما:'.$code, false);
+        Session::put('code', $code);
+        return response()->json([
+            'result' => 'کد تأیید با موفقیت ارسال شد.'
+        ]);
     }
 }

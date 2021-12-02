@@ -81,7 +81,6 @@ function showTab(n) {
   } else {
     document.getElementById("prevBtn").style.display = "inline";
   }
-  console.log(n)
   if (n == (x.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "بزن بریم";
   } else {

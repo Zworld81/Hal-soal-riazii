@@ -14,19 +14,19 @@
 <div class="container" id="container">
     <!-- start sing up form -->
     <div class="form-container sign-up-container">
-        <form action="{{ route('register') }}" method="POST">
+        <form action="{{ route('register') }}" method="POST" autocomplete="off">
             @csrf
             <h1>ایجاد حساب</h1>
 
             <span> با شماره تلفن خود حساب ایجاد کنید</span>
-            <input value="{{ old('name') }}" name="name" type="text" placeholder="نام"/>
-            @error('name')
+            <input value="{{ old('full_name') }}" name="full_name" type="text" placeholder="نام"/>
+            @error('full_name')
             <span class="invalid-feedback" role="alert">
                     <strong class="error-message">{{ $message }}</strong>
                 </span>
             @enderror
 
-            <input value="{{ old('phone_number') }}" name="phone_number" id="dir-tel" type="tel"
+            <input class="register-phone-number" value="{{ old('phone_number') }}" name="phone_number" id="dir-tel" type="tel"
                    placeholder="شماره تلفن"/>
             @error('phone_number')
             <span class="invalid-feedback" role="alert">
@@ -41,19 +41,19 @@
                 </span>
             @enderror
 
-            <input value="{{ old('name') }}" name="name" type="text" placeholder="کد معرف "/>
-            @error('name')
+            <input value="{{ old('referral_code_used') }}" name="referral_code_used" type="text" placeholder="کد معرف "/>
+            @error('referral_code_used')
             <span class="invalid-feedback" role="alert">
                     <strong class="error-message">{{ $message }}</strong>
                 </span>
             @enderror
 
             <div id="resend-code">
-                <input value="{{ old('name') }}" name="name" type="text" placeholder="کد تایید شماره تلفن "
+                <input value="{{ old('verification_code') }}" name="verification_code" type="text" placeholder="کد تایید شماره تلفن "
                        style="border-radius:0px 5px 5px 0px;"/>
-                <div class="reload-icon-div"><i class="fa fa-refresh fa-lg reload-icon" aria-hidden="true"></i></div>
+                <div class="reload-icon-div send-verification-code-again"><i class="fa fa-refresh fa-lg reload-icon" aria-hidden="true"></i></div>
             </div>
-            @error('name')
+            @error('verification_code')
             <span class="invalid-feedback" role="alert">
                     <strong class="error-message">{{ $message }}</strong>
                 </span>
@@ -69,7 +69,7 @@
             @csrf
             <h1>ورود</h1>
             <span>با حساب خود وارد شوید</span>
-            <input value="{{ old('phone_number') }}" name="phone_number" type="text" placeholder="نام یا شماره تلفن"/>
+            <input required value="{{ old('phone_number') }}" name="phone_number" type="text" placeholder="نام یا شماره تلفن"/>
             @error('phone_number')
             <span class="invalid-feedback" role="alert">
                     <strong class="error-message">{{ $message }}</strong>
@@ -201,8 +201,36 @@
             </form>
         </div>
 
-        <script src="{{ asset('assets/js/auth.js') }}"></script>
     </div>
 </div>
+
+<script type="text/javascript" charset="utf8" src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
+<script src="{{ asset('assets/js/auth.js') }}"></script>
+<script>
+
+    $('.send-verification-code-again').click(function () {
+        sendVerificationCode($('.register-phone-number').val());
+    })
+
+    $('.register-phone-number').focusout(function() {
+        sendVerificationCode($(this).val());
+    })
+    function sendVerificationCode(phoneNumber) {
+        $.ajax({
+            type: 'POST',
+            url: '{{ route('send.verification.code') }}',
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "phoneNumber" :phoneNumber
+            },
+            success: function (data) {
+                console.log(data)
+            },
+            error: function (reject) {
+                console.log(reject)
+            }
+        });
+    }
+</script>
 </body>
 </html>
