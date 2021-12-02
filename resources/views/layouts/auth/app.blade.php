@@ -167,16 +167,16 @@
 
                 <!-- One "tab" for each step in the form: -->
                 <div class="tab">شماره تلفن که قبلا ثبت نام کردید رو وارد کنید :
-                    <p><input placeholder="شماره تلفن ..." oninput="this.className = ''"></p>
+                    <p><input class="phone_number_forgot" placeholder="شماره تلفن ..." oninput="this.className = ''"></p>
                 </div>
 
                 <div class="tab">کد ارسال شده به شماره تلفن رو وارد کنید :
-                    <p><input placeholder="کد ارسالی ..." oninput="this.className = ''"></p>
+                    <p><input class="verification_code_forgot" placeholder="کد ارسالی ..." oninput="this.className = ''"></p>
                 </div>
 
                 <div class="tab">رمز عبور جدید بسازید :
-                    <p><input placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
-                    <p><input placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
+                    <p><input name="password_forgot" placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
+                    <p><input name="password_confirm_forgot" placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
                 </div>
                 <div class="tab">
                     <i class="fa fa-check fa-check-class" aria-hidden="true"></i>
@@ -231,6 +231,10 @@
             }
         });
     }
+
+    $('#nextBtn').click(function () {
+        console.log($(this))
+    })
 </script>
 </body>
 </html>
