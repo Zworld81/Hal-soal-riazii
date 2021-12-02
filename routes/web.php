@@ -25,6 +25,8 @@ Route::resource('/teacher', TeacherController::class);
 
 Route::post('/accept', [HandlerController::class, 'accept'])->name('accept');
 Route::resource('/answer', AnswerController::class);
+Route::post('/buyStar', [\App\Http\Controllers\PaymentController::class, 'buyStar'])->name('buy.star');
+Route::any('/callBackPayment', [\App\Http\Controllers\PaymentController::class, 'callBackPayment'])->name('call.back.payment');
 
 
 Route::group(['middleware' => 'is.admin'], function () {

@@ -94,6 +94,8 @@
 
         <!-- Modal content -->
         <div class="modal-kharid-content">
+            <form action="{{ route('buy.star') }}" method="POST">
+                @csrf
             <div class="modal-header">
                 <span class="close">&times;</span>
                 <p class="modal-text-header">دریافت ستاره</p>
@@ -103,8 +105,8 @@
 
             <p style="direction:rtl; font-size:16px; padding-right:40px; padding-top:10px;">تعداد ستاره ای که میخواهید بخرید : </p>
             <div class="row-ghaymat">
-            <p class="matn-gheymat">قیمت تعداد ⭐ : قیمت تومان</p>
-               <input type="number" placeholder="⭐ تعداد ستاره" >
+            <p class="matn-gheymat">قیمت <span class="star-count"></span> ⭐ : <span class="amount-star"></span> تومان</p>
+               <input name="star_count" class="buy-star" type="number" placeholder="⭐ تعداد ستاره" >
             </div>
             <div class="kharid-amn">
             <div id="zarinpal">
@@ -120,7 +122,7 @@
             </div>
             </div>
             <div style="display:flex; align-items:center;  justify-content: center;"><input type="submit" id="btn-buy" value="پرداخت با زرین پال" ></div>
-
+            </form>
         </div>
 
     </div>
@@ -175,8 +177,8 @@
 @endsection
 @section('js')
 <script>
- let submit = document.querySelectorAll('#submit');
-        for (var i = 0; i < submit.length; i++) {
+    let submit = document.querySelectorAll('#submit');
+    for (var i = 0; i < submit.length; i++) {
             submit[i].addEventListener('click', function(event) {
                 Swal.fire({
                     title: 'آیا اطمینان دارید ؟',
@@ -204,5 +206,11 @@
             });
         }
 
-    </script>
+    $('.buy-star').keyup(function(){
+        let starPrice = '{{ config('custom.star_price') }}'
+
+        $('.star-count').text($(this).val());
+        $('.amount-star').text($(this).val() * starPrice);
+    });
+</script>
       @endsection
