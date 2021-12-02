@@ -155,12 +155,12 @@
 <div class="tab">: رمز عبور جدید بسازید
 <p><input placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
 <p><input placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
-<button type="button" id="nextBtn" onclick="nextPrev(1)">تایید</button>
+<button type="button" id="nextBtn" class="test1" onclick="nextPrev(1)">تایید</button>
 </div>
 <div class="tab">
 <i class="fa fa-check fa-check-class" style="font-size:110px;" aria-hidden="true"></i>
 <p class="successfull4">.رمز عبور شما با موفقیت تغییر کرد</p>
-<button type="button" id="nextBtn" onclick="nextPrev(1)">تایید</button>
+<button type="button" id="nextBtn" class="test2" onclick="nextPrev(1)">تایید</button>
 </div>
 <div>
 </div>
