@@ -20,17 +20,21 @@ Auth::routes();
 Route::post('/sendVerificationCode', [\App\Http\Controllers\Auth\RegisterController::class, 'sendVerificationCode'])->name('send.verification.code');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('/question', QuestionController::class);
-Route::resource('/teacher', TeacherController::class);
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('/question', QuestionController::class);
+    Route::post('/buyStar', [\App\Http\Controllers\PaymentController::class, 'buyStar'])->name('buy.star');
+    Route::any('/callBackPayment', [\App\Http\Controllers\PaymentController::class, 'callBackPayment'])->name('call.back.payment');
 
-Route::post('/accept', [HandlerController::class, 'accept'])->name('accept');
-Route::resource('/answer', AnswerController::class);
-Route::post('/buyStar', [\App\Http\Controllers\PaymentController::class, 'buyStar'])->name('buy.star');
-Route::any('/callBackPayment', [\App\Http\Controllers\PaymentController::class, 'callBackPayment'])->name('call.back.payment');
+    Route::group(['middleware' => 'is.teacher'], function () {
+        Route::resource('/teacher', TeacherController::class);
+        Route::post('/accept', [HandlerController::class, 'accept'])->name('accept');
+        Route::resource('/answer', AnswerController::class);
+    });
 
 
-Route::group(['middleware' => 'is.admin'], function () {
-    Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index']);
-    Route::post('/approveQuestionByAdmin', [\App\Http\Controllers\AdminController::class, 'approved'])->name('approved.by.admin');
-    Route::post('/promptToTeacher', [HandlerController::class, 'promptToTeacher'])->name('prompt.to.teacher');
+    Route::group(['middleware' => 'is.admin'], function () {
+        Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index']);
+        Route::post('/approveQuestionByAdmin', [\App\Http\Controllers\AdminController::class, 'approved'])->name('approved.by.admin');
+        Route::post('/promptToTeacher', [HandlerController::class, 'promptToTeacher'])->name('prompt.to.teacher');
+    });
 });
