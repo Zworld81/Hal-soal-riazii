@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
             'name' => "Full Admin",
             'phone_number' => "01234567899",
             'level' => 0,
+            'referral_code' => 'abcd',
             'password' => Hash::make("12345678"),
         ]);
     }

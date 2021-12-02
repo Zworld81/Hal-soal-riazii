@@ -32,4 +32,5 @@ Route::any('/callBackPayment', [\App\Http\Controllers\PaymentController::class, 
 Route::group(['middleware' => 'is.admin'], function () {
     Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index']);
     Route::post('/approveQuestionByAdmin', [\App\Http\Controllers\AdminController::class, 'approved'])->name('approved.by.admin');
+    Route::post('/promptToTeacher', [HandlerController::class, 'promptToTeacher'])->name('prompt.to.teacher');
 });

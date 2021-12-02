@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Question;
 use App\Models\Teacher;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -41,5 +42,12 @@ class HandlerController extends Controller
             'status' => 'success'
         ]);
 
+    }
+
+    public function promptToTeacher(Request $request)
+    {
+        User::find($request->id)->update([
+            'level' => 2
+        ]);
     }
 }
