@@ -20,7 +20,7 @@ class CreatePaymentsTable extends Migration
             $table->integer('amount')->nullable();
             $table->boolean('is_payed')->default(false);
             $table->integer('referenceId')->nullable();
-            $table->integer('transactionId');
+            $table->string('transactionId');
             $table->timestamps();
         });
     }

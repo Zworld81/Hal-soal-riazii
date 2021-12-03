@@ -32,8 +32,14 @@ class PaymentController extends Controller
 
     public function callBackPayment(Request $request){
         try {
+            if ($request->Status != 'OK'){
+                $payFailed = true;
+                return redirect()->route('home')->with(compact('payFailed'));
+            }
             $authority = $request->Authority;
             $payment = \App\Models\Payment::where('transactionId', $authority)->first();
+
+
             $receipt = \Shetabit\Payment\Facade\Payment::amount($payment->amount)->transactionId($payment->transactionId)->verify();
 
             // You can show payment referenceId to the user.
@@ -44,8 +50,10 @@ class PaymentController extends Controller
             $payment->user->increment('stars', $payment->stars);
 
         } catch (InvalidPaymentException $exception) {
-            echo $exception->getMessage();
+            $payFailed = true;
+            return redirect()->route('home')->with(compact('payFailed'));
         }
-        return redirect()->route('home');
+        $payed = true;
+        return redirect()->route('home')->with(compact('payed'));
     }
 }

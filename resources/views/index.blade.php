@@ -178,6 +178,19 @@
 @endsection
 @section('js')
 <script>
+    @if(!empty($payed))
+        Swal.fire(
+            'حله',
+            'پرداخت موفق.',
+            'success',
+        )
+    @elseif(!empty($payFailed))
+        Swal.fire(
+            'خطا',
+            'پرداخت ناموفق. در صورت کسر وجه تا 72 ساعت به حساب شما باز خواهد گشت.',
+            'error',
+        )
+    @endif
     let submit = document.querySelectorAll('#submit');
     for (var i = 0; i < submit.length; i++) {
             submit[i].addEventListener('click', function(event) {
