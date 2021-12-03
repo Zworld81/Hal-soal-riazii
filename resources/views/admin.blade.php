@@ -55,8 +55,8 @@
                             <td>{{ $user->name ?? 'ERR' }}</td>
                             <td>{{ $user->phone_number ?? 'ERR' }}</td>
                             <td>{{  \App\Http\Controllers\HelperController::getCurrentLevel($user->level) ?? 'ERR' }}</td>
-                            <td>0</td>
-                            <td>1</td>
+                            <td>{{ \App\Models\Question::where('user_id', $user->id)->count() ?? '0' }}</td>
+                            <td>{{ \App\Models\Question::where('teacher_id', $user->id)->count() ?? '0' }}</td>
                             <td><i class="fa fa-check fa-check-class changetoteacher" data-user-id="{{ $user->id ?? 'ERR' }}" aria-hidden="true"></i></td>
 {{--                            <td><a href=""><i class="fa fa-download" aria-hidden="true"></i></a></td>--}}
                         </tr>
