@@ -5,7 +5,7 @@
 <style>
   .send-main-right{
     margin-top:50px;
-   
+
     padding: 20px;
     float:left;
     margin-left: auto;
@@ -15,7 +15,7 @@
 
  .send-main-right .row2{
    margin-top: 40px;
-  direction: rtl; 
+  direction: rtl;
   display: none;
 }
 .send-main-right .row5{
@@ -184,11 +184,13 @@ color: rgb(93, 211, 46);
                                 const name = document.querySelector(".row2");
                                 name.style.display = "block";
 
-                                Swal.fire(data['title'],data['content'],data['status']);
+                                Swal.fire(data['title'],data['content'],data['status']).then(() => {
+                                    window.location.reload();
+                                });
 
                             },
                             error: function (reject) {
-                                Swal.fire(data['title'],reject['content'],rejectdata['status'])
+                                Swal.fire(data['title'],reject['content'],rejectdata['status']);
                             }
                         });
                         //$('#recive-table1').parents('div.dataTables_wrapper').first().hide();

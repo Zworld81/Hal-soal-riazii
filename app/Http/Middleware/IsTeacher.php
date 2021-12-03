@@ -17,7 +17,7 @@ class IsTeacher
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->level == 2)
+        if (Auth::user()->level == 2 || Auth::user()->level == 0)
             return $next($request);
 
         return redirect()->route('home');
