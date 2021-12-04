@@ -25,6 +25,27 @@
     font-family: "Vazir";
 
 }
+/*  black editation sweat alert
+.swal2-popup {
+  background-color: var(--main-color-dark) !important;
+  color: blue !important;
+}
+
+#swal2-content{
+  color: white;
+}
+*/
+.swal2-popup a {
+   color: var(--Primary-color-dark) !important;
+  font-weight: bold;
+}
+.swal2-popup p{
+  color: var(--Primary-color-dark) !important;
+  font-weight: bold;
+}
+h1 ,h2 ,h3 ,h4 ,h5 ,h6{
+  color:white;
+}
 a{
   color: white !important;
 }
@@ -429,6 +450,7 @@ textarea:focus{
   outline: none;
   font-size: 18px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  margin-bottom:30px;
 }
 #submit:hover{
   transition:ease-in-out all 0.1s;
@@ -1067,9 +1089,6 @@ input.invalid {
     }
     .send-main-right .col{
       margin-top:30px;
-    }
-    #submit{
-      margin-bottom:30px;
     }
     .modal-kharid-content{
       width: 90%;

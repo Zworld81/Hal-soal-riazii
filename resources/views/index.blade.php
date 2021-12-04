@@ -206,6 +206,23 @@
 
             });
         }
+        // Success payment callback
+        Swal.fire({
+         icon: 'success',
+         title: 'پرداخت موفقیت آمیز بود',
+         text: '.تعداد ستاره به قیمت به حساب شما اضافه شد',
+         confirmButtonText: 'تایید',
+         footer: '<a  class="footer-blue" href="tel:02170703"> تماس با پشتیبانی : 02170703</a>'
+        })
+
+       // Faild payment callback
+        Swal.fire({
+         icon: 'error',
+         title: 'اوووپس',
+         text: '!یه مشکلی در پرداخت رخ داد',
+         confirmButtonText: 'تایید',
+         footer: '<a  class="footer-blue" href="tel:02170703"> تماس با پشتیبانی : 02170703</a>'
+        })
 
     $('.buy-star').keyup(function(){
         let starPrice = '{{ config('custom.star_price') }}'
