@@ -8,6 +8,7 @@
     <link rel="icon" href="{{ asset('assets/img/favicon.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}">
     <link type="text/css" href="{{ asset('assets/css/style.css') }}" rel="stylesheet"/>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 
 </head>
 <body>
@@ -205,6 +206,7 @@
 </div>
 
 <script type="text/javascript" charset="utf8" src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 <script src="{{ asset('assets/js/auth.js') }}"></script>
 <script>
 
@@ -213,7 +215,7 @@
     })
 
     $('.register-phone-number').focusout(function() {
-        sendVerificationCode($(this).val());
+        sendVerificationCode($(this).val())
     })
     function sendVerificationCode(phoneNumber) {
         $.ajax({
@@ -224,17 +226,17 @@
                 "phoneNumber" :phoneNumber
             },
             success: function (data) {
-                console.log(data)
+                Swal.fire({
+                    icon: 'warning',
+                    title: data['result'],
+                    confirmButtonText: 'تایید',
+                })
             },
             error: function (reject) {
                 console.log(reject)
             }
         });
     }
-
-    $('#nextBtn').click(function () {
-        console.log($(this))
-    })
 </script>
 </body>
 </html>
