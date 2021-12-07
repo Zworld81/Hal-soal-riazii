@@ -127,7 +127,6 @@
 
     </div>
 
-
 <!-- modal forgot password -->
 
 <div id="modal-forgotpass" class="modal-forgotpass">
@@ -178,18 +177,26 @@
 @endsection
 @section('js')
 <script>
-    @if(!empty($payed))
-        Swal.fire(
-            'حله',
-            'پرداخت موفق.',
-            'success',
-        )
-    @elseif(!empty($payFailed))
-        Swal.fire(
-            'خطا',
-            'پرداخت ناموفق. در صورت کسر وجه تا 72 ساعت به حساب شما باز خواهد گشت.',
-            'error',
-        )
+    @if(!empty(request()->pay) && request()->pay == 'success')
+    // Success payment callback
+    Swal.fire({
+        icon: 'success',
+        title: 'پرداخت موفقیت آمیز بود',
+        text: 'تعداد ستاره خریداری شده به حساب شما اضافه شد',
+        confirmButtonText: 'تایید',
+        footer: '<a  class="footer-blue" href="tel:02170703"> تماس با پشتیبانی : 02170703</a>'
+    })
+
+    @elseif(!empty(request()->pay) && request()->pay == 'field')
+    // Faild payment callback
+    Swal.fire({
+        icon: 'error',
+        title: 'اوووپس',
+        text: 'یه مشکلی در پرداخت رخ داد! در صورت کسر وجه تا 72 ساعت به حساب شما باز خواهد گشت',
+        confirmButtonText: 'تایید',
+        footer: '<a  class="footer-blue" href="tel:02170703"> تماس با پشتیبانی : 02170703</a>'
+    })
+
     @endif
     let submit = document.querySelectorAll('#submit');
     for (var i = 0; i < submit.length; i++) {
@@ -219,23 +226,7 @@
 
             });
         }
-        // Success payment callback
-        Swal.fire({
-         icon: 'success',
-         title: 'پرداخت موفقیت آمیز بود',
-         text: '.تعداد ستاره به قیمت به حساب شما اضافه شد',
-         confirmButtonText: 'تایید',
-         footer: '<a  class="footer-blue" href="tel:02170703"> تماس با پشتیبانی : 02170703</a>'
-        })
 
-       // Faild payment callback
-        Swal.fire({
-         icon: 'error',
-         title: 'اوووپس',
-         text: '!یه مشکلی در پرداخت رخ داد',
-         confirmButtonText: 'تایید',
-         footer: '<a  class="footer-blue" href="tel:02170703"> تماس با پشتیبانی : 02170703</a>'
-        })
 
     $('.buy-star').keyup(function(){
         let starPrice = '{{ config('custom.star_price') }}'

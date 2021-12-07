@@ -229,7 +229,7 @@ return [
             'zaringateApiPaymentUrl' => 'https://www.zarinpal.com/pg/StartPay/:authority/ZarinGate',
             'zaringateApiVerificationUrl' => 'https://ir.zarinpal.com/pg/services/WebGate/wsdl',
 
-            'mode' => 'normal', // can be normal, sandbox, zaringate
+            'mode' => 'sandbox', // can be normal, sandbox, zaringate
             'merchantId' => '30949f3b-58cd-41f3-9e83-1e4cc819c53f',
             'callbackUrl' => 'http://127.0.10.5/callBackPayment',
             'description' => 'درگاه پرداخت فراهوش',

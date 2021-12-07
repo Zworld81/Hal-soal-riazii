@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Shetabit\Multipay\Exceptions\InvalidPaymentException;
 
 class PaymentController extends Controller
 {
@@ -33,8 +34,7 @@ class PaymentController extends Controller
     public function callBackPayment(Request $request){
         try {
             if ($request->Status != 'OK'){
-                $payFailed = true;
-                return redirect()->route('home')->with(compact('payFailed'));
+                return redirect(url(route('home'). '?pay=field'));
             }
             $authority = $request->Authority;
             $payment = \App\Models\Payment::where('transactionId', $authority)->first();
@@ -50,10 +50,8 @@ class PaymentController extends Controller
             $payment->user->increment('stars', $payment->stars);
 
         } catch (InvalidPaymentException $exception) {
-            $payFailed = true;
-            return redirect()->route('home')->with(compact('payFailed'));
+            return redirect(url(route('home'). '?pay=field'));
         }
-        $payed = true;
-        return redirect()->route('home')->with(compact('payed'));
+        return redirect(url(route('home'). '?pay=success'));
     }
 }
