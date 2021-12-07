@@ -34,10 +34,12 @@ class AuthSmsController extends Controller
     {
         if (Session::has('verification') && Session::get('verification')['code'] == $request->code){
             return response()->json([
+                'status' => true,
                 'result' => 'جهت تغییر رمز خود اقدام کنید.'
             ]);
         }
         return response()->json([
+            'status' => false,
             'result' => 'خطا رمزیکبار مصرف نادرست.'
         ]);
     }

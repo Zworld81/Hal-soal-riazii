@@ -146,15 +146,16 @@
 </div>
 
 <div class="tab">: کد ارسال شده به شماره تلفن رو وارد کنید
-<p><input id="check-code-input" placeholder="کد ارسالی ... " oninput="this.className = ''"></p>
-<button type="button" id="nextBtn" class="check-code" onclick="nextPrev(1)">تایید</button>
+<p><input id="check-code-input" placeholder="کد ارسالی ... " oninput="this.className = ''">
+    <span class="msg-error" style="font-size: 13px; color: red"></span>
+</p>
+<button type="button" id="nextBtn" class="check-code">تایید</button>
 <button type="button" id="prevBtn" class="backtotel" onclick="nextPrev(-1)">تغییر شماره تلفن</button>
 </div>
 
 <div class="tab">: رمز عبور جدید بسازید
-<p><input placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
-<p><input placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
-<button type="button" id="nextBtn" class="test1" onclick="nextPrev(1)">تایید</button>
+<p><input placeholder="رمز عبور جدید" id="pw-field" oninput="this.className = ''"></p>
+<button type="button" id="nextBtn" class="new-pw" onclick="nextPrev(1)">تایید</button>
 </div>
 <div class="tab">
 <i class="fa fa-check fa-check-class" style="font-size:110px;" aria-hidden="true"></i>
@@ -255,7 +256,8 @@
         });
     }
 
-    $('.check-code').click(function () {
+    $('.check-code').click(function (e) {
+        e.preventDefault();
         $.ajax({
             type: 'POST',
             url: '{{ route('check.verification.code') }}',
@@ -264,7 +266,12 @@
                 "code" :$('#check-code-input').val()
             },
             success: function (data) {
-                console.log(data)
+                nextPrev(1)
+                if (data['status']){
+                    nextPrev(1)
+                }else {
+                    $('.msg-error').html(data['result'])
+                }
             },
             error: function (reject) {
                 console.log(reject)
@@ -272,5 +279,22 @@
         });
     })
 
+    $('.new-pw').click(function (e){
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '{{ route('change.password') }}',
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "password" :$('#pw-field').val()
+            },
+            success: function (data) {
+                nextPrev(1)
+            },
+            error: function (reject) {
+                console.log(reject)
+            }
+        });
+    })
 </script>
       @endsection

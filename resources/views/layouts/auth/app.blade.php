@@ -157,38 +157,43 @@
         </form>
     </div>
 
-    <div id="modal-kharidd" class="modal-kharid">
+
+    <!-- modal forgot password -->
+
+    <div id="modal-forgotpass" class="modal-forgotpass">
 
         <!-- Modal content -->
-        <div class="modal-kharid-content">
+        <div class="modal-forgotpass-content">
             <div class="modal-header">
-                <span class="close">&times;</span>
+                <span class="close2">&times;</span>
+                <p class="modal-text-header">تغییر رمز عبور</p>
             </div>
             <form id="forgot-password" action="">
 
                 <!-- One "tab" for each step in the form: -->
-                <div class="tab">شماره تلفن که قبلا ثبت نام کردید رو وارد کنید :
-                    <p><input class="phone_number_forgot" placeholder="شماره تلفن ..." oninput="this.className = ''"></p>
+                <div class="tab">: شماره تلفن که قبلا ثبت نام کردید رو وارد کنید
+                    <p><input id="register-phone-number-input" placeholder="شماره تلفن ..." oninput="this.className = ''"></p>
+                    <button type="button" id="nextBtn" class="register-phone-number" onclick="nextPrev(1)">تایید</button>
                 </div>
 
-                <div class="tab">کد ارسال شده به شماره تلفن رو وارد کنید :
-                    <p><input class="verification_code_forgot" placeholder="کد ارسالی ..." oninput="this.className = ''"></p>
+                <div class="tab">: کد ارسال شده به شماره تلفن رو وارد کنید
+                    <p><input id="check-code-input" placeholder="کد ارسالی ... " oninput="this.className = ''">
+                        <span class="msg-error" style="font-size: 13px; color: red"></span>
+                    </p>
+                    <button type="button" id="nextBtn" class="check-code">تایید</button>
+                    <button type="button" id="prevBtn" class="backtotel" onclick="nextPrev(-1)">تغییر شماره تلفن</button>
                 </div>
 
-                <div class="tab">رمز عبور جدید بسازید :
-                    <p><input name="password_forgot" placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
-                    <p><input name="password_confirm_forgot" placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
+                <div class="tab">: رمز عبور جدید بسازید
+                    <p><input placeholder="رمز عبور جدید" id="pw-field" oninput="this.className = ''"></p>
+                    <button type="button" id="nextBtn" class="new-pw" onclick="nextPrev(1)">تایید</button>
                 </div>
                 <div class="tab">
-                    <i class="fa fa-check fa-check-class" aria-hidden="true"></i>
-                    <p class="successfull4">رمز عبور شما با موفقیت تغییر کرد.</p>
+                    <i class="fa fa-check fa-check-class" style="font-size:110px;" aria-hidden="true"></i>
+                    <p class="successfull4">.رمز عبور شما با موفقیت تغییر کرد</p>
+                    <button type="button" id="nextBtn" class="test2" onclick="nextPrev(1)">تایید</button>
                 </div>
                 <div>
-                    <div style="float:right;">
-                        <button type="button" id="prevBtn" class="backtotel" onclick="nextPrev(-1)">تغییر شماره تلفن
-                        </button>
-                        <button type="button" id="nextBtn" onclick="nextPrev(1)">تایید</button>
-                    </div>
                 </div>
 
                 <!-- Circles which indicates the steps of the form: -->
@@ -201,8 +206,6 @@
 
             </form>
         </div>
-
-    </div>
 </div>
 
 <script type="text/javascript" charset="utf8" src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
@@ -237,6 +240,47 @@
             }
         });
     }
+
+    $('.check-code').click(function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '{{ route('check.verification.code') }}',
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "code" :$('#check-code-input').val()
+            },
+            success: function (data) {
+                nextPrev(1)
+                if (data['status']){
+                    nextPrev(1)
+                }else {
+                    $('.msg-error').html(data['result'])
+                }
+            },
+            error: function (reject) {
+                console.log(reject)
+            }
+        });
+    })
+
+    $('.new-pw').click(function (e){
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '{{ route('change.password') }}',
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "password" :$('#pw-field').val()
+            },
+            success: function (data) {
+                nextPrev(1)
+            },
+            error: function (reject) {
+                console.log(reject)
+            }
+        });
+    })
 </script>
 </body>
 </html>
