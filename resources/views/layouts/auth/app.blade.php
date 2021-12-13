@@ -121,27 +121,27 @@
 
             <!-- One "tab" for each step in the form: -->
             <div class="tab">شماره تلفن که قبلا ثبت نام کردید رو وارد کنید :
-                <p><input type="tel" placeholder="... شماره تلفن " oninput="this.className = ''"></p>
-                <button type="button" id="nextBtn" onclick="nextPrev(1)">تایید</button>
+                <p><input  id="register-phone-number-input" type="tel" placeholder="... شماره تلفن " oninput="this.className = ''"></p>
+                <button type="button" id="nextBtn" class="register-phone-number">تایید</button>
             </div>
 
             <div class="tab">کد ارسال شده به شماره تلفن رو وارد کنید :
-                <p><input placeholder="... کد ارسالی " oninput="this.className = ''"></p>
+                <p><input id="check-code-input" placeholder="کد ارسالی ... " oninput="this.className = ''">
+                    <span class="msg-error" style="font-size: 13px; color: red"></span>
+                </p>
+                <button type="button" id="nextBtn" class="check-code">تایید</button>
                 <button type="button" id="prevBtn" class="backtotel" onclick="nextPrev(-1)">تغییر شماره تلفن
-                    </button>
-                <button type="button" id="nextBtn" onclick="nextPrev(1)">تایید</button>
-
+                </button>
             </div>
 
             <div class="tab">رمز عبور جدید بسازید :
-                <p><input placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
-                <p><input placeholder="رمز عبور جدید" oninput="this.className = ''"></p>
-                <button type="button" id="nextBtn" onclick="nextPrev(1)">تایید</button>
+                <p><input placeholder="رمز عبور جدید" id="pw-field" oninput="this.className = ''"></p>
+                <button type="button" id="nextBtn" class="new-pw" onclick="nextPrev(1)">تایید</button>
             </div>
             <div class="tab">
-                <i class="fa fa-check fa-check-class" aria-hidden="true"></i>
-                <p class="successfull4">رمز عبور شما با موفقیت تغییر کرد.</p>
-                <button type="button" id="nextBtn" onclick="nextPrev(1)">تایید</button>
+                <i class="fa fa-check fa-check-class" style="font-size:110px;" aria-hidden="true"></i>
+                <p class="successfull4">.رمز عبور شما با موفقیت تغییر کرد</p>
+                <button type="button" id="nextBtn" class="test2" onclick="nextPrev(1)">تایید</button>
             </div>
             <div>
             </div>
@@ -156,57 +156,8 @@
 
         </form>
     </div>
-
-
-    <!-- modal forgot password -->
-
-    <div id="modal-forgotpass" class="modal-forgotpass">
-
-        <!-- Modal content -->
-        <div class="modal-forgotpass-content">
-            <div class="modal-header">
-                <span class="close2">&times;</span>
-                <p class="modal-text-header">تغییر رمز عبور</p>
-            </div>
-            <form id="forgot-password" action="">
-
-                <!-- One "tab" for each step in the form: -->
-                <div class="tab">: شماره تلفن که قبلا ثبت نام کردید رو وارد کنید
-                    <p><input id="register-phone-number-input" placeholder="شماره تلفن ..." oninput="this.className = ''"></p>
-                    <button type="button" id="nextBtn" class="register-phone-number" onclick="nextPrev(1)">تایید</button>
-                </div>
-
-                <div class="tab">: کد ارسال شده به شماره تلفن رو وارد کنید
-                    <p><input id="check-code-input" placeholder="کد ارسالی ... " oninput="this.className = ''">
-                        <span class="msg-error" style="font-size: 13px; color: red"></span>
-                    </p>
-                    <button type="button" id="nextBtn" class="check-code">تایید</button>
-                    <button type="button" id="prevBtn" class="backtotel" onclick="nextPrev(-1)">تغییر شماره تلفن</button>
-                </div>
-
-                <div class="tab">: رمز عبور جدید بسازید
-                    <p><input placeholder="رمز عبور جدید" id="pw-field" oninput="this.className = ''"></p>
-                    <button type="button" id="nextBtn" class="new-pw" onclick="nextPrev(1)">تایید</button>
-                </div>
-                <div class="tab">
-                    <i class="fa fa-check fa-check-class" style="font-size:110px;" aria-hidden="true"></i>
-                    <p class="successfull4">.رمز عبور شما با موفقیت تغییر کرد</p>
-                    <button type="button" id="nextBtn" class="test2" onclick="nextPrev(1)">تایید</button>
-                </div>
-                <div>
-                </div>
-
-                <!-- Circles which indicates the steps of the form: -->
-                <div style="text-align:center;margin-top:40px;">
-                    <span class="step"></span>
-                    <span class="step"></span>
-                    <span class="step"></span>
-                    <span class="step"></span>
-                </div>
-
-            </form>
-        </div>
 </div>
+
 
 <script type="text/javascript" charset="utf8" src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
@@ -225,6 +176,8 @@
             $(this).text('عضویت');
         }
     });
+
+
     function sendVerificationCode(phoneNumber) {
         $.ajax({
             type: 'POST',
@@ -234,7 +187,6 @@
                 "phoneNumber" :phoneNumber
             },
             success: function (data) {
-                console.log(data)
                 Swal.fire({
                     icon: 'warning',
                     title: data['result'],
@@ -247,6 +199,35 @@
                 $('#register-verify').attr('data-submit-state', 0)
                 $('#register-verify').text('ارسال کد تایید');
             }
+            },
+            error: function (reject) {
+
+            }
+        });
+    }
+
+
+    $('.register-phone-number').click(function () {
+        sendVerificationCodeFP($('#register-phone-number-input').val())
+    });
+    function sendVerificationCodeFP(phoneNumber) {
+        $.ajax({
+            type: 'POST',
+            url: '{{ route('send.verification.code') }}',
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "phoneNumber" :phoneNumber
+            },
+            success: function (data) {
+                if (data['status'] == true){
+                    nextPrev(1)
+                }else {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: data['result'],
+                        confirmButtonText: 'تایید',
+                    });
+                }
             },
             error: function (reject) {
 
@@ -290,10 +271,11 @@
                 nextPrev(1)
             },
             error: function (reject) {
-                console.log(reject)
+
             }
         });
     })
+
 </script>
 </body>
 </html>
