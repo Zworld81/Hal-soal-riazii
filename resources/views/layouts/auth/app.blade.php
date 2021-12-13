@@ -60,7 +60,7 @@
                 </span>
             @enderror
 
-            <button class="ozviat-button" id="" type="submit">عضویت</button>
+            <button class="ozviat-button" id="register-verify" data-submit-state="0" type="submit">ارسال کد تایید</button>
         </form>
     </div>
     <!-- end sing up form -->
@@ -214,12 +214,17 @@
 <script>
 
     $('.send-verification-code-again').click(function () {
-        sendVerificationCode($('.register-phone-number').val());
-    })
+         sendVerificationCode($('.register-phone-number').val());
+    });
 
-    $('.register-phone-number').focusout(function() {
-        sendVerificationCode($(this).val())
-    })
+    $('#register-verify').click(function (e) {
+        if ($(this).attr('data-submit-state') == 0){
+            e.preventDefault();
+            sendVerificationCode($('.register-phone-number').val());
+            $(this).attr('data-submit-state', 1)
+            $(this).text('عضویت');
+        }
+    });
     function sendVerificationCode(phoneNumber) {
         $.ajax({
             type: 'POST',
@@ -229,14 +234,22 @@
                 "phoneNumber" :phoneNumber
             },
             success: function (data) {
+                console.log(data)
                 Swal.fire({
                     icon: 'warning',
                     title: data['result'],
                     confirmButtonText: 'تایید',
-                })
+                });
+            if (data['status'] == true){
+                $('#register-verify').attr('data-submit-state', 1)
+                $('#register-verify').text('عضویت');
+            }else {
+                $('#register-verify').attr('data-submit-state', 0)
+                $('#register-verify').text('ارسال کد تایید');
+            }
             },
             error: function (reject) {
-                console.log(reject)
+
             }
         });
     }

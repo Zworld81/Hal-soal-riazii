@@ -17,6 +17,7 @@ class AuthSmsController extends Controller
         if (Session::has('verification')){
             if (Carbon::now()->timestamp - Session::get('verification')['timestamp'] < 120){
                 return response()->json([
+                    'status' => false,
                     'result' => 'حداقل 2 دقیقه بین هر ارسال باید صبرکنید.'
                 ]);
             }
@@ -26,6 +27,7 @@ class AuthSmsController extends Controller
         RayganSms::sendAuthCode($request->phoneNumber, 'سلام، کدتایید شما:'.$code, false);
         Session::put('verification', ['code' => $code, 'timestamp' => Carbon::now()->timestamp, 'phoneNumber' => $request->phoneNumber]);
         return response()->json([
+            'status' => true,
             'result' => 'کد تأیید با موفقیت ارسال شد.'
         ]);
     }
