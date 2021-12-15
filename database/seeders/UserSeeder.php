@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
     {
         User::create([
             'name' => "Full Admin",
-            'phone_number' => "01234567899",
+            'phone_number' => "09383663723",
             'level' => 0,
             'referral_code' => 'abcd',
             'password' => Hash::make("12345678"),

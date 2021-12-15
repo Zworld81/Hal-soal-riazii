@@ -14,13 +14,13 @@ class AuthSmsController extends Controller
 {
     public function sendVerificationCode(Request $request)
     {
-        $user = User::where('phone_number',$request->phoneNumber)->first();
-        if (empty($user)){
-            return response()->json([
-                'status' => false,
-                'result' => 'کاربر یافت نشد.'
-            ]);
-        }
+//        $user = User::where('phone_number',$request->phoneNumber)->first();
+//        if (empty($user)){
+//            return response()->json([
+//                'status' => false,
+//                'result' => 'کاربر یافت نشد.'
+//            ]);
+//        }
 
         if (Session::has('verification')){
             if (Carbon::now()->timestamp - Session::get('verification')['timestamp'] < 120){
