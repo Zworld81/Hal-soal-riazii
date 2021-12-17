@@ -78,15 +78,15 @@ button:active {
 
 button:focus {
   outline: none;
-  
+
 }
 
 button.ghost {
   background-color: #476ab9;
   border: 1px solid white;
-  
-  
-} 
+
+
+}
 button.ghost:hover{
   background-color: #3d7bfa;
 }
@@ -264,7 +264,7 @@ input:focus{
 
 .social-container {
   margin: 20px 0;
-  
+
 }
 
 .social-container a {
@@ -399,7 +399,7 @@ input.invalid {
       justify-content: space-between;
     }
     .reload-icon-div{
-     
+
     }
     .reload-icon{
       color:white;
@@ -408,14 +408,14 @@ input.invalid {
       margin: 8px 0;
       padding: 13px 15px;
       border-radius: 5px 0px 0px 5px;
-      
+
     }
 @media only screen and (max-width: 643px) {
   h1{
     font-size: 20px;
   }
   span{
-    
+
   }
   p{
     text-align: justify;
@@ -435,4 +435,7 @@ input.invalid {
     font-size:16px;
   }
 
+}
+.error-message{
+    color: #d12822;
 }

@@ -35,7 +35,7 @@
                 </span>
             @enderror
 
-            <input value="{{ old('password') }}" name="password" type="password" placeholder="رمز عبور"/>
+            <input value="{{ old('password') }}" name="password" type="password" placeholder="رمز عبور(حداقل 8 حرف)"/>
             @error('password')
             <span class="invalid-feedback" role="alert">
                     <strong class="error-message">{{ $message }}</strong>
@@ -52,7 +52,7 @@
             <div id="resend-code">
                 <input value="{{ old('verification_code') }}" name="verification_code" type="text" placeholder="کد تایید شماره تلفن "
                        style="border-radius:0px 5px 5px 0px;"/>
-                <div class="reload-icon-div send-verification-code-again"><i class="fa fa-refresh fa-lg reload-icon" aria-hidden="true"></i></div>
+                <div class="reload-icon-div send-verification-code-again"><i class="fa fa-send fa-lg reload-icon" aria-hidden="true"></i></div>
             </div>
             @error('verification_code')
             <span class="invalid-feedback" role="alert">
@@ -60,7 +60,7 @@
                 </span>
             @enderror
 
-            <button class="ozviat-button" id="register-verify" data-submit-state="0" type="submit">ارسال کد تایید</button>
+            <button class="ozviat-button" id="register-verify" data-submit-state="0" type="submit">عضویت</button>
         </form>
     </div>
     <!-- end sing up form -->
@@ -168,14 +168,14 @@
          sendVerificationCode($('.register-phone-number').val());
     });
 
-    $('#register-verify').click(function (e) {
-        if ($(this).attr('data-submit-state') == 0){
-            e.preventDefault();
-            sendVerificationCode($('.register-phone-number').val());
-            $(this).attr('data-submit-state', 1)
-            $(this).text('عضویت');
-        }
-    });
+    // $('#register-verify').click(function (e) {
+    //     if ($(this).attr('data-submit-state') == 0){
+    //         e.preventDefault();
+    //         sendVerificationCode($('.register-phone-number').val());
+    //         $(this).attr('data-submit-state', 1)
+    //         $(this).text('عضویت');
+    //     }
+    // });
 
 
     function sendVerificationCode(phoneNumber) {
