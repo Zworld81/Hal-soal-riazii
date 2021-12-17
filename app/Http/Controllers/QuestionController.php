@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Question\QuestionStoreRequest;
 use App\Models\Question;
+use App\Services\TelegramBot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,10 +40,10 @@ class QuestionController extends Controller
     {
         $data = $request->validated();
 
-        if (auth()->user()->stars < config('custom.per_question_star')){
-            HelperController::flash('error', 'ستاره کافی برای ارسال سوال وجود ندارد.');
-            return redirect()->back();
-        }
+//        if (auth()->user()->stars < config('custom.per_question_star')){
+//            HelperController::flash('error', 'ستاره کافی برای ارسال سوال وجود ندارد.');
+//            return redirect()->back();
+//        }
 
 
         $file = HelperController::uploadFile($data['file'],'uploads/files');
@@ -55,7 +56,20 @@ class QuestionController extends Controller
 
         Auth::user()->decrement('stars', (int)config('custom.per_question_star'));
 
-        Question::create($data);
+        $question = Question::create($data);
+
+        try {
+            $file = url('uploads/files/'.$question->file);
+            $class =\App\Http\Controllers\HelperController::getClass($question->class);
+            $date = \Morilog\Jalali\Jalalian::fromDateTime($question->created_at)->format('Y/m/d H:i');
+            $msg = "❗️سوال جدید ثبت شد: \n";
+            $msg .= "پایه: ". "{$class}" ." \n";
+            $msg .= "تاریخ: ". "{$date}" ." \n";
+            $msg .= "فایل سوال: " . "<a href='{$file}'>دانلود</a>";
+            $msg .= "\n ➖➖➖";
+            $telegramBot = new TelegramBot();
+            $telegramBot->sendMessageToChannel($msg);
+        }catch (\Exception $e){}
 
         HelperController::flash('success', 'سوال شما با موفقیت ارسال شد.');
         return redirect()->back();
