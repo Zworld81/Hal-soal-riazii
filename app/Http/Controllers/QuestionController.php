@@ -71,8 +71,10 @@ class QuestionController extends Controller
             $telegramBot->sendMessageToChannel($msg);
         }catch (\Exception $e){}
 
-        HelperController::flash('success', 'سوال شما با موفقیت ارسال شد.');
-        return redirect()->back();
+        return response()->json([
+            'status' => true,
+            'message' => '🙂.سوال شما ارسال شد'
+        ]);
     }
 
     /**

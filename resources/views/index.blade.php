@@ -606,7 +606,7 @@
                         </div>
                         <div class="row3">
                             <label class="container-checkmark">پشتیبانی هم نیاز دارید ؟ (-⭐)
-                                <input name="need_support" type="checkbox">
+                                <input id="need-support" name="need_support" type="checkbox">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
@@ -742,10 +742,15 @@
                 for (var i = 0; i < submit.length; i++) {
                     submit[i].addEventListener('click', function (e) {
                         e.preventDefault();
-
+                        let perQuestionStar = '{{ config('custom.per_question_star') }}';
+                        let perSupportStar = '{{ config('custom.per_support_star') }}';
+                        let starLose = perQuestionStar
+                        if ($('#need-support').is(':checked')){
+                             starLose = parseInt(perQuestionStar) + parseInt(perSupportStar);
+                        }
                         Swal.fire({
                             title: 'آیا اطمینان دارید ؟',
-                            text: "سوال اپلود شده ارسال شود ؟",
+                            text: "در صورت ادامه دادن تعداد "+ starLose +" از شما کسر خواهد شد",
                             icon: 'question',
                             showCancelButton: true,
                             confirmButtonColor: '#3085d6',
@@ -758,16 +763,29 @@
                             if (result.isConfirmed) {
                                 var form = $('#send-question');
                                 var url = form.attr('action');
-                                console.log(url)
+                                var formData = new FormData(document.getElementById("send-question"));
+                                // var formData = new FormData(form);
                                 $.ajax({
                                     type: "POST",
                                     url: url,
-                                    data: form.serialize(),
+                                    data: formData,
+                                    dataType: 'json',
+                                    contentType: false,
+                                    cache: false,
+                                    processData:false,
                                     success: function(data){
+                                        Swal.fire(
+                                            'حله',
+                                            data['message'],
+                                            'success',
+                                        ).then(() => {
+                                            location.reload();
+                                        })
+                                        $('.error-content').text('')
                                     },
                                     error:function (response){
+                                        $('.error-content').html('');
                                         $.each(response.responseJSON.errors,function(field_name,error){
-                                            console.log(field_name)
                                             $('.error-content').append('<p class="error-message">'+error+'</p> <br>');
                                         })
                                     }
