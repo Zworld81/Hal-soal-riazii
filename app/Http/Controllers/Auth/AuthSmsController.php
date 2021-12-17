@@ -22,14 +22,14 @@ class AuthSmsController extends Controller
 //            ]);
 //        }
 
-        if (Session::has('verification')){
-            if (Carbon::now()->timestamp - Session::get('verification')['timestamp'] < 120){
-                return response()->json([
-                    'status' => false,
-                    'result' => 'حداقل 2 دقیقه بین هر ارسال باید صبرکنید.'
-                ]);
-            }
-        }
+//        if (Session::has('verification')){
+//            if (Carbon::now()->timestamp - Session::get('verification')['timestamp'] < 120){
+//                return response()->json([
+//                    'status' => false,
+//                    'result' => 'حداقل 2 دقیقه بین هر ارسال باید صبرکنید.'
+//                ]);
+//            }
+//        }
 
 
         $code = rand(1000,5000);
