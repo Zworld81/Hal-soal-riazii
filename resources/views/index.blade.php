@@ -312,7 +312,7 @@
                         <th>#</th>
                         <th>تاریخ</th>
                         <th>وضعیت</th>
-                        <th>دانلود</th>
+                        <th>پاسخ</th>
                     </tr>
                     </thead>
                     <tbody>

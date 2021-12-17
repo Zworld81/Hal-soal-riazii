@@ -159,7 +159,8 @@ return [
         'resume' => 'رزومه',
         'verification_code' => 'کد تایید',
         'file' => 'فایل',
-        'description' => 'توضیحات'
+        'description' => 'توضیحات',
+        'class' => 'پایه'
     ],
 
 ];
