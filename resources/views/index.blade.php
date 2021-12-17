@@ -585,12 +585,9 @@
             </div>
             <div class="send-main-right">
                 <div class="col">
-                    @if ($errors->any())
-                        @foreach ($errors->all() as $error)
-                            <div>{{$error}}</div>
-                        @endforeach
-                    @endif
-                    <form action="{{ route('question.store') }}" method="POST" enctype="multipart/form-data">
+                    <div class="error-content">
+                    </div>
+                    <form id="send-question" data-send="false" action="{{ route('question.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <p class="send-info1">: پایه و عکس سوالتون رو انتخاب کنید</p>
                         <div class="row1">
@@ -609,7 +606,7 @@
                         </div>
                         <div class="row3">
                             <label class="container-checkmark">پشتیبانی هم نیاز دارید ؟ (-⭐)
-                                <input name="need_support" type="checkbox" checked="checked">
+                                <input name="need_support" type="checkbox">
                                 <span class="checkmark"></span>
                             </label>
                         </div>
@@ -717,7 +714,8 @@
         </div>
     </div>
         @endsection
-        @section('js')
+
+@section('js')
             <script>
                 @if(!empty(request()->pay) && request()->pay == 'success')
                 // Success payment callback
@@ -742,7 +740,9 @@
                 @endif
                 let submit = document.querySelectorAll('#submit');
                 for (var i = 0; i < submit.length; i++) {
-                    submit[i].addEventListener('click', function (event) {
+                    submit[i].addEventListener('click', function (e) {
+                        e.preventDefault();
+
                         Swal.fire({
                             title: 'آیا اطمینان دارید ؟',
                             text: "سوال اپلود شده ارسال شود ؟",
@@ -756,13 +756,22 @@
 
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                $('#answer-form').submit();
-                                /*  Swal.fire(
-                                      'حله',
-                                      '🙂.جواب شما ارسال شد',
-                                      'success',
-
-                                  )*/
+                                var form = $('#send-question');
+                                var url = form.attr('action');
+                                console.log(url)
+                                $.ajax({
+                                    type: "POST",
+                                    url: url,
+                                    data: form.serialize(),
+                                    success: function(data){
+                                    },
+                                    error:function (response){
+                                        $.each(response.responseJSON.errors,function(field_name,error){
+                                            console.log(field_name)
+                                            $('.error-content').append('<p class="error-message">'+error+'</p> <br>');
+                                        })
+                                    }
+                                });
                             }
                         })
 

@@ -1101,7 +1101,7 @@ input.invalid {
       min-width: 250px;
     }
     .fa-check-class{
-      
+
       }
     .successfull4{
       font-size:16px;
@@ -1115,4 +1115,10 @@ input.invalid {
   direction:rtl;
   margin: 25px 0px 0px 0px;
 }
+}
+
+.error-message {
+    color: #d12822;
+    float: right;
+    direction: rtl;
 }
