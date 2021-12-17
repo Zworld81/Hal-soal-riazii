@@ -1,10 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'حل سوالات ریاضی - فراهوش')
-@section('css')
-    <style>
-    </style>
-@endsection
+
 @section('subHeader')
     <div class="right">
         <a href="#" id="btnmodal" class="neon-button">افزایش ستاره</a>

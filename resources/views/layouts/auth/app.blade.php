@@ -184,7 +184,8 @@
             url: '{{ route('send.verification.code') }}',
             data: {
                 "_token": "{{ csrf_token() }}",
-                "phoneNumber" :phoneNumber
+                "phoneNumber" :phoneNumber,
+                "sMethod": "register"
             },
             success: function (data) {
                 Swal.fire({

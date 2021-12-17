@@ -14,22 +14,34 @@ class AuthSmsController extends Controller
 {
     public function sendVerificationCode(Request $request)
     {
-//        $user = User::where('phone_number',$request->phoneNumber)->first();
-//        if (empty($user)){
-//            return response()->json([
-//                'status' => false,
-//                'result' => 'کاربر یافت نشد.'
-//            ]);
-//        }
+        $user = User::where('phone_number',$request->phoneNumber)->first();
+        if (!empty($request->sMethod)){
+            if ($request->sMethod == 'register') {
+                if (!empty($user)){
+                    return response()->json([
+                        'status' => false,
+                        'result' => 'این شماره در سیستم وجود دارد.'
+                    ]);
+                }
+            }
+            if ($request->sMethod == 'forgot') {
+                if (empty($user)){
+                    return response()->json([
+                        'status' => false,
+                        'result' => 'این شماره در سیستم وجود ندارد.'
+                    ]);
+                }
+            }
+        }
 
-//        if (Session::has('verification')){
-//            if (Carbon::now()->timestamp - Session::get('verification')['timestamp'] < 120){
-//                return response()->json([
-//                    'status' => false,
-//                    'result' => 'حداقل 2 دقیقه بین هر ارسال باید صبرکنید.'
-//                ]);
-//            }
-//        }
+        if (Session::has('verification') && Session::get('verification')['phoneNumber'] == $request->phoneNumber){
+            if (Carbon::now()->timestamp - Session::get('verification')['timestamp'] < 30){
+                return response()->json([
+                    'status' => false,
+                    'result' => 'حداقل 30 ثانیه بین هر ارسال باید صبرکنید.'
+                ]);
+            }
+        }
 
 
         $code = rand(1000,5000);
