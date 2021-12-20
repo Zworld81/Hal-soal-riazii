@@ -974,7 +974,6 @@ input.invalid {
 /* Hide all steps by default: */
 .modal-forgotpass .tab {
   display: none;
-  min-width: 300px;
 }
 
 /* Make circles that indicate the steps of the form: */
