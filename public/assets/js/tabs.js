@@ -85,7 +85,7 @@ $(document).ready(function () {
         //   "dom": 'rt<"bottom"pf>',
         "language": {
             "zeroRecords": "&#129300;متاسفانه پیدا نشد دوست عزیز, حالا چیکار کنیم ؟ ",
-            "search": "جست و جو :",
+            "search": "  جست و جو  :  ",
             "paginate": {
                 "first": "اولی",
                 "last": "آخری",

@@ -11,7 +11,7 @@
 @endsection
 
 @section('content')
-    <div class="tabs">
+    <div class="tabs-dasti">
         <button class="tablink" onclick="openPage('recive', this, '#3d7bfa')">سوالات حل شده</button>
         <button class="tablink" onclick="openPage('send', this, '#3d7bfa')" id="defaultOpen">ارسال سوال</button>
 
@@ -609,6 +609,26 @@
                         </div>
                         <div class="row4">
                             <input type="submit" id="submit" value="ارسال سوال">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button>
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="btn-close btn-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
                         </div>
                     </form>
                 </div>
@@ -624,7 +644,7 @@
         <div class="modal-kharid-content">
             <form action="{{ route('buy.star') }}" method="POST">
                 @csrf
-                <div class="modal-header">
+                <div class="modal-header-handi">
                     <span class="close">&times;</span>
                     <p class="modal-text-header">دریافت ستاره</p>
                 </div>
@@ -665,20 +685,20 @@
     <div id="modal-forgotpass" class="modal-forgotpass">
         <!-- Modal content -->
         <div class="modal-forgotpass-content">
-            <div class="modal-header">
+            <div class="modal-header-handi">
                 <span class="close2">&times;</span>
                 <p class="modal-text-header">تغییر رمز عبور</p>
             </div>
             <form id="forgot-password" action="">
 
                 <!-- One "tab" for each step in the form: -->
-                <div class="tab">: شماره تلفن که قبلا ثبت نام کردید رو وارد کنید
+                <div class="tab">شماره تلفن که قبلا ثبت نام کردید رو وارد کنید :
                     <p><input id="register-phone-number-input" placeholder="شماره تلفن ..."
                               oninput="this.className = ''"></p>
                     <button type="button" id="nextBtn" class="register-phone-number">تایید</button>
                 </div>
 
-                <div class="tab">: کد ارسال شده به شماره تلفن رو وارد کنید
+                <div class="tab">کد ارسال شده به شماره تلفن رو وارد کنید :
                     <p><input id="check-code-input" placeholder="کد ارسالی ... " oninput="this.className = ''">
                         <span class="msg-error" style="font-size: 13px; color: red"></span>
                     </p>
@@ -687,13 +707,13 @@
                     </button>
                 </div>
 
-                <div class="tab">: رمز عبور جدید بسازید
+                <div class="tab"> رمز عبور جدید بسازید :
                     <p><input placeholder="رمز عبور جدید" id="pw-field" oninput="this.className = ''"></p>
                     <button type="button" id="nextBtn" class="new-pw" onclick="nextPrev(1)">تایید</button>
                 </div>
                 <div class="tab">
                     <i class="fa fa-check fa-check-class" style="font-size:110px;" aria-hidden="true"></i>
-                    <p class="successfull4">.رمز عبور شما با موفقیت تغییر کرد</p>
+                    <p class="successfull4"> رمز عبور شما با موفقیت تغییر کرد.</p>
                     <button type="button" id="nextBtn" class="test2" onclick="nextPrev(1)">تایید</button>
                 </div>
                 <div>

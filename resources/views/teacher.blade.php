@@ -43,7 +43,7 @@ color: rgb(93, 211, 46);
 @endsection
 
 @section('content')
-    <div class="tabs">
+    <div class="tabs-dasti">
         <button class="tablink" onclick="openPage('recive', this, '#3d7bfa')">سوالات حل کرده</button>
         <button class="tablink" onclick="openPage('send', this, '#3d7bfa')" id="defaultOpen">برداشتن سوال</button>
 
@@ -123,7 +123,7 @@ color: rgb(93, 211, 46);
 
         <!-- Modal content -->
         <div class="modal-kharid-content">
-            <div class="modal-header">
+            <div class="modal-header-handi">
                 <span class="close">&times;</span>
                 <p class="modal-text-header">دریافت ستاره</p>
             </div>

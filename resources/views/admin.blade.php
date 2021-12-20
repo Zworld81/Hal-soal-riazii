@@ -28,7 +28,7 @@
 @endsection
 
 @section('content')
-    <div class="tabs">
+    <div class="tabs-dasti">
         <button class="tablink" onclick="openPage('recive', this, '#3d7bfa')">اطلاعات کاربران</button>
         <button class="tablink" onclick="openPage('send', this, '#3d7bfa')" id="defaultOpen">تایید سوال</button>
 
@@ -105,7 +105,7 @@
 
         <!-- Modal content -->
         <div class="modal-kharid-content">
-            <div class="modal-header">
+            <div class="modal-header-handi">
                 <span class="close">&times;</span>
                 <p class="modal-text-header">دریافت ستاره</p>
             </div>

@@ -23,6 +23,7 @@
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     font-family: "Vazir";
+    
 
 }
 /*  black editation sweat alert
@@ -46,8 +47,8 @@
 h1 ,h2 ,h3 ,h4 ,h5 ,h6{
   color:white;
 }
-a{
-  color: white !important;
+a {
+  color: white ;
 }
 
 
@@ -55,11 +56,11 @@ body{
     display: grid;
     font-size: 16px ;
     margin: 0px ;
-    background-color: var(--back-color-dark);
+    background-color: var(--back-color-dark) !important;
     color: white;
     padding-top: 40px;
     padding-bottom: 40px;
-
+    
 }
 .container{
     align-self: center;
@@ -85,6 +86,7 @@ header .right{
 }
 header .right .tedad-setare{
     font-size: 22px;
+    color: white;
 }
 .neon-button {
   font-size: 0.9em;
@@ -209,6 +211,10 @@ header .dropdown-header:hover .dropdown-content {display: block; }
 /* Change the background color of the dropdown button when the dropdown content is shown */
 header .dropdown-header:hover .dropbtn {background-color:var(--Primary-color-dark);}
 
+.tabs-dasti{
+  margin: 0px -12px 0px -12px;
+}
+
 .tablink {
     background-color: var(--unuse-color-dark);
     color: white;
@@ -288,57 +294,60 @@ header .dropdown-header:hover .dropbtn {background-color:var(--Primary-color-dar
     transition: all .2s ease-in-out;
 }
 */
-.finished{
-  font-size: 15px;
+.finished-dasti{
+    font-size: 15px;
     background-color:#4eb868 ;
     border-radius: 30px;
-
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5px;
 }
-.progress{
-  font-size: 15px;
+.finished-dasti p{
+  margin-top: 12px;
+}
+.progress-dasti{
     background-color:#eed255 ;
+    font-size: 15px;
     border-radius: 30px;
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5px;
 }
-.reject{
+.progress-dasti p{
+  margin-top: 12px;
+}
+.reject-dasti{
   color: white;
   font-size: 15px;
     background-color:#4b4e52 ;
     border-radius: 30px;
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 7px;
 }
-.green-circle{
+.reject-dasti p{
+  margin-top: 12px;
+}
+.green-circle-dasti{
   width: 10px;
   height: 10px;
   border-radius: 50px;
   background-color:#1b8b44 ;
-  margin-left:7px;
+  margin-left:20px;
 }
-.yellow-circle{
+.yellow-circle-dasti{
   width: 10px;
   height: 10px;
   border-radius: 50px;
   background-color:#c3990d ;
-  margin-left: 7px;
+  margin-left: 20px;
 }
-.black-circle{
+.black-circle-dasti{
   width: 10px;
   height: 10px;
   border-radius: 50px;
   background-color:#292a2c ;
-  margin-left: 7px;
+  margin-left: 20px;
 }
 table{
   background-color: var(--Primary-color-dark);
@@ -534,6 +543,10 @@ textarea:focus{
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+.error-message {
+  float: none !important;
+  margin:-5px !important;
+}
 /* Hide the browser's default checkbox */
 .container-checkmark input {
   position: absolute;
@@ -609,7 +622,27 @@ textarea:focus{
      background-color: #4caf50;
      border:solid 1.5px #4caf50;
    }
-
+/* *********************** BootStap Modal Config *****************************/
+.modal-content{
+  background-color: var(--main-color-dark) ;
+  border: 1px solid #ffffff00 ;
+}
+.modal-header{
+  background-color: var(--back-color-dark);
+  border: 0px solid #ffffff00 ;
+}
+.modal-footer{
+  border: 1px solid #ffffff00 ;
+}
+.btn-close {
+        opacity: 1 ;
+        padding: 0.5rem 1rem !important;
+    background:transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='White'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat ;
+}
+.btn-close:hover{
+  background-color: red;
+  padding:50px;
+}
 /* ************************ The Modal (background) ***************************/
 .modal-kharid {
   display: none;
@@ -635,7 +668,7 @@ textarea:focus{
   height: 480px;
 
 }
-.modal-header{
+.modal-kharid-content .modal-header-handi{
   background-color: var(--back-color-dark);
   width: 100%;
   height:50px;
@@ -898,17 +931,17 @@ input.invalid {
 }
 /* Style the input fields */
 .modal-forgotpass input {
-  padding: 10px;
   width: 100%;
   color: #FFFFFF;
   background-color: #353c5a;
   border: none;
-  padding: 12px 15px;
+  padding: 15px 10px;
   margin: 8px 0;
   width: 100%;
   border-radius:5px;
   transition: ease-in-out 0.1s;
   direction: rtl;
+  font-size: 15px;
 }
 .modal-forgotpass input[type="tel"]{
   direction: ltr;
@@ -939,7 +972,7 @@ input.invalid {
 }
 
 /* Hide all steps by default: */
-.tab {
+.modal-forgotpass .tab {
   display: none;
   min-width: 300px;
 }
@@ -1052,6 +1085,7 @@ input.invalid {
         text-align: center;
         position: relative;
         right: 5px;
+        color: white;
 
     }
     header .neon-button{
