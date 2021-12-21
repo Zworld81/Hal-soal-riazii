@@ -19,8 +19,10 @@
             <div class="dropdown-header">
                 <button class="dropbtn ">حساب کاربری<i class="fas fa-user"></i></button>
                 <div class="dropdown-content">
-                    <a href="#">کد معرف : {{ auth()->user()->referral_code ?? 'ERR' }}</a>
-                    <a href="#" id="btn-pass">تغییر رمز عبور</a>
+                    <a href="#"><i Style="padding-left:5px;" class="fas fa-code-branch"></i> کد معرف : {{ auth()->user()->referral_code ?? 'ERR' }}</a>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal-Karbari">><i Style="padding-left:5px;" class="fas fa-id-badge"></i> تکمیل پروفایل</a>
+                    <a href="#" id="btn-pass"><i Style="padding-left:5px;" class="fas fa-key"></i> تغییر رمز عبور</a>
+                    <a href="https://frahosh.com/contact" id="btn-pass"><i Style="padding-left:5px;" class="fas fa-phone"></i>  تماس با ما </a>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"> خروج</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                           style="display: none;">
@@ -31,7 +33,7 @@
             <img src="{{ asset('assets/img/notification-message-4673.svg') }}" alt="Notifications">
         </div>
         <div class="center">
-            <img src="{{ asset('assets/img/frahosh-logo.png') }}" alt="Frahosh/فراهوش">
+            <a href="https://frahosh.com"><img src="{{ asset('assets/img/frahosh-logo.png') }}" alt="Frahosh/فراهوش"></a>
         </div>
         @yield('subHeader')
     </header>
@@ -39,6 +41,7 @@
     @yield('content')
 
 </div>
+<a href="https://frahosh.com/support" id="link-calltous" title="تماس با ما"><div class="sticky-calltous"><i class="fas fa-question"></i></div></a>
 
 @yield('modalButton')
 
@@ -47,6 +50,16 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
 <script src="{{ asset('assets/js/tabs.js') }}"></script>
 <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+
+
+<!--            ***********    Title top of div     ***************     -->
+<script>
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+</script>
+
 @yield('js')
 </body>
 </html>

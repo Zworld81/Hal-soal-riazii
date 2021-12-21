@@ -170,8 +170,6 @@ header .dropbtn {
 header .dropdown-header {
   position: relative;
   display: inline-block;
-
-
 }
 /* Dropdown Content (Hidden by Default) */
 header .dropdown-content {
@@ -181,6 +179,7 @@ header .dropdown-content {
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  border-radius: 5px;
 
 }
 /* Links inside the dropdown */
@@ -190,7 +189,7 @@ header .dropdown-content a {
   text-decoration: none;
   display: block;
   direction: rtl;
-  border-bottom: 2px solid #3d7bfa;
+  border-bottom: 1px solid #13111175;
 }
 header .dropdown-content a:last-child{
   border-bottom: 0px;
@@ -203,7 +202,7 @@ header .dropdown-content a:first-child{
 }
 
 /* Change color of dropdown links on hover */
-header .dropdown-content a:hover {background-color: var(--main-color-dark);}
+header .dropdown-content a:hover {background-color: var(--main-color-dark); border-right: 4px solid #3d7bfa;}
 
 /* Show the dropdown menu on hover */
 header .dropdown-header:hover .dropdown-content {display: block; }
@@ -333,21 +332,21 @@ header .dropdown-header:hover .dropbtn {background-color:var(--Primary-color-dar
   height: 10px;
   border-radius: 50px;
   background-color:#1b8b44 ;
-  margin-left:20px;
+  margin-left:10px;
 }
 .yellow-circle-dasti{
   width: 10px;
   height: 10px;
   border-radius: 50px;
   background-color:#c3990d ;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 .black-circle-dasti{
   width: 10px;
   height: 10px;
   border-radius: 50px;
   background-color:#292a2c ;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 table{
   background-color: var(--Primary-color-dark);
@@ -1017,7 +1016,21 @@ input.invalid {
       font-size:20px;
       text-align: center;
     }
-
+    .sticky-calltous{
+      position: fixed;
+      padding:15px;
+      background-color: var(--Primary-color-dark);
+      border-radius: 6px;
+      bottom: 20px;
+      right: 20px; 
+      transition: 0.2s ease-in-out;
+    }
+    .sticky-calltous:hover{
+      transform: scale(1.1);
+    }
+    #link-calltous{
+      color: white;
+    }
 @media only screen and (max-width: 1200px){
     .container{
         width: 90%;
@@ -1152,6 +1165,5 @@ input.invalid {
 
 .error-message {
     color: #d12822;
-    float: right;
     direction: rtl;
 }
