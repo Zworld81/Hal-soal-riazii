@@ -224,7 +224,6 @@ header .dropdown-header:hover .dropbtn {background-color:var(--Primary-color-dar
     padding: 14px 16px;
     font-size: 17px;
     width: 50%;
-
   }
 
   .tablink:first-child{
@@ -236,9 +235,6 @@ header .dropdown-header:hover .dropbtn {background-color:var(--Primary-color-dar
 
   .tabcontent {
     color: white;
-    width: 100%;
-    display: grid;
-    grid-template-columns:(2, 1fr);
     gap: 10px;
   }
   .send-main-left{
@@ -250,14 +246,12 @@ header .dropdown-header:hover .dropbtn {background-color:var(--Primary-color-dar
   }
   .send-main-left svg{
     width: 500px;
-
   }
   .send-main{
 
   }
   .send-main-right{
     width: 50%;
-
     display: grid;
     justify-content: center;
     align-content: center;
@@ -268,15 +262,14 @@ header .dropdown-header:hover .dropbtn {background-color:var(--Primary-color-dar
   .recive-main-right{
     margin-top:50px;
     width: 50%;
-   padding: 20px;
+    padding: 20px;
     float: left;
-      margin-left: auto;
+    margin-left: auto;
     margin-right: auto;
 
   }
   .recive-main-left{
     width: 50%;
-
     display: grid;
     justify-content: center;
     align-content: center;
@@ -284,7 +277,6 @@ header .dropdown-header:hover .dropbtn {background-color:var(--Primary-color-dar
   }
   .recive-main-left svg{
     width: 500px;
-
   }
 
 /*.text{
@@ -757,7 +749,8 @@ textarea:focus{
   border:1px solid white;
   box-shadow: 0 0 .2rem #fff,
               0 0 .2rem #fff,
-              0 0 1.5rem var(--Primary-color-dark),
+              0 0 1.
+              5rem var(--Primary-color-dark),
               0 0 0.5rem var(--Primary-color-dark),
               0 0 2rem var(--Primary-color-dark),
               inset 0 0 1rem var(--Primary-color-dark);
@@ -930,31 +923,46 @@ input.invalid {
 }
 /* Style the input fields */
 .modal-forgotpass input {
-  width: 100%;
+  width:100%;
+}
+ input {
+
   color: #FFFFFF;
   background-color: #353c5a;
   border: none;
   padding: 15px 10px;
   margin: 8px 0;
-  width: 100%;
+
   border-radius:5px;
   transition: ease-in-out 0.1s;
   direction: rtl;
   font-size: 15px;
 }
-.modal-forgotpass input[type="tel"]{
+ input[type="tel"]{
   direction: ltr;
 }
-.modal-forgotpass input[type="tel"]::placeholder{
+input[type="file"]{
+  color: #FFFFFF;
+  background-color: var(--main-color-dark);
+  border: none;
+  padding: 0px 0px;
+  margin: 0px 0px;
+  border-radius:5px;
+  transition: ease-in-out 0.1s;
+  direction: ltr;
+  font-size: 15px;
+}
+
+ input[type="tel"]::placeholder{
   text-align: right;
 }
 
-.modal-forgotpass input::placeholder{
+ input::placeholder{
   color: #FFFFFF;
   direction: rtl;
 }
 
-.modal-forgotpass input:focus{
+ input:focus{
   outline:none;
   border:1px solid white;
   box-shadow: 0 0 .2rem #fff,
@@ -964,6 +972,10 @@ input.invalid {
               0 0 2rem var(--Primary-color-dark),
               inset 0 0 1rem var(--Primary-color-dark);
 }
+input[type="file"]:focus{
+  border:none;
+  box-shadow:none;
+  }
 
 /* Mark input boxes that gets an error on validation: */
 input.invalid {
@@ -1031,6 +1043,26 @@ input.invalid {
     #link-calltous{
       color: white;
     }
+  /*             etelaat inputs          */
+  .input-icon{
+    display: flex;
+    justify-content: space-between;
+  }
+  .etelaat-input{
+    width: 90%;
+  }
+  .icon-div{
+    color:white;
+    background-color:var(--Primary-color-dark);
+    cursor: pointer;
+    margin: 8px 0;
+    padding: 13px 15px;
+    border-radius: 5px 0px 0px 5px;
+
+  }
+  .icon-for-input{
+         margin-top:5px;
+  }
 @media only screen and (max-width: 1200px){
     .container{
         width: 90%;

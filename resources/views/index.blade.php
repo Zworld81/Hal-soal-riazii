@@ -611,24 +611,54 @@
                             <input type="submit" id="submit" value="ارسال سوال">
 
 
-<!--                 Modal Takmil etelaat               -->
-<div class="modal fade" id="modal-Karbari" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">تکمیل اطلاعات کاربری</h5>
-        <button type="button" class="btn-close btn-white" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
-        <button type="button" class="btn btn-primary">تکمیل اطلاعات</button>
-      </div>
-    </div>
-  </div>
-</div> 
+                            <!--                 Modal Takmil etelaat               -->
+                            <div class="modal " id="modal-Karbari" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog  modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">تکمیل اطلاعات کاربری</h5>
+                                    <button type="button" class="btn-close btn-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                      <div class="row">
+                                      <p>لطفا اطلاعات حسابتون رو کامل کنید</p>
+                                          <div class="col">
+                                          <div class="input-icon">
+                                            <input class="etelaat-input" type="text" placeholder="نام و نام خانوادگی :"/>
+                                            <div class="icon-div"><i class="fas fa-adjust fa-lg icon-for-input"></i></div>
+                                          </div>
+                                          <div class="input-icon">
+                                            <input class="etelaat-input" type="text" placeholder="نام و نام خانوادگی :"/>
+                                            <div class="icon-div"><i class="fas fa-adjust fa-lg icon-for-input"></i></div>
+                                          </div>
+                                          <div class="input-icon">
+                                            <input class="etelaat-input" type="text" placeholder="نام و نام خانوادگی :"/>
+                                            <div class="icon-div"><i class="fas fa-adjust fa-lg icon-for-input"></i></div>
+                                          </div>
+                                          </div>
+                                          <div class="col">
+                                          <div class="input-icon">
+                                            <input class="etelaat-input" type="text" placeholder="نام و نام خانوادگی :"/>
+                                            <div class="icon-div"><i class="fas fa-adjust fa-lg icon-for-input"></i></div>
+                                          </div>
+                                          <div class="input-icon">
+                                            <input class="etelaat-input" type="text" placeholder="نام و نام خانوادگی :"/>
+                                            <div class="icon-div"><i class="fas fa-adjust fa-lg icon-for-input"></i></div>
+                                          </div>
+                                          <div class="input-icon">
+                                            <input class="etelaat-input" type="text" placeholder="نام و نام خانوادگی :"/>
+                                            <div class="icon-div"><i class="fas fa-adjust fa-lg icon-for-input"></i></div>
+                                          </div>
+                                          </div>
+                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+                                    <button type="button" class="btn btn-primary">تکمیل اطلاعات</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div> 
                         </div>
                     </form>
                 </div>
