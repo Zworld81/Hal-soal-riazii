@@ -581,7 +581,7 @@
                 <input type="submit" id="work-Help" value="آموزش کار با سامانه">
             </div>
             <div class="send-main-right">
-                <div class="col">
+                <div class="coll">
                     <div class="error-content">
                     </div>
                     <form id="send-question" data-send="false" action="{{ route('question.store') }}" method="POST" enctype="multipart/form-data">
@@ -612,8 +612,8 @@
 
 
                             <!--                 Modal Takmil etelaat               -->
-                            <div class="modal " id="modal-Karbari" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog  modal-dialog-centered modal-lg">
+                            <div class="modal modal-takmil-etelaat " id="modal-Karbari" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
                                 <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="staticBackdropLabel">تکمیل اطلاعات کاربری</h5>
@@ -621,35 +621,36 @@
                                 </div>
                                 <div class="modal-body">
                                       <div class="row">
-                                      <p>لطفا اطلاعات حسابتون رو کامل کنید</p>
+                                      <p>لطفا اطلاعات حسابتان را کامل کنید</p>
                                           <div class="col">
                                           <div class="input-icon">
                                             <input class="etelaat-input" type="text" placeholder="نام و نام خانوادگی :"/>
-                                            <div class="icon-div"><i class="fas fa-adjust fa-lg icon-for-input"></i></div>
+                                            <div class="icon-div"><i class="fas fa-user fa-lg icon-for-input"></i></div>
                                           </div>
                                           <div class="input-icon">
-                                            <input class="etelaat-input" type="text" placeholder="نام و نام خانوادگی :"/>
-                                            <div class="icon-div"><i class="fas fa-adjust fa-lg icon-for-input"></i></div>
+                                            <input class="etelaat-input" type="tel" placeholder=": شماره تلفن"/>
+                                            <div class="icon-div"><i class="fas fa-phone fa-lg icon-for-input"></i></div>
                                           </div>
                                           <div class="input-icon">
-                                            <input class="etelaat-input" type="text" placeholder="نام و نام خانوادگی :"/>
-                                            <div class="icon-div"><i class="fas fa-adjust fa-lg icon-for-input"></i></div>
+                                            <input class="etelaat-input" type="date" placeholder=": تاریخ تولد"/>
+                                            <div class="icon-div"><i class="fas fa-calendar fa-lg icon-for-input"></i></div>
                                           </div>
                                           </div>
                                           <div class="col">
                                           <div class="input-icon">
-                                            <input class="etelaat-input" type="text" placeholder="نام و نام خانوادگی :"/>
-                                            <div class="icon-div"><i class="fas fa-adjust fa-lg icon-for-input"></i></div>
+                                            <input class="etelaat-input" type="number" placeholder=": کد ملی"/>
+                                            <div class="icon-div"><i class="fas fa-id-card fa-lg icon-for-input"></i></div>
                                           </div>
                                           <div class="input-icon">
-                                            <input class="etelaat-input" type="text" placeholder="نام و نام خانوادگی :"/>
-                                            <div class="icon-div"><i class="fas fa-adjust fa-lg icon-for-input"></i></div>
+                                            <input class="etelaat-input" type="email" placeholder=": آدرس الکترونیک"/>
+                                            <div class="icon-div"><i class="fas fa-envelope fa-lg icon-for-input"></i></div>
                                           </div>
                                           <div class="input-icon">
-                                            <input class="etelaat-input" type="text" placeholder="نام و نام خانوادگی :"/>
-                                            <div class="icon-div"><i class="fas fa-adjust fa-lg icon-for-input"></i></div>
+                                            <input class="etelaat-input" type="text" placeholder="شهر :"/>
+                                            <div class="icon-div"><i class="fas fa-city fa-lg icon-for-input"></i></div>
                                           </div>
                                           </div>
+                                          <p Style="font-size:16px; margin-top:20px; margin-bottom:-15px;">اطلاعات حساب شما کاملا امن خواهد ماند . ممنون از اعتماد شما ❤️</p>
                                 </div>
                                 </div>
                                 <div class="modal-footer">
@@ -706,6 +707,16 @@
                                                                                                 value="پرداخت با زرین پال">
                 </div>
             </form>
+            <div class="separator">یا دعوت از دوستان</div>
+            <p Style="direction:rtl; text-align:center; margin-top:10px;">با دعوت از دوستان خود 5 ستاره هدیه بگیرید .</p>
+            <div class="invite-code-row">
+            <div class="code-div">C5MSE</div>
+                <div class="code-text"> : کد دعوت</div>
+            </div>
+            <div style="display:flex; align-items:center;  justify-content: center;"><input type="submit"
+                                                                                                id="btn-invite-link"
+                                                                                                value="دعوت از دوستان">
+
         </div>
 
     </div>
