@@ -702,6 +702,13 @@
                         </div>
                     </div>
                 </div>
+                <div class= "takhfif-div"Style="direction:rtl; padding-right:40px; margin-top: 20px; margin-bottom: -20px;">
+                <a Style="cursor:pointer;" onclick="showinputtakhfif()">برای ثبت کد تخفیف <span Style="color:#3d7bfa">اینجا</span> کلیک کنید.</a></br>
+              <div id="div-input-takhfif">  <div class="input-icon" >
+                                            <input name="" class="code-takhfif-input etelaat-input" type="text" placeholder="کد تخفیف"/>
+                                            <div class="icon-div"><i class="fas fa-arrow-left  fa-lg icon-for-input"></i></div>
+                                          </div>
+                    </div></div>
                 <div style="display:flex; align-items:center;  justify-content: center;"><input type="submit"
                                                                                                 id="btn-buy"
                                                                                                 value="پرداخت با زرین پال">

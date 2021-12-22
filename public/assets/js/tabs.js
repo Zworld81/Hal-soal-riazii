@@ -257,3 +257,27 @@ function fixStepIndicator(n) {
   //... and adds the "active" class to the current step:
   x[n].className += " active";
 }
+
+
+//        Code Takhfif display Block 
+//function showinputtakhfif() {
+ // document.getElementById("div-input-takhfif").style.display = "block";
+//}
+//function showinputtakhfif() {
+ // var x = document.getElementsByClassName("code-takhfif-input")
+ // if (x.style.display === "none") {
+ //   x.style.display = "block";
+  //} else {
+  //  x.style.display = "none";
+ // }
+//}
+
+function showinputtakhfif() {
+  var x = document.getElementById("div-input-takhfif")
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+

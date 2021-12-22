@@ -662,7 +662,7 @@ textarea:focus{
   border-radius: 5px;
   width: 40%;
   height: auto;
-
+  margin-top: 40px;
 }
 .modal-kharid-content .modal-header-handi{
   background-color: var(--back-color-dark);
@@ -728,6 +728,9 @@ textarea:focus{
 .matn-gheymat{
     font-size:16px;
     margin: 25px 0px 0px 0px;
+}
+.modal-kharid p{
+    margin-bottom: 0rem; 
 }
 
 .modal-kharid-content input {
@@ -1119,10 +1122,28 @@ input.invalid {
     margin: 8px 0;
     padding: 13px 15px;
     border-radius: 5px 0px 0px 5px;
-
   }
   .icon-for-input{
          margin-top:5px;
+  }
+  .code-takhfif-input{
+    width: 100%;
+  }
+  .takhfif-div .input-icon{
+    justify-content: unset;
+  }
+  .takhfif-div input{
+    border-radius: 0px 5px 5px 0px;
+    width: 45%;
+  }
+  .takhfif-div .icon-div{
+    border-radius: 5px 0px 0px 5px;
+    margin-top: 15px;
+    height: 47px;
+    padding: 10px 15px;
+  }
+  #div-input-takhfif{
+    display: none;
   }
 @media only screen and (max-width: 1200px){
     .container{
