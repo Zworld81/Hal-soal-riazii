@@ -26,6 +26,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/question', QuestionController::class);
     Route::post('/buyStar', [\App\Http\Controllers\PaymentController::class, 'buyStar'])->name('buy.star');
     Route::any('/callBackPayment', [\App\Http\Controllers\PaymentController::class, 'callBackPayment'])->name('call.back.payment');
+    Route::post('/getReferralCode', [\App\Http\Controllers\HandlerController::class, 'getReferralCode'])->name('get.referral.code');
+
 
     Route::group(['middleware' => 'is.teacher'], function () {
         Route::resource('/teacher', TeacherController::class);

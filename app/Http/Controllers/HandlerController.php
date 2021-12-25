@@ -7,6 +7,7 @@ use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Trez\RayganSms\Facades\RayganSms;
 
 class HandlerController extends Controller
 {
@@ -48,6 +49,20 @@ class HandlerController extends Controller
     {
         User::find($request->id)->update([
             'level' => 2
+        ]);
+    }
+
+    public function getReferralCode(): \Illuminate\Http\JsonResponse
+    {
+        $user = \auth()->user();
+        if (!empty($user)){
+            RayganSms::sendMessage($user->phone_number,"کد دعوت شما:\n ". $user->referral_code);
+            return response()->json([
+                'status' => 'success'
+            ]);
+        }
+        return response()->json([
+            'status' => 'error'
         ]);
     }
 }

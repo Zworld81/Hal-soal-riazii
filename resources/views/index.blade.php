@@ -723,7 +723,7 @@
                                             <div class="icon-div"><i class="fas fa-arrow-left  fa-lg icon-for-input"></i></div>
                                           </div>
                     </div></div>
-                <div style="display:flex; align-items:center; justify-content: center;"><input type="submit" id="btn-buy" value="پرداخت با زرین پال">
+                <div style="display:flex; align-items:center; justify-content: center;"><input type="submit" disabled="disabled" id="btn-buy" value="پرداخت با زرین پال">
                 </div>
             </form>
             <div class="separator">یا دعوت از دوستان</div>
@@ -930,6 +930,27 @@
                         }
                     });
                 }
+
+                $('#btn-invite-link').click(function () {
+                    $.ajax({
+                        type: 'POST',
+                        url: '{{ route('get.referral.code') }}',
+                        data: {
+                            "_token": "{{ csrf_token() }}"
+                        },
+                        success: function (data) {
+                            nextPrev(1)
+                            if (data['status'] == 'error') {
+                                alert('ERR')
+                            } else {
+                                alert("S")
+                            }
+                        },
+                        error: function (reject) {
+                            console.log(reject)
+                        }
+                    });
+                })
 
                 $('.check-code').click(function (e) {
                     e.preventDefault();
