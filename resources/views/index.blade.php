@@ -659,7 +659,7 @@
                                 </div>
                                 </div>
                             </div>
-                            </div> 
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -717,12 +717,10 @@
             <div class="separator">یا دعوت از دوستان</div>
             <p Style="direction:rtl; text-align:center; margin-top:10px;">با دعوت از دوستان خود 5 ستاره هدیه بگیرید .</p>
             <div class="invite-code-row">
-            <div class="code-div">C5MSE</div>
+            <div class="code-div">{{ auth()->user()->referral_code ?? 'ERR' }}</div>
                 <div class="code-text"> : کد دعوت</div>
             </div>
-            <div style="display:flex; align-items:center;  justify-content: center;"><input type="submit"
-                                                                                                id="btn-invite-link"
-                                                                                                value="دعوت از دوستان">
+            <div style="display:flex; align-items:center;  justify-content: center;"><input type="submit" id="btn-invite-link" value="دعوت از دوستان">
 
         </div>
 
