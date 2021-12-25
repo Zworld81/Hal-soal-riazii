@@ -144,25 +144,24 @@
                             <li class="menu-title">مدیریت کاربران</li>
 
 							<li>
-								<a href="calendar.html" class=" waves-effect">
+								<a href="{{ route('user.management') }}" class=" waves-effect">
 									<i class="mdi mdi-account-circle-outline"></i>
 									<span>کاربران</span>
 								</a>
 							</li>
 
-							<li>
-								<a href="javascript:%20void(0);" class="has-arrow waves-effect">
-									<i class="mdi mdi-inbox-full"></i>
-									<span>ایمیل</span>
-								</a>
-								<ul class="sub-menu" aria-expanded="false">
-									<li><a href="email-inbox.html">صندوق ورودی</a></li>
-									<li><a href="email-read.html">جزئیات ایمیل</a></li>
-								</ul>
-							</li>
 
 							<li class="menu-title">مدیریت سوالات</li>
-
+                            <li>
+                                <a href="javascript:%20void(0);" class="has-arrow waves-effect">
+                                    <i class="mdi mdi-inbox-full"></i>
+                                    <span>سوالات</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="{{ route('confirm.answer') }}">تایید جواب</a></li>
+                                    <li><a href="email-read.html">جزئیات ایمیل</a></li>
+                                </ul>
+                            </li>
                             <li class="menu-title">مدیریت پرداخت</li>
 
 						</ul>

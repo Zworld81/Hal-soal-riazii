@@ -14,11 +14,15 @@ class AdminController extends Controller
     }
     public function index()
     {
-        $questions = Question::where('status',0)->get();
         $users = User::get();
-        return view('admin.userManagement.index')->with(compact('questions', 'users'));
+        return view('admin.userManagement.index')->with(compact('users'));
     }
 
+    public function confirmAnswer()
+    {
+        $questions = Question::where('status',0)->get();
+        return view('admin.confirmAnswer.index')->with(compact('questions'));
+    }
     public function approved(Request $request)
     {
         $question = Question::find($request->id);

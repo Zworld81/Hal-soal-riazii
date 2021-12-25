@@ -40,9 +40,16 @@ class QuestionController extends Controller
     {
         $data = $request->validated();
 
-        if (auth()->user()->stars < config('custom.per_question_star')){
-            HelperController::flash('error', 'ستاره کافی برای ارسال سوال وجود ندارد.');
-            return redirect()->back();
+        $decStarUser = (int)config('custom.per_question_star');
+        if (!empty($data['need_support'])){
+            $decStarUser += (int)config('custom.per_support_star');
+        }
+
+        if (auth()->user()->stars < $decStarUser){
+            return response()->json([
+                'status' => false,
+                'message' => "ستاره کافی برای ارسال سوال وجود ندارد.ستاره مورد نیاز $decStarUser عدد می باشد"
+            ]);
         }
 
 

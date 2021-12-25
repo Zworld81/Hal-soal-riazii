@@ -40,8 +40,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'is.admin'], function () {
         Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'home'])->name('admin.index');
         Route::get('/userManagement', [\App\Http\Controllers\AdminController::class, 'index'])->name('user.management');
-        Route::post('/approveQuestionByAdmin', [\App\Http\Controllers\AdminController::class, 'approved'])->name('approved.by.admin');
         Route::get('/changeLevel', [HandlerController::class, 'changeLevel'])->name('change.level');
+
+        Route::get('/confirmAnswer', [\App\Http\Controllers\AdminController::class, 'confirmAnswer'])->name('confirm.answer');
+        Route::post('/approveQuestionByAdmin', [\App\Http\Controllers\AdminController::class, 'approved'])->name('approved.by.admin');
 
     });
 });

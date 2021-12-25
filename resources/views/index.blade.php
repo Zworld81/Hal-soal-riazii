@@ -907,13 +907,23 @@
                                     cache: false,
                                     processData: false,
                                     success: function (data) {
-                                        Swal.fire(
-                                            'حله',
-                                            data['message'],
-                                            'success',
-                                        ).then(() => {
-                                            location.reload();
-                                        })
+                                        if (data['status'] === true){
+                                            Swal.fire(
+                                                'حله',
+                                                data['message'],
+                                                'success',
+                                            ).then(() => {
+                                                location.reload();
+                                            })
+                                        }else {
+                                            Swal.fire(
+                                                'خطا',
+                                                data['message'],
+                                                'error',
+                                            ).then(() => {
+                                                location.reload();
+                                            })
+                                        }
                                         $('.error-content').text('')
                                     },
                                     error: function (response) {
