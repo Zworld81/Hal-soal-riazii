@@ -2,6 +2,16 @@
 
 @section('title', 'حل سوالات ریاضی - فراهوش')
 
+@section('css')
+    <style>
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+@endsection
+
 @section('subHeader')
     <div class="right">
         <a href="#" id="btnmodal" class="neon-button">افزایش ستاره</a>
@@ -687,7 +697,11 @@
                     <div class="row-ghaymat">
                         <p class="matn-gheymat">قیمت <span class="star-count"></span> ⭐ : <span
                                 class="amount-star"></span> تومان</p>
-                        <input name="star_count" class="buy-star" type="number" placeholder="⭐ تعداد ستاره">
+                        <input style="display: block" name="star_count" class="buy-star" type="number" min="0" max="50" placeholder="⭐ تعداد ستاره">
+                    </div>
+
+                    <div class="row-ghaymat" style="justify-content: right;padding-right: 20px">
+                        <div class="error-message star-error"></div>
                     </div>
                     <div class="kharid-amn">
                         <div id="zarinpal">
@@ -709,9 +723,7 @@
                                             <div class="icon-div"><i class="fas fa-arrow-left  fa-lg icon-for-input"></i></div>
                                           </div>
                     </div></div>
-                <div style="display:flex; align-items:center;  justify-content: center;"><input type="submit"
-                                                                                                id="btn-buy"
-                                                                                                value="پرداخت با زرین پال">
+                <div style="display:flex; align-items:center; justify-content: center;"><input type="submit" id="btn-buy" value="پرداخت با زرین پال">
                 </div>
             </form>
             <div class="separator">یا دعوت از دوستان</div>
@@ -860,12 +872,35 @@
                 }
 
 
-                $('.buy-star').keyup(function () {
+                $('.buy-star').on('change keyup keydown',function (){
+                    //some validation
+                    if (Math.sign($('.buy-star').val()) == -1 || !Number.isInteger(parseInt($('.buy-star').val()) )){
+                        $('.buy-star').val('');
+                    }
+                    limitText(this,2);
+                    if ($('.buy-star').val() <= 0 || $('.buy-star').val() > 50){
+                        $('.star-error').text('مقدار وارد شده باید بین 1 الی 50 باشد.');
+                        $('#btn-buy').attr("disabled", true);
+                    }else {
+                        $('.star-error').text('');
+                        $('#btn-buy').attr("disabled", false);
+                    }
+
                     let starPrice = '{{ config('custom.star_price') }}'
 
                     $('.star-count').text($(this).val());
                     $('.amount-star').text($(this).val() * starPrice);
                 });
+                function limitText(field, maxChar){
+                    var ref = $(field),
+                        val = ref.val();
+                    if ( val.length >= maxChar ){
+                        ref.val(function() {
+                            console.log(val.substr(0, maxChar))
+                            return val.substr(0, maxChar);
+                        });
+                    }
+                }
 
                 $('.register-phone-number').click(function () {
                     sendVerificationCode($('#register-phone-number-input').val())
