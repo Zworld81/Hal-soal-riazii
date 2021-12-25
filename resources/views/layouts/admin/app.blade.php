@@ -159,7 +159,7 @@
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
                                     <li><a href="{{ route('confirm.answer') }}">تایید جواب</a></li>
-                                    <li><a href="email-read.html">جزئیات ایمیل</a></li>
+                                    <li><a href="#">تایید سوال</a></li>
                                 </ul>
                             </li>
                             <li class="menu-title">مدیریت پرداخت</li>

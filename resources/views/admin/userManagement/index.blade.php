@@ -18,6 +18,7 @@
                             <th>سطح</th>
                             <th>سوال ها</th>
                             <th>پاسخ ها</th>
+                            <th>ستاره</th>
                             <th>کد ملی</th>
                             <th>ایمیل</th>
                             <th>شهر</th>
@@ -35,6 +36,7 @@
                                 <td>{{  \App\Http\Controllers\HelperController::getCurrentLevel($user->level) ?? 'ERR' }}</td>
                                 <td>{{ \App\Models\Question::where('user_id', $user->id)->count() ?? '0' }}</td>
                                 <td>{{ \App\Models\Question::where('teacher_id', $user->id)->count() ?? '0' }}</td>
+                                <td>{{ $user->stars ?? '' }}</td>
                                 <td>{{ $user->natural_code ?? '' }}</td>
                                 <td>{{ $user->email ?? '' }}</td>
                                 <td>{{ $user->city ?? '' }}</td>
