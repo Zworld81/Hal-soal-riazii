@@ -45,5 +45,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/confirmAnswer', [\App\Http\Controllers\AdminController::class, 'confirmAnswer'])->name('confirm.answer');
         Route::get('/approveQuestionByAdmin', [\App\Http\Controllers\AdminController::class, 'approved'])->name('approved.by.admin');
 
+        Route::get('/payment', [\App\Http\Controllers\AdminController::class, 'payment'])->name('payment.index');
+        Route::get('/payToUser', [\App\Http\Controllers\AdminController::class, 'payToUser'])->name('pay.to.user.index');
+
+        Route::get('/payedConfirm', [\App\Http\Controllers\AdminController::class, 'payedConfirm'])->name('payed.confirm.index');
+
     });
 });
