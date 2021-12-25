@@ -208,9 +208,9 @@
     }
 
 
-    $('.register-phone-number').click(function () {
-        sendVerificationCodeFP($('#register-phone-number-input').val())
-    });
+    // $('.register-phone-number').click(function () {
+    //     sendVerificationCodeFP($('#register-phone-number-input').val())
+    // });
     function sendVerificationCodeFP(phoneNumber) {
         $.ajax({
             type: 'POST',
