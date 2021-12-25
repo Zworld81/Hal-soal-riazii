@@ -8,11 +8,15 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    public function home()
+    {
+        return view('admin');
+    }
     public function index()
     {
         $questions = Question::where('status',0)->get();
         $users = User::get();
-        return view('admin')->with(compact('questions', 'users'));
+        return view('admin.userManagement.index')->with(compact('questions', 'users'));
     }
 
     public function approved(Request $request)

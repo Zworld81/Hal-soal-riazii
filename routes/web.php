@@ -38,8 +38,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::group(['middleware' => 'is.admin'], function () {
-        Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index']);
+        Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'home'])->name('admin.index');
+        Route::get('/userManagement', [\App\Http\Controllers\AdminController::class, 'index'])->name('user.management');
         Route::post('/approveQuestionByAdmin', [\App\Http\Controllers\AdminController::class, 'approved'])->name('approved.by.admin');
-        Route::post('/promptToTeacher', [HandlerController::class, 'promptToTeacher'])->name('prompt.to.teacher');
+        Route::get('/changeLevel', [HandlerController::class, 'changeLevel'])->name('change.level');
+
     });
 });

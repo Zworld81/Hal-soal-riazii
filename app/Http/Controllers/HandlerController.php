@@ -45,11 +45,13 @@ class HandlerController extends Controller
 
     }
 
-    public function promptToTeacher(Request $request)
+    public function changeLevel(Request $request)
     {
-        User::find($request->id)->update([
-            'level' => 2
+        User::find($request->user)->update([
+            'level' => $request->level
         ]);
+        HelperController::flash('success', 'عملیات با موفقیت انجام شد.');
+        return redirect()->back();
     }
 
     public function getReferralCode(): \Illuminate\Http\JsonResponse
