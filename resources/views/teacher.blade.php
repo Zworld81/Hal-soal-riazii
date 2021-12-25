@@ -66,7 +66,7 @@ color: rgb(93, 211, 46);
                         <tr ALIGN="CENTER">
                             <td>{{ \Morilog\Jalali\Jalalian::fromDateTime($myQuestion->created_at)->format('Y/m/d') ?? 'ERR' }}</td>
                             <td>{!! \App\Http\Controllers\HelperController::getCurrentStatus($myQuestion->status) ?? 'ERR' !!}</td>
-                            <td><a href="{{ url('uploads/file/'.$myQuestion->file) ?? '' }}"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                            <td><a href="{{ url('uploads/files/'.$myQuestion->file) ?? '' }}"><i class="fa fa-download" aria-hidden="true"></i></a></td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -94,7 +94,7 @@ color: rgb(93, 211, 46);
                         <tr ALIGN="CENTER">
                             <td>{{ \Morilog\Jalali\Jalalian::fromDateTime($question->created_at)->format('Y/m/d') ?? 'ERR' }}</td>
                             <td>{{ \App\Http\Controllers\HelperController::getClass($question->class) ?? 'ERR' }}</td>
-                            <td><a href="{{ url($question->file ?? "") }}"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                            <td><a href="{{ url('uploads/files/'.$question->file ?? "") }}"><i class="fa fa-download" aria-hidden="true"></i></a></td>
                             <td><i class="fa fa-check fa-check-class apply-soal" data-question-id="{{ $question->id ?? 'ERR' }}" aria-hidden="true"></i></td>
                         </tr>
                     @endforeach

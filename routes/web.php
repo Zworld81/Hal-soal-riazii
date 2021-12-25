@@ -43,7 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/changeLevel', [HandlerController::class, 'changeLevel'])->name('change.level');
 
         Route::get('/confirmAnswer', [\App\Http\Controllers\AdminController::class, 'confirmAnswer'])->name('confirm.answer');
-        Route::post('/approveQuestionByAdmin', [\App\Http\Controllers\AdminController::class, 'approved'])->name('approved.by.admin');
+        Route::get('/approveQuestionByAdmin', [\App\Http\Controllers\AdminController::class, 'approved'])->name('approved.by.admin');
 
     });
 });

@@ -48,7 +48,7 @@ class AnswerController extends Controller
 
         Teacher::where('teacher_id', $user->id)->delete();
         $question->update([
-            'status' => 1
+            'status' => 0
         ]);
         Answer::create([
            'file' => $file,

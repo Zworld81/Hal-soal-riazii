@@ -22,7 +22,7 @@ class CreateQuestionsTable extends Migration
             $table->string('response_file')->nullable();
             $table->longText('description');
             $table->boolean('need_support')->nullable();
-            $table->integer('status')->default(0); //0 in progress | 1 completed | 2 ignored | 3 accepted
+            $table->integer('status')->default(3); //0 in progress | 1 completed | 2 ignored | 3 wait for teacher
             $table->timestamps();
         });
     }

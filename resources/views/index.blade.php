@@ -329,7 +329,7 @@
                             <td>{{ \Morilog\Jalali\Jalalian::fromDateTime($question->created_at)->format('Y/m/d') ?? 'ERR' }}</td>
                             <td>{!! \App\Http\Controllers\HelperController::getCurrentStatus($question->status) ?? 'ERR' !!}</td>
                             <td>
-                                <a href="@if(!empty($question->answer)){{ url('uploads/answer/'.$question->answer->file) }}@endif"><i
+                                <a href="@if(!empty($question->answer) && $question->status == 1){{ url('uploads/answer/'.$question->answer->file) }}@endif"><i
                                         class="fa fa-download" aria-hidden="true"></i></a></td>
                         </tr>
                     @endforeach

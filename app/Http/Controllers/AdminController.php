@@ -25,13 +25,10 @@ class AdminController extends Controller
     }
     public function approved(Request $request)
     {
-        $question = Question::find($request->id);
-        $question->update(['status' => 3]);
+        $question = Question::find($request->question);
+        $question->update(['status' => 1]);
 
-        return response()->json([
-            'title' => 'حله',
-            'content' => '🙂 سوال مورد نظر تایید شد ',
-            'status' => 'success'
-        ]);
+        HelperController::flash('success', 'سوال مورد نظر تایید شد🙂 ');
+        return redirect()->route('confirm.answer');
     }
 }

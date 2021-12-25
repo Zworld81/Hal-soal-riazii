@@ -16,7 +16,8 @@
                             <th>تاریخ</th>
                             <th>وضعیت</th>
                             <th>پایه</th>
-                            <th>دانلود</th>
+                            <th>دانلود سوال</th>
+                            <th>دانلود جواب</th>
                             <th>انتخاب</th>
                         </tr>
                         </thead>
@@ -28,10 +29,11 @@
                                 <td>{{ \Morilog\Jalali\Jalalian::fromDateTime($question->created_at)->format('Y/m/d') ?? 'ERR' }}</td>
                                 <td>{!! \App\Http\Controllers\HelperController::getCurrentStatus($question->status) ?? 'ERR' !!}</td>
                                 <td>{{ \App\Http\Controllers\HelperController::getClass($question->class) ?? 'ERR' }}</td>
-                                <td><a href="{{ url($question->file ?? "") }}"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                <td><a href="{{ url('uploads/files/'.$question->file ?? "") }}"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                <td><a href="{{ url('uploads/answer/'.$question->answer->file ?? "") }}"><i class="fa fa-download" aria-hidden="true"></i></a></td>
                                 <td>
                                     <a class="btn btn-sm btn-clean btn-icon confirm"
-                                       href="{{ route('change.level', ['question' => $question->id]) }}" title="ادمین">
+                                       href="{{ route('approved.by.admin', ['question' => $question->id]) }}" title="ادمین">
                                         <i class="bx bx-check mr-1" style="color: gray"></i></a>
                                 </td>
                             </tr>
