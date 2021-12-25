@@ -40,21 +40,24 @@ class QuestionController extends Controller
     {
         $data = $request->validated();
 
-//        if (auth()->user()->stars < config('custom.per_question_star')){
-//            HelperController::flash('error', 'ستاره کافی برای ارسال سوال وجود ندارد.');
-//            return redirect()->back();
-//        }
+        if (auth()->user()->stars < config('custom.per_question_star')){
+            HelperController::flash('error', 'ستاره کافی برای ارسال سوال وجود ندارد.');
+            return redirect()->back();
+        }
 
 
         $file = HelperController::uploadFile($data['file'],'uploads/files');
         $data['file'] = $file;
 
-        if(isset($data['need_support']))
+        $starNeeded = (int)config('custom.per_question_star');
+        if(isset($data['need_support'])){
             $data['need_support'] = true;
+            $starNeeded +=  (int)config('custom.per_support_star');
+        }
 
         $data['user_id'] = auth()->user()->id;
 
-        Auth::user()->decrement('stars', (int)config('custom.per_question_star'));
+        Auth::user()->decrement('stars', $starNeeded);
 
         $question = Question::create($data);
 
