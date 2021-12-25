@@ -11,11 +11,13 @@ class HelperController extends Controller
     /**
      * @param $type
      * @param $title
+     * @param string $text
      */
-    public static function flash($type, $title)
+    public static function flash($type, $title, $text = '')
     {
         session()->flash('type', $type);
         session()->flash('title', $title);
+        session()->flash('text', $text);
     }
 
     /**

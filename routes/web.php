@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/buyStar', [\App\Http\Controllers\PaymentController::class, 'buyStar'])->name('buy.star');
     Route::any('/callBackPayment', [\App\Http\Controllers\PaymentController::class, 'callBackPayment'])->name('call.back.payment');
     Route::post('/getReferralCode', [\App\Http\Controllers\HandlerController::class, 'getReferralCode'])->name('get.referral.code');
+    Route::post('/updateProfile', [\App\Http\Controllers\HandlerController::class, 'updateProfile'])->name('update.profile');
 
 
     Route::group(['middleware' => 'is.teacher'], function () {

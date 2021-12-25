@@ -594,7 +594,8 @@
                 <div class="coll">
                     <div class="error-content">
                     </div>
-                    <form id="send-question" data-send="false" action="{{ route('question.store') }}" method="POST" enctype="multipart/form-data">
+                    <form id="send-question" data-send="false" action="{{ route('question.store') }}" method="POST"
+                          enctype="multipart/form-data">
                         @csrf
                         <p class="send-info1">: پایه و عکس سوالتون رو انتخاب کنید</p>
                         <div class="row1">
@@ -622,53 +623,90 @@
 
 
                             <!--                 Modal Takmil etelaat               -->
-                            <div class="modal modal-takmil-etelaat " id="modal-Karbari" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
-                                <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel">تکمیل اطلاعات کاربری</h5>
-                                    <button type="button" class="btn-close btn-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div class="modal modal-takmil-etelaat " id="modal-Karbari" data-bs-backdrop="static"
+                                 data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">تکمیل اطلاعات کاربری</h5>
+                                            <button type="button" class="btn-close btn-white" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                        </div>
+                                        <form action="">
+
+                                        </form>
+                                        <form action="{{ route('update.profile') }}" method="POST">
+                                            @csrf
+                                            <div class="modal-body">
+
+
+                                                <div class="row">
+                                                    <p>لطفا اطلاعات حسابتان را کامل کنید</p>
+                                                    <div class="col">
+                                                        <div class="input-icon">
+                                                            <input class="etelaat-input" name="name" type="text"
+                                                                   value="{{ auth()->user()->name ?? ''  }}"
+                                                                   placeholder="نام و نام خانوادگی :"/>
+                                                            <div class="icon-div"><i
+                                                                    class="fas fa-user fa-lg icon-for-input"></i></div>
+                                                        </div>
+                                                        <div class="input-icon">
+                                                            <input class="etelaat-input" disabled="disabled"
+                                                                   value="{{ auth()->user()->phone_number ?? ''  }}"
+                                                                   type="tel" placeholder=": شماره تلفن"/>
+                                                            <div class="icon-div"><i
+                                                                    class="fas fa-phone fa-lg icon-for-input"></i></div>
+                                                        </div>
+                                                        <div class="input-icon">
+                                                            <input class="etelaat-input" type="date" name="birthday" value="{{ auth()->user()->birthday ?? ''  }}"
+                                                                   placeholder=": تاریخ تولد"/>
+
+
+                                                            <div class="icon-div"><i
+                                                                    class="fas fa-calendar fa-lg icon-for-input"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="input-icon">
+                                                            <input class="etelaat-input" type="number" name="natural_code"
+                                                                   value="{{ auth()->user()->natural_code ?? ''  }}"
+                                                                   placeholder=": کد ملی"/>
+                                                            <div class="icon-div"><i
+                                                                    class="fas fa-id-card fa-lg icon-for-input"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="input-icon">
+                                                            <input class="etelaat-input" type="email" name="email"
+                                                                   value="{{ auth()->user()->email ?? ''  }}"
+                                                                   placeholder=": آدرس الکترونیک"/>
+                                                            <div class="icon-div"><i
+                                                                    class="fas fa-envelope fa-lg icon-for-input"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="input-icon">
+                                                            <input class="etelaat-input" type="text" name="city"
+                                                                   value="{{ auth()->user()->city ?? ''  }}"
+                                                                   placeholder="شهر :"/>
+                                                            <div class="icon-div"><i
+                                                                    class="fas fa-city fa-lg icon-for-input"></i></div>
+                                                        </div>
+                                                    </div>
+                                                    <p Style="font-size:16px; margin-top:20px; margin-bottom:-15px;">
+                                                        اطلاعات حساب شما کاملا امن خواهد ماند . ممنون از اعتماد شما
+                                                        ❤️</p>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    بستن
+                                                </button>
+                                                <button type="submit" class="btn btn-primary">تکمیل اطلاعات</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
-                                <div class="modal-body">
-                                      <div class="row">
-                                      <p>لطفا اطلاعات حسابتان را کامل کنید</p>
-                                          <div class="col">
-                                          <div class="input-icon">
-                                            <input class="etelaat-input" type="text" placeholder="نام و نام خانوادگی :"/>
-                                            <div class="icon-div"><i class="fas fa-user fa-lg icon-for-input"></i></div>
-                                          </div>
-                                          <div class="input-icon">
-                                            <input class="etelaat-input" type="tel" placeholder=": شماره تلفن"/>
-                                            <div class="icon-div"><i class="fas fa-phone fa-lg icon-for-input"></i></div>
-                                          </div>
-                                          <div class="input-icon">
-                                            <input class="etelaat-input" type="date" placeholder=": تاریخ تولد"/>
-                                            <div class="icon-div"><i class="fas fa-calendar fa-lg icon-for-input"></i></div>
-                                          </div>
-                                          </div>
-                                          <div class="col">
-                                          <div class="input-icon">
-                                            <input class="etelaat-input" type="number" placeholder=": کد ملی"/>
-                                            <div class="icon-div"><i class="fas fa-id-card fa-lg icon-for-input"></i></div>
-                                          </div>
-                                          <div class="input-icon">
-                                            <input class="etelaat-input" type="email" placeholder=": آدرس الکترونیک"/>
-                                            <div class="icon-div"><i class="fas fa-envelope fa-lg icon-for-input"></i></div>
-                                          </div>
-                                          <div class="input-icon">
-                                            <input class="etelaat-input" type="text" placeholder="شهر :"/>
-                                            <div class="icon-div"><i class="fas fa-city fa-lg icon-for-input"></i></div>
-                                          </div>
-                                          </div>
-                                          <p Style="font-size:16px; margin-top:20px; margin-bottom:-15px;">اطلاعات حساب شما کاملا امن خواهد ماند . ممنون از اعتماد شما ❤️</p>
-                                </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
-                                    <button type="button" class="btn btn-primary">تکمیل اطلاعات</button>
-                                </div>
-                                </div>
-                            </div>
                             </div>
                         </div>
                     </form>
@@ -697,7 +735,8 @@
                     <div class="row-ghaymat">
                         <p class="matn-gheymat">قیمت <span class="star-count"></span> ⭐ : <span
                                 class="amount-star"></span> تومان</p>
-                        <input style="display: block" name="star_count" class="buy-star" type="number" min="0" max="50" placeholder="⭐ تعداد ستاره">
+                        <input style="display: block" name="star_count" class="buy-star" type="number" min="0" max="50"
+                               placeholder="⭐ تعداد ستاره">
                     </div>
 
                     <div class="row-ghaymat" style="justify-content: right;padding-right: 20px">
@@ -716,81 +755,91 @@
                         </div>
                     </div>
                 </div>
-                <div class= "takhfif-div"Style="direction:rtl; padding-right:40px; margin-top: 20px; margin-bottom: -20px;">
-                <a Style="cursor:pointer;" onclick="showinputtakhfif()">برای ثبت کد تخفیف <span Style="color:#3d7bfa">اینجا</span> کلیک کنید.</a></br>
-              <div id="div-input-takhfif">  <div class="input-icon" >
-                                            <input name="" class="code-takhfif-input etelaat-input" type="text" placeholder="کد تخفیف"/>
-                                            <div class="icon-div"><i class="fas fa-arrow-left  fa-lg icon-for-input"></i></div>
-                                          </div>
-                    </div></div>
-                <div style="display:flex; align-items:center; justify-content: center;"><input type="submit" disabled="disabled" id="btn-buy" value="پرداخت با زرین پال">
+                <div class="takhfif-div"
+                     Style="direction:rtl; padding-right:40px; margin-top: 20px; margin-bottom: -20px;">
+                    <a Style="cursor:pointer;" onclick="showinputtakhfif()">برای ثبت کد تخفیف <span
+                            Style="color:#3d7bfa">اینجا</span> کلیک کنید.</a></br>
+                    <div id="div-input-takhfif">
+                        <div class="input-icon">
+                            <input name="" class="code-takhfif-input etelaat-input" type="text" placeholder="کد تخفیف"/>
+                            <div class="icon-div"><i class="fas fa-arrow-left  fa-lg icon-for-input"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display:flex; align-items:center; justify-content: center;"><input type="submit"
+                                                                                               disabled="disabled"
+                                                                                               id="btn-buy"
+                                                                                               value="پرداخت با زرین پال">
                 </div>
             </form>
             <div class="separator">یا دعوت از دوستان</div>
-            <p Style="direction:rtl; text-align:center; margin-top:10px;">با دعوت از دوستان خود 5 ستاره هدیه بگیرید .</p>
+            <p Style="direction:rtl; text-align:center; margin-top:10px;">با دعوت از دوستان خود 5 ستاره هدیه بگیرید
+                .</p>
             <div class="invite-code-row">
-            <div class="code-div">{{ auth()->user()->referral_code ?? 'ERR' }}</div>
+                <div class="code-div">{{ auth()->user()->referral_code ?? 'ERR' }}</div>
                 <div class="code-text"> : کد دعوت</div>
             </div>
-            <div style="display:flex; align-items:center;  justify-content: center;"><input type="submit" id="btn-invite-link" value="دعوت از دوستان">
+            <div style="display:flex; align-items:center;  justify-content: center;"><input type="submit"
+                                                                                            id="btn-invite-link"
+                                                                                            value="دعوت از دوستان">
 
-        </div>
-
-    </div>
-
-    <!-- modal forgot password -->
-
-    <div id="modal-forgotpass" class="modal-forgotpass">
-        <!-- Modal content -->
-        <div class="modal-forgotpass-content">
-            <div class="modal-header-handi">
-                <span class="close2">&times;</span>
-                <p class="modal-text-header">تغییر رمز عبور</p>
             </div>
-            <form id="forgot-password" action="">
 
-                <!-- One "tab" for each step in the form: -->
-                <div class="tab">شماره تلفن که قبلا ثبت نام کردید رو وارد کنید :
-                    <p><input id="register-phone-number-input" placeholder="شماره تلفن ..."
-                              oninput="this.className = ''"></p>
-                    <button type="button" id="nextBtn" class="register-phone-number">تایید</button>
-                </div>
-
-                <div class="tab">کد ارسال شده به شماره تلفن رو وارد کنید :
-                    <p><input id="check-code-input" placeholder="کد ارسالی ... " oninput="this.className = ''">
-                        <span class="msg-error" style="font-size: 13px; color: red"></span>
-                    </p>
-                    <button type="button" id="nextBtn" class="check-code">تایید</button>
-                    <button type="button" id="prevBtn" class="backtotel" onclick="nextPrev(-1)">تغییر شماره تلفن
-                    </button>
-                </div>
-
-                <div class="tab"> رمز عبور جدید بسازید :
-                    <p><input placeholder="رمز عبور جدید" id="pw-field" oninput="this.className = ''"></p>
-                    <button type="button" id="nextBtn" class="new-pw" onclick="nextPrev(1)">تایید</button>
-                </div>
-                <div class="tab">
-                    <i class="fa fa-check fa-check-class" style="font-size:110px;" aria-hidden="true"></i>
-                    <p class="successfull4"> رمز عبور شما با موفقیت تغییر کرد.</p>
-                    <button type="button" id="nextBtn" class="test2" onclick="nextPrev(1)">تایید</button>
-                </div>
-                <div>
-                </div>
-
-                <!-- Circles which indicates the steps of the form: -->
-                <div style="text-align:center;margin-top:40px;">
-                    <span class="step"></span>
-                    <span class="step"></span>
-                    <span class="step"></span>
-                    <span class="step"></span>
-                </div>
-
-            </form>
         </div>
-    </div>
+
+        <!-- modal forgot password -->
+
+        <div id="modal-forgotpass" class="modal-forgotpass">
+            <!-- Modal content -->
+            <div class="modal-forgotpass-content">
+                <div class="modal-header-handi">
+                    <span class="close2">&times;</span>
+                    <p class="modal-text-header">تغییر رمز عبور</p>
+                </div>
+                <form id="forgot-password" action="">
+
+                    <!-- One "tab" for each step in the form: -->
+                    <div class="tab">شماره تلفن که قبلا ثبت نام کردید رو وارد کنید :
+                        <p><input id="register-phone-number-input" placeholder="شماره تلفن ..."
+                                  oninput="this.className = ''"></p>
+                        <button type="button" id="nextBtn" class="register-phone-number">تایید</button>
+                    </div>
+
+                    <div class="tab">کد ارسال شده به شماره تلفن رو وارد کنید :
+                        <p><input id="check-code-input" placeholder="کد ارسالی ... " oninput="this.className = ''">
+                            <span class="msg-error" style="font-size: 13px; color: red"></span>
+                        </p>
+                        <button type="button" id="nextBtn" class="check-code">تایید</button>
+                        <button type="button" id="prevBtn" class="backtotel" onclick="nextPrev(-1)">تغییر شماره تلفن
+                        </button>
+                    </div>
+
+                    <div class="tab"> رمز عبور جدید بسازید :
+                        <p><input placeholder="رمز عبور جدید" id="pw-field" oninput="this.className = ''"></p>
+                        <button type="button" id="nextBtn" class="new-pw" onclick="nextPrev(1)">تایید</button>
+                    </div>
+                    <div class="tab">
+                        <i class="fa fa-check fa-check-class" style="font-size:110px;" aria-hidden="true"></i>
+                        <p class="successfull4"> رمز عبور شما با موفقیت تغییر کرد.</p>
+                        <button type="button" id="nextBtn" class="test2" onclick="nextPrev(1)">تایید</button>
+                    </div>
+                    <div>
+                    </div>
+
+                    <!-- Circles which indicates the steps of the form: -->
+                    <div style="text-align:center;margin-top:40px;">
+                        <span class="step"></span>
+                        <span class="step"></span>
+                        <span class="step"></span>
+                        <span class="step"></span>
+                    </div>
+
+                </form>
+            </div>
+        </div>
         @endsection
 
-@section('js')
+        @section('js')
             <script>
                 @if(!empty(request()->pay) && request()->pay == 'success')
                 // Success payment callback
@@ -811,8 +860,17 @@
                     confirmButtonText: 'تایید',
                     footer: '<a  class="footer-blue" href="tel:02170703"> تماس با پشتیبانی : 02170703</a>'
                 })
-
                 @endif
+
+                @if(session()->has('type'))
+                    Swal.fire({
+                        icon: '{{ session()->get('type') }}',
+                        title: '{{ session()->get('title') }}',
+                        text: '{{ session()->get('text') }}',
+                        confirmButtonText: 'تایید',
+                    })
+                @endif
+
                 let submit = document.querySelectorAll('#submit');
                 for (var i = 0; i < submit.length; i++) {
                     submit[i].addEventListener('click', function (e) {
@@ -820,12 +878,12 @@
                         let perQuestionStar = '{{ config('custom.per_question_star') }}';
                         let perSupportStar = '{{ config('custom.per_support_star') }}';
                         let starLose = perQuestionStar
-                        if ($('#need-support').is(':checked')){
-                             starLose = parseInt(perQuestionStar) + parseInt(perSupportStar);
+                        if ($('#need-support').is(':checked')) {
+                            starLose = parseInt(perQuestionStar) + parseInt(perSupportStar);
                         }
                         Swal.fire({
                             title: 'آیا اطمینان دارید ؟',
-                            text: "در صورت ادامه دادن تعداد "+ starLose +" از شما کسر خواهد شد",
+                            text: "در صورت ادامه دادن تعداد " + starLose + " از شما کسر خواهد شد",
                             icon: 'question',
                             showCancelButton: true,
                             confirmButtonColor: '#3085d6',
@@ -847,8 +905,8 @@
                                     dataType: 'json',
                                     contentType: false,
                                     cache: false,
-                                    processData:false,
-                                    success: function(data){
+                                    processData: false,
+                                    success: function (data) {
                                         Swal.fire(
                                             'حله',
                                             data['message'],
@@ -858,10 +916,10 @@
                                         })
                                         $('.error-content').text('')
                                     },
-                                    error:function (response){
+                                    error: function (response) {
                                         $('.error-content').html('');
-                                        $.each(response.responseJSON.errors,function(field_name,error){
-                                            $('.error-content').append('<p class="error-message">'+error+'</p> <br>');
+                                        $.each(response.responseJSON.errors, function (field_name, error) {
+                                            $('.error-content').append('<p class="error-message">' + error + '</p> <br>');
                                         })
                                     }
                                 });
@@ -872,16 +930,16 @@
                 }
 
 
-                $('.buy-star').on('change keyup keydown',function (){
+                $('.buy-star').on('change keyup keydown', function () {
                     //some validation
-                    if (Math.sign($('.buy-star').val()) == -1 || !Number.isInteger(parseInt($('.buy-star').val()) )){
+                    if (Math.sign($('.buy-star').val()) == -1 || !Number.isInteger(parseInt($('.buy-star').val()))) {
                         $('.buy-star').val('');
                     }
-                    limitText(this,2);
-                    if ($('.buy-star').val() <= 0 || $('.buy-star').val() > 50){
+                    limitText(this, 2);
+                    if ($('.buy-star').val() <= 0 || $('.buy-star').val() > 50) {
                         $('.star-error').text('مقدار وارد شده باید بین 1 الی 50 باشد.');
                         $('#btn-buy').attr("disabled", true);
-                    }else {
+                    } else {
                         $('.star-error').text('');
                         $('#btn-buy').attr("disabled", false);
                     }
@@ -891,11 +949,12 @@
                     $('.star-count').text($(this).val());
                     $('.amount-star').text($(this).val() * starPrice);
                 });
-                function limitText(field, maxChar){
+
+                function limitText(field, maxChar) {
                     var ref = $(field),
                         val = ref.val();
-                    if ( val.length >= maxChar ){
-                        ref.val(function() {
+                    if (val.length >= maxChar) {
+                        ref.val(function () {
                             console.log(val.substr(0, maxChar))
                             return val.substr(0, maxChar);
                         });

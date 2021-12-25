@@ -17,6 +17,10 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('phone_number')->unique();
+            $table->string('natural_code')->nullable();
+            $table->string('email')->nullable();
+            $table->string('city')->nullable();
+            $table->string('birthday')->nullable();
             $table->string('password');
             $table->integer('stars')->default(config('custom.default_stars'));
             $table->integer('level')->default(1); //0 =>super admin| 1 =>user| 2 =>teacher

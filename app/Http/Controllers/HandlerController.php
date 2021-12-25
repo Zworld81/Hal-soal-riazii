@@ -65,4 +65,12 @@ class HandlerController extends Controller
             'status' => 'error'
         ]);
     }
+
+    public function updateProfile(Request $request)
+    {
+        $data = $request->all();
+        Auth::user()->update($data);
+        HelperController::flash('success', 'موفقیت آمیز', 'اطلاعات کاربری شما با موفقیت تغییر کرد');
+        return redirect()->back();
+    }
 }
