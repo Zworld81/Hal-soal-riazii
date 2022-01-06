@@ -18,7 +18,7 @@
     <link href="{{ asset('assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css">
 
     <!-- Sweet Alert-->
-    <link href="assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css">
 
 
     <!-- jquery.vectormap css -->
@@ -54,7 +54,7 @@
 
                             <div class="dropdown d-inline-block">
                                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-2.jpg" alt="Header Avatar">
+                                    <img class="rounded-circle header-profile-user" src="/assets/images/users/avatar-2.jpg" alt="Header Avatar">
                                     <span class="d-none d-xl-inline-block ml-1">{{ auth()->user()->name ?? '' }}</span>
                                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                                 </button>
@@ -80,19 +80,19 @@
                             <div class="navbar-brand-box">
                                 <a href="index.html" class="logo logo-dark">
                                     <span class="logo-sm">
-                                        <img src="assets/images/logo-sm.png" alt="" height="20">
+                                        <img src="/assets/images/logo-sm.png" alt="" height="20">
                                     </span>
                                     <span class="logo-lg">
-                                        <img src="assets/images/logo-dark.png" alt="" height="17">
+                                        <img src="/assets/images/logo-dark.png" alt="" height="17">
                                     </span>
                                 </a>
 
                                 <a href="index.html" class="logo logo-light">
                                     <span class="logo-sm">
-                                        <img src="assets/images/logo-sm.png" alt="" height="20">
+                                        <img src="/assets/images/logo-sm.png" alt="" height="20">
                                     </span>
                                     <span class="logo-lg">
-                                        <img src="assets/images/logo-light.png" alt="" height="19">
+                                        <img src="/assets/images/logo-light.png" alt="" height="19">
                                     </span>
                                 </a>
                             </div>
@@ -114,7 +114,7 @@
 
 					<div class="user-wid text-center py-4">
 						<div class="user-img">
-							<img src="assets/images/users/avatar-2.jpg" alt="" class="avatar-md mx-auto rounded-circle">
+							<img src="/assets/images/users/avatar-2.jpg" alt="" class="avatar-md mx-auto rounded-circle">
 						</div>
 
 						<div class="mt-3">
@@ -249,7 +249,7 @@
 
             <div class="p-4">
                 <div class="mb-2">
-                    <img src="assets/images/layouts/layout-1.jpg" class="img-fluid img-thumbnail" alt="">
+                    <img src="/assets/images/layouts/layout-1.jpg" class="img-fluid img-thumbnail" alt="">
                 </div>
                 <div class="custom-control custom-switch mb-3">
                     <input type="checkbox" class="custom-control-input theme-choice" id="light-mode-switch" checked>
@@ -257,10 +257,10 @@
                 </div>
 
                 <div class="mb-2">
-                    <img src="assets/images/layouts/layout-2.jpg" class="img-fluid img-thumbnail" alt="">
+                    <img src="/assets/images/layouts/layout-2.jpg" class="img-fluid img-thumbnail" alt="">
                 </div>
                 <div class="custom-control custom-switch mb-3">
-                    <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch" data-bsstyle="assets/css/bootstrap-dark.min.css" data-appstyle="assets/css/app-dark.css">
+                    <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch" data-bsstyle="/assets/css/bootstrap-dark.min.css" data-appstyle="/assets/css/app-dark.css">
                     <label class="custom-control-label" for="dark-mode-switch">طرح تیره</label>
                 </div>
             </div>
