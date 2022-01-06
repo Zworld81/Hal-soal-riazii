@@ -70,7 +70,7 @@
 @endsection
 
 @section('init')
-    <script src="assets/js/pages/datatables.init.js"></script>
+    <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
 @endsection
 
 @section('my_js')

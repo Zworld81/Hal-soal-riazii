@@ -48,7 +48,7 @@ File: Main Js File
     function initMenuItem() {
         $(".navbar-nav a").each(function () {
             var pageUrl = window.location.href.split(/[?#]/)[0];
-            if (this.href == pageUrl) { 
+            if (this.href == pageUrl) {
                 $(this).addClass("active");
                 $(this).parent().addClass("active");
                 $(this).parent().parent().addClass("active");
@@ -115,11 +115,11 @@ File: Main Js File
             }
             var $subMenu = $(this).next(".dropdown-menu");
             $subMenu.toggleClass('show');
-    
+
             return false;
-        });   
+        });
     }
-    
+
     function initComponents() {
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
@@ -156,13 +156,13 @@ File: Main Js File
     function updateThemeSetting(id) {
         if($("#light-mode-switch").prop("checked") == true && id === "light-mode-switch"){
             $("#dark-mode-switch").prop("checked", false);
-            $("#bootstrap-style").attr('href','assets/css/bootstrap.min.css');
-            $("#app-style").attr('href','assets/css/app.css');
+            $("#bootstrap-style").attr('href','/assets/css/bootstrap.min.css');
+            $("#app-style").attr('href','/assets/css/app.css');
             sessionStorage.setItem("is_visited", "light-mode-switch");
         } else if($("#dark-mode-switch").prop("checked") == true && id === "dark-mode-switch"){
             $("#light-mode-switch").prop("checked", false);
-            $("#bootstrap-style").attr('href','assets/css/bootstrap-dark.min.css');
-            $("#app-style").attr('href','assets/css/app-dark.css');
+            $("#bootstrap-style").attr('href','/assets/css/bootstrap-dark.min.css');
+            $("#app-style").attr('href','/assets/css/app-dark.css');
             sessionStorage.setItem("is_visited", "dark-mode-switch");
         }
     }
