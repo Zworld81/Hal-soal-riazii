@@ -51,6 +51,10 @@
                                     <a class="btn btn-sm btn-clean btn-icon confirm"
                                        href="{{ route('change.level', ['level' => 1, 'user' => $user->id]) }}" title="تبدیل به کاربر">
                                         <i class="bx bx-male mr-1" style="color: gray"></i></a>
+
+                                    <a class="btn btn-sm btn-clean btn-icon"
+                                       href="{{ route('user.management.edit', ['user' => $user->id]) }}" title="ویرایش سطح دسترسی">
+                                        <i class="bx bx-edit mr-1" style="color: gray"></i></a>
                                 </td>
                             </tr>
                         @endforeach

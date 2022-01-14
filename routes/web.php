@@ -40,6 +40,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/userManagement/admin', [\App\Http\Controllers\Admin\UserManagementController::class, 'admin'])->name('user.management.admin');
         Route::get('/userManagement/teacher', [\App\Http\Controllers\Admin\UserManagementController::class, 'teacher'])->name('user.management.teacher');
 
+        Route::get('/userManagement/edit/{user}', [\App\Http\Controllers\Admin\UserManagementController::class, 'edit'])->name('user.management.edit');
+        Route::patch('/userManagement/update', [\App\Http\Controllers\Admin\UserManagementController::class, 'update'])->name('user.management.update');
+
         Route::get('/changeLevel', [\App\Http\Controllers\HandlerController::class, 'changeLevel'])->name('change.level');
 
         Route::get('/confirmAnswer', [\App\Http\Controllers\AdminController::class, 'confirmAnswer'])->name('confirm.answer');
