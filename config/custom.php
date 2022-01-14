@@ -35,5 +35,48 @@ return [
             'location' => 'userList',
             'name' => 'کاربران'
         ],
+        ['location' => 'changeLevelToAdmin',
+            'name' => 'تبدیل به ادمین'
+        ],
+        [
+            'location' => 'changeLevelToTeacher',
+            'name' => 'تبدیل به معلم'
+        ],
+        [
+            'location' => 'changeLevelToUser',
+            'name' => 'تبدیل به کاربر'
+        ],
+        [
+            'location' => 'editPermission',
+            'name' => 'ویرایش سطح دسترسی'
+        ],
+        [
+            'location' => 'permission',
+            'name' => 'سطح دسترسی'
+        ],
+        [
+            'location' => 'questionConfirm',
+            'name' => 'تایید سوال'
+        ],
+        [
+            'location' => 'answerConfirm',
+            'name' => 'تایید جواب'
+        ],
+        [
+            'location' => 'payment',
+            'name' => 'پرداخت جدید'
+        ],
+        [
+            'location' => 'payed',
+            'name' => 'پرداخت شده'
+        ],
+        [
+            'location' => 'setting',
+            'name' => 'تنظیمات اصلی'
+        ],
+        [
+            'location' => 'starSetting',
+            'name' => 'تنظیمات ستاره'
+        ],
     ]
 ];

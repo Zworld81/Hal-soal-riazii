@@ -151,7 +151,7 @@
                                 <li><a href="{{ route('home') }}">وبسایت</a></li>
                             </ul>
                         </li>
-                        @canany([ 'adminList', 'teacherList', 'userList'])
+                        @canany([ 'adminList', 'teacherList', 'userList', 'permission'])
                             <li class="menu-title">مدیریت کاربران</li>
                             <li>
                                 <a href="javascript:%20void(0);" class="has-arrow waves-effect">
@@ -167,26 +167,33 @@
                                         <li><a href="{{ route('user.management.user') }}">کاربران</a></li>@endcan
                                 </ul>
                             </li>
+                            @can('permission')
+                                <li>
+                                    <a href="{{ route('accessLevel.index') }}" class=" waves-effect">
+                                        <i class="mdi mdi-alert"></i>
+                                        <span>سطح دسترسی</span>
+                                    </a>
+                                </li>
+                            @endcan
+                        @endcanany
+
+                        @canany([ 'questionConfirm', 'answerConfirm'])
+                            <li class="menu-title">مدیریت سوالات</li>
                             <li>
-                                <a href="{{ route('accessLevel.index') }}" class=" waves-effect">
-                                    <i class="mdi mdi-alert"></i>
-                                    <span>سطح دسترسی</span>
+                                <a href="javascript:%20void(0);" class="has-arrow waves-effect">
+                                    <i class="mdi mdi-inbox-full"></i>
+                                    <span>سوالات</span>
                                 </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    @can('questionConfirm')
+                                        <li><a href="{{ route('confirm.answer') }}">تایید جواب</a></li>@endcan
+                                    @can('answerConfirm')
+                                        <li><a href="#">تایید سوال</a></li>@endcan
+                                </ul>
                             </li>
                         @endcanany
 
-                        <li class="menu-title">مدیریت سوالات</li>
-                        <li>
-                            <a href="javascript:%20void(0);" class="has-arrow waves-effect">
-                                <i class="mdi mdi-inbox-full"></i>
-                                <span>سوالات</span>
-                            </a>
-                            <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="{{ route('confirm.answer') }}">تایید جواب</a></li>
-                                <li><a href="#">تایید سوال</a></li>
-                            </ul>
-                        </li>
-
+                        @canany([ 'payment', 'payed'])
                         <li class="menu-title">مدیریت پرداخت</li>
                         <li>
                             <a href="javascript:%20void(0);" class="has-arrow waves-effect">
@@ -194,11 +201,15 @@
                                 <span>پرداخت</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="{{ route('payment.index') }}">پرداخت جدید</a></li>
-                                <li><a href="{{ route('payed.confirm.index') }}">پرداخت شده</a></li>
+                                @can('payment')
+                                <li><a href="{{ route('payment.index') }}">پرداخت جدید</a></li>@endcan
+                                @can('payed')
+                                <li><a href="{{ route('payed.confirm.index') }}">پرداخت شده</a></li>@endcan
                             </ul>
                         </li>
+                        @endcanany
 
+                        @canany([ 'setting', 'starSetting'])
                         <li class="menu-title">تنظیمات سامانه</li>
                         <li>
                             <a href="javascript:%20void(0);" class="has-arrow waves-effect">
@@ -206,10 +217,13 @@
                                 <span>تنظیمات</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="{{ route('setting.index') }}">تنظیمات اصلی</a></li>
-                                <li><a href="{{ route('starSetting.index') }}">تنظیمات ستاره</a></li>
+                                @can('setting')
+                                <li><a href="{{ route('setting.index') }}">تنظیمات اصلی</a></li>@endcan
+                                @can('starSetting')
+                                <li><a href="{{ route('starSetting.index') }}">تنظیمات ستاره</a></li>@endcan
                             </ul>
                         </li>
+                        @endcanany
                     </ul>
                 </div>
                 <!-- Sidebar -->
