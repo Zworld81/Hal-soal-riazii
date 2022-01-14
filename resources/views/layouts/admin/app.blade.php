@@ -153,6 +153,12 @@
                                     <li><a href="{{ route('user.management.user') }}">کاربران</a></li>
                                 </ul>
                             </li>
+                            <li>
+                                <a href="{{ route('accessLevel.index') }}" class=" waves-effect">
+                                    <i class="mdi mdi-alert"></i>
+                                    <span>سطح دسترسی</span>
+                                </a>
+                            </li>
 
 							<li class="menu-title">مدیریت سوالات</li>
                             <li>

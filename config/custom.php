@@ -20,5 +20,20 @@ return [
     'per_support_star' => 2,
     'per_answer_star' => 2,
     'star_price' => 1000,
-    'give_gift_star_on_register' => 5
+    'give_gift_star_on_register' => 5,
+
+    'acl' => [
+        [
+            'location' => 'adminList',
+            'name' => 'ادمین ها'
+        ],
+        [
+            'location' => 'teacherList',
+            'name' => 'معلم ها'
+        ],
+        [
+            'location' => 'userList',
+            'name' => 'کاربران'
+        ],
+    ]
 ];
