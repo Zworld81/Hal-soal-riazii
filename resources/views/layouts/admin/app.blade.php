@@ -142,12 +142,17 @@
 							</li>
 
                             <li class="menu-title">مدیریت کاربران</li>
-							<li>
-								<a href="{{ route('user.management') }}" class=" waves-effect">
-									<i class="mdi mdi-account-circle-outline"></i>
-									<span>کاربران</span>
-								</a>
-							</li>
+                            <li>
+                                <a href="javascript:%20void(0);" class="has-arrow waves-effect">
+                                    <i class="mdi mdi-account-box"></i>
+                                    <span>لیست کاربران</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="{{ route('user.management.admin') }}">ادمین ها</a></li>
+                                    <li><a href="{{ route('user.management.teacher') }}">معلم ها</a></li>
+                                    <li><a href="{{ route('user.management.user') }}">کاربران</a></li>
+                                </ul>
+                            </li>
 
 							<li class="menu-title">مدیریت سوالات</li>
                             <li>

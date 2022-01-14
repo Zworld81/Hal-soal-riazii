@@ -13,11 +13,7 @@ class AdminController extends Controller
     {
         return view('admin');
     }
-    public function index()
-    {
-        $users = User::get();
-        return view('admin.userManagement.index')->with(compact('users'));
-    }
+
 
     public function confirmAnswer()
     {

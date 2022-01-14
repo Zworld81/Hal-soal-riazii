@@ -36,7 +36,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'is.admin', 'prefix' => 'admin'], function () {
         Route::get('/', [\App\Http\Controllers\AdminController::class, 'home'])->name('admin.index');
-        Route::get('/userManagement', [\App\Http\Controllers\AdminController::class, 'index'])->name('user.management');
+        Route::get('/userManagement/user', [\App\Http\Controllers\Admin\UserManagementController::class, 'user'])->name('user.management.user');
+        Route::get('/userManagement/admin', [\App\Http\Controllers\Admin\UserManagementController::class, 'admin'])->name('user.management.admin');
+        Route::get('/userManagement/teacher', [\App\Http\Controllers\Admin\UserManagementController::class, 'teacher'])->name('user.management.teacher');
+
         Route::get('/changeLevel', [\App\Http\Controllers\HandlerController::class, 'changeLevel'])->name('change.level');
 
         Route::get('/confirmAnswer', [\App\Http\Controllers\AdminController::class, 'confirmAnswer'])->name('confirm.answer');
