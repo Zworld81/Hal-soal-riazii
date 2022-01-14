@@ -43,13 +43,13 @@
                                 <td>{{ $user->birthday ?? '' }}</td>
                                 <td>
                                     <a class="btn btn-sm btn-clean btn-icon confirm"
-                                       href="{{ route('change.level', ['level' => 0, 'user' => $user->id]) }}" title="ادمین">
+                                       href="{{ route('change.level', ['level' => 0, 'user' => $user->id]) }}" title="تبدیل به ادمین">
                                         <i class="bx bx-user mr-1" style="color: gray"></i></a>
                                     <a class="btn btn-sm btn-clean btn-icon confirm"
-                                       href="{{ route('change.level', ['level' => 2, 'user' => $user->id]) }}" title="معلم">
+                                       href="{{ route('change.level', ['level' => 2, 'user' => $user->id]) }}" title="تبدیل به معلم">
                                         <i class="bx bx-user-voice mr-1" style="color: gray"></i></a>
                                     <a class="btn btn-sm btn-clean btn-icon confirm"
-                                       href="{{ route('change.level', ['level' => 1, 'user' => $user->id]) }}" title="کاربر">
+                                       href="{{ route('change.level', ['level' => 1, 'user' => $user->id]) }}" title="تبدیل به کاربر">
                                         <i class="bx bx-male mr-1" style="color: gray"></i></a>
                                 </td>
                             </tr>

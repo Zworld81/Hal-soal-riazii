@@ -50,5 +50,6 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::resource('/starSetting', \App\Http\Controllers\Admin\StarSettingController::class);
         Route::resource('/setting', \App\Http\Controllers\Admin\SettingController::class);
+        Route::resource('/transaction', \App\Http\Controllers\Admin\TransactionController::class);
     });
 });

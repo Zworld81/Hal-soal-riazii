@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\HelperController;
+use App\Http\Requests\Admin\starSetting\UpdateOrCreateRequest;
 use App\Models\StarSetting;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,8 @@ class StarSettingController extends Controller
      */
     public function index()
     {
-        //
+        $starSetting = StarSetting::first();
+        return view('admin.starSetting.cu')->with(compact('starSetting'));
     }
 
     /**
@@ -34,9 +37,14 @@ class StarSettingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UpdateOrCreateRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        StarSetting::updateOrCreate(['id' => 1],$data);
+
+        HelperController::flash('success', 'درخواست با موفقیت اجراشد🙂 ');
+        return redirect()->back();
     }
 
     /**

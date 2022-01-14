@@ -299,6 +299,13 @@
     <!-- Sweet Alerts js -->
     <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
 
+    <!-- parsley plugin -->
+    <script src="{{ asset('assets/libs/parsleyjs/parsley.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/parsleyjs/i18n/fa.js') }}"></script>
+
+    <!-- validation init -->
+    <script src="{{ asset('assets/js/pages/form-validation.init.js') }}"></script>
+
     <!-- jquery.vectormap map -->
     <script src="{{ asset('assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
     <script src="{{ asset('assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-us-merc-en.js') }}"></script>
