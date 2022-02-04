@@ -39,8 +39,9 @@ class UserManagementController extends Controller
 
         if (!empty($user->roles))
             foreach ($user->roles as $role){
-                $role = $user->roles->first()->name;
-                $user->removeRole($role);
+//                dd($role->name);
+//                $role = $user->roles->first()->name;
+                $user->removeRole($role->id);
             }
 
         $role = Role::where('id', $data['role'])->first();
