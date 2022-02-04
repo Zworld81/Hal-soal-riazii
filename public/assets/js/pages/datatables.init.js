@@ -30,7 +30,8 @@ $(document).ready(function() {
 				"sSortAscending":  ": فعال سازی نمایش به صورت صعودی",
 				"sSortDescending": ": فعال سازی نمایش به صورت نزولی"
 			}
-		}
+		},
+        "scrollX": true
     });
 
     //Buttons examples
