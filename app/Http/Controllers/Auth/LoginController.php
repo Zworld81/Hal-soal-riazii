@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class LoginController extends Controller
@@ -57,5 +58,16 @@ class LoginController extends Controller
     public function username(): string
     {
         return 'phone_number';
+    }
+    protected function authenticated(Request $request, $user)
+    {
+        switch ($user->level){
+            case 0:
+                return redirect()->route('admin.index');
+            case 1:
+                return redirect()->route('home');
+            case 2:
+                return redirect()->route('teacher.index');
+        }
     }
 }
