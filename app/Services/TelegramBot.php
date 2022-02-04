@@ -19,6 +19,7 @@ class TelegramBot
 
     public function sendMessageToChannel($message)
     {
-        return Http::get('https://api.telegram.org/bot'. $this->token .'/sendMessage?chat_id='. $this->channelId .'&text='.$message ."&parse_mode=HTML")->json();
+        $res = urlencode('https://api.telegram.org/bot'. $this->token .'/sendMessage?chat_id='. $this->channelId .'&text='.$message ."&parse_mode=HTML");
+       dd(Http::get('https://ma-a.ir/bot/?url='. $res)->json());
     }
 }
