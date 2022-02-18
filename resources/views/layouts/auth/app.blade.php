@@ -122,7 +122,7 @@
             <!-- One "tab" for each step in the form: -->
             <div class="tab">شماره تلفن که قبلا ثبت نام کردید رو وارد کنید :
                 <p><input  id="register-phone-number-input" type="tel" placeholder="... شماره تلفن " oninput="this.className = ''"></p>
-                <button type="button" id="nextBtn" class="register-phone-number">تایید</button>
+                <button type="button" id="nextBtn" class="register-phone-number-forgot">تایید</button>
             </div>
 
             <div class="tab">کد ارسال شده به شماره تلفن رو وارد کنید :
@@ -168,16 +168,6 @@
          sendVerificationCode($('.register-phone-number').val());
     });
 
-    // $('#register-verify').click(function (e) {
-    //     if ($(this).attr('data-submit-state') == 0){
-    //         e.preventDefault();
-    //         sendVerificationCode($('.register-phone-number').val());
-    //         $(this).attr('data-submit-state', 1)
-    //         $(this).text('عضویت');
-    //     }
-    // });
-
-
     function sendVerificationCode(phoneNumber) {
         $.ajax({
             type: 'POST',
@@ -208,16 +198,17 @@
     }
 
 
-    // $('.register-phone-number').click(function () {
-    //     sendVerificationCodeFP($('#register-phone-number-input').val())
-    // });
+    $('.register-phone-number-forgot').click(function () {
+        sendVerificationCodeFP($('#register-phone-number-input').val())
+    });
     function sendVerificationCodeFP(phoneNumber) {
         $.ajax({
             type: 'POST',
             url: '{{ route('send.verification.code') }}',
             data: {
                 "_token": "{{ csrf_token() }}",
-                "phoneNumber" :phoneNumber
+                "phoneNumber" :phoneNumber,
+                "sMethod":"forgot"
             },
             success: function (data) {
                 if (data['status'] == true){
