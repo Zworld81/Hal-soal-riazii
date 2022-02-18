@@ -7,6 +7,7 @@ use App\Http\Controllers\HelperController;
 use App\Http\Requests\Admin\starSetting\UpdateOrCreateRequest;
 use App\Models\StarSetting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 class StarSettingController extends Controller
 {
@@ -40,6 +41,27 @@ class StarSettingController extends Controller
     public function store(UpdateOrCreateRequest $request)
     {
         $data = $request->validated();
+
+        Artisan::call('config:cache');
+        $path = base_path('.env');
+        foreach ($data as $key=>$d){
+
+            $oldValue = config("custom.".$key);
+            if ($oldValue === $d) {
+                continue;
+            }
+
+            if (file_exists($path)) {
+                file_put_contents(
+                    $path, str_replace(
+                        $key.'='.$oldValue,
+                        $key.'='.$d,
+                        file_get_contents($path)
+                    )
+                );
+            }
+        }
+        Artisan::call('config:cache');
 
         StarSetting::updateOrCreate(['id' => 1],$data);
 

@@ -15,12 +15,12 @@ return [
         '11' => 'یازدهم',
         '12' => 'دوازدهم',
     ],
-    'default_stars' => 5,
-    'per_question_star' => 2,
-    'per_support_star' => 2,
-    'per_answer_star' => 2,
-    'star_price' => 1000,
-    'give_gift_star_on_register' => 5,
+    'default_stars' => env('default_stars'),
+    'per_question_star' => env('per_question_star'),
+    'per_support_star' => env('per_support_star'),
+    'per_answer_star' => env('per_answer_star'),
+    'star_price' => env('star_price'),
+    'give_gift_star_on_register' => env('give_gift_star_on_register'),
 
     'acl' => [
         [

@@ -16,7 +16,7 @@
                             <div class="col-md-10">
                                 <select name="role" class="custom-select" required>
                                     @foreach(\Spatie\Permission\Models\Role::get() as $role)
-                                        <option value="{{ $role->id ?? '' }}" @if(auth()->user()->roles->first()->name == $role->name) selected @endif>{{ $role->name ?? '' }}</option>
+                                        <option value="{{ $role->id ?? '' }}" @if(!empty(auth()->user()->roles->first()) && auth()->user()->roles->first()->name == $role->name) selected @endif>{{ $role->name ?? '' }}</option>
                                     @endforeach
                                 </select>
                             </div>

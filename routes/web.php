@@ -34,8 +34,8 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
 
+    Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'home'])->middleware('is.admin')->name('admin.index');
     Route::group(['middleware' => 'is.admin', 'prefix' => 'admin'], function () {
-        Route::get('/', [\App\Http\Controllers\AdminController::class, 'home'])->name('admin.index');
         Route::get('/userManagement/user', [\App\Http\Controllers\Admin\UserManagementController::class, 'user'])->name('user.management.user');
         Route::get('/userManagement/admin', [\App\Http\Controllers\Admin\UserManagementController::class, 'admin'])->name('user.management.admin');
         Route::get('/userManagement/teacher', [\App\Http\Controllers\Admin\UserManagementController::class, 'teacher'])->name('user.management.teacher');
