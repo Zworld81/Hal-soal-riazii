@@ -17,9 +17,9 @@ class CreatePaymentsTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('stars')->nullable();
-            $table->integer('amount')->nullable();
+            $table->bigInteger('amount')->nullable();
             $table->boolean('is_payed')->default(false);
-            $table->integer('referenceId')->nullable();
+            $table->string('referenceId')->nullable();
             $table->string('transactionId');
             $table->timestamps();
         });
