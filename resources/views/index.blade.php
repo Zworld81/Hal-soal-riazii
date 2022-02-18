@@ -926,11 +926,16 @@
                                         }
                                         $('.error-content').text('')
                                     },
+                                    beforeSend: function() {
+                                        $("#submit").prop('disabled', true);
+                                        $("#submit").prop('value', 'در حال ارسال سوال...');
+                                    },
                                     error: function (response) {
                                         $('.error-content').html('');
                                         $.each(response.responseJSON.errors, function (field_name, error) {
                                             $('.error-content').append('<p class="error-message">' + error + '</p> <br>');
                                         })
+                                        $("#submit").prop('disabled', false);
                                     }
                                 });
                             }

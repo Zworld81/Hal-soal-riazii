@@ -34,7 +34,7 @@ class QuestionController extends Controller
      * Store a newly created resource in storage.
      *
      * @param QuestionStoreRequest $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(QuestionStoreRequest $request)
     {
