@@ -137,11 +137,13 @@ header .center{
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 header .center img{
 
-    width: 105px;
+  
     height: 95px;
+   
 
 }
 header .left{
@@ -1179,7 +1181,7 @@ input.invalid {
       padding: 0px;
     }
     header .center img{
-        width: 70px;
+
         height: 70px;
 
     }
